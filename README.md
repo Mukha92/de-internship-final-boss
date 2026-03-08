@@ -1036,6 +1036,7 @@ Airflow использует следующие подключения (наст
 | **👥 Customers Duplicates > 50%** | Процент дубликатов в `raw.customers` > 50% | 🔴 Critical |
 | **🛒 Purchases Duplicates > 50%** | Процент дубликатов в `raw.purchases` > 50% | 🔴 Critical |
 
+![DuplicateHunterBot](pictures/DublicateHunterBot.PNG)
 
 ---
 
