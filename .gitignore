@@ -46,11 +46,6 @@ notebooks/*.ipynb_checkpoints
 logs/*
 
 
-# ========== GENERATED DATA (ETL OUTPUT) ==========
-# Результаты ETL - генерируемые файлы
-output/*.csv
-output/*.json
-output/
 
 # Синтетические данные (генерируемые скриптами)
 data/customers/
