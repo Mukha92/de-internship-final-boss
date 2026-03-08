@@ -1,0 +1,355 @@
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: Duplicates Alert Rules
+    folder: Alerts
+    interval: 30s
+    rules:
+      - uid: stores-duplicates-alert
+        title: 🏪 Stores Duplicates > 50%
+        condition: C
+        data:
+          - refId: A
+            queryType: table
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: PDEE91DDB90597936
+            model:
+              datasource:
+                type: grafana-clickhouse-datasource
+                uid: PDEE91DDB90597936
+              queryType: sql
+              rawSql: SELECT round((count() - count(DISTINCT store_id)) * 100.0 / count(), 2) as duplicate_percent FROM raw.stores;
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params: []
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - B
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              intervalMs: 1000
+              maxDataPoints: 43200
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 49
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: C
+              type: threshold
+        noDataState: NoData
+        execErrState: Error
+        for: 0s
+        annotations:
+          summary: "🚨 [CRITICAL] Дубликаты в таблице 🏪 stores превысили 50%!"
+          description: "📊 Текущий процент дубликатов: {{ $value }}%\n⚠️ Требуется проверка данных"
+        labels:
+          severity: critical
+          table: stores
+          emoji: 🏪
+        isPaused: false
+        notification_settings:
+          receiver: Telegram Duplicates Alert
+
+      - uid: products-duplicates-alert
+        title: 📦 Products Duplicates > 50%
+        condition: C
+        data:
+          - refId: A
+            queryType: table
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: PDEE91DDB90597936
+            model:
+              datasource:
+                type: grafana-clickhouse-datasource
+                uid: PDEE91DDB90597936
+              queryType: sql
+              rawSql: SELECT round((count() - count(DISTINCT id)) * 100.0 / count(), 2) as duplicate_percent FROM raw.products;
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params: []
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - B
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              intervalMs: 1000
+              maxDataPoints: 43200
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 49
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: C
+              type: threshold
+        noDataState: NoData
+        execErrState: Error
+        for: 0s
+        annotations:
+          summary: "🚨 [CRITICAL] Дубликаты в таблице 📦 products превысили 50%!"
+          description: "📊 Текущий процент дубликатов: {{ $value }}%\n⚠️ Требуется проверка данных"
+        labels:
+          severity: critical
+          table: products
+          emoji: 📦
+        isPaused: false
+        notification_settings:
+          receiver: Telegram Duplicates Alert
+
+      - uid: customers-duplicates-alert
+        title: 👥 Customers Duplicates > 50%
+        condition: C
+        data:
+          - refId: A
+            queryType: table
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: PDEE91DDB90597936
+            model:
+              datasource:
+                type: grafana-clickhouse-datasource
+                uid: PDEE91DDB90597936
+              queryType: sql
+              rawSql: SELECT round((count() - count(DISTINCT customer_id)) * 100.0 / count(), 2) as duplicate_percent FROM raw.customers;
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params: []
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - B
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              intervalMs: 1000
+              maxDataPoints: 43200
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 49
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: C
+              type: threshold
+        noDataState: NoData
+        execErrState: Error
+        for: 0s
+        annotations:
+          summary: "🚨 [CRITICAL] Дубликаты в таблице 👥 customers превысили 50%!"
+          description: "📊 Текущий процент дубликатов: {{ $value }}%\n⚠️ Требуется проверка данных"
+        labels:
+          severity: critical
+          table: customers
+          emoji: 👥
+        isPaused: false
+        notification_settings:
+          receiver: Telegram Duplicates Alert
+
+      - uid: purchases-duplicates-alert
+        title: 🛒 Purchases Duplicates > 50%
+        condition: C
+        data:
+          - refId: A
+            queryType: table
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: PDEE91DDB90597936
+            model:
+              datasource:
+                type: grafana-clickhouse-datasource
+                uid: PDEE91DDB90597936
+              queryType: sql
+              rawSql: SELECT round((count() - count(DISTINCT purchase_id)) * 100.0 / count(), 2) as duplicate_percent FROM raw.purchases;
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params: []
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - B
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              intervalMs: 1000
+              maxDataPoints: 43200
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 0
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 49
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: C
+              type: threshold
+        noDataState: NoData
+        execErrState: Error
+        for: 0s
+        annotations:
+          summary: "🚨 [CRITICAL] Дубликаты в таблице 🛒 purchases превысили 50%!"
+          description: "📊 Текущий процент дубликатов: {{ $value }}%\n⚠️ Требуется проверка данных"
+        labels:
+          severity: critical
+          table: purchases
+          emoji: 🛒
+        isPaused: false
+        notification_settings:
+          receiver: Telegram Duplicates Alert

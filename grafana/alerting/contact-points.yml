@@ -1,0 +1,39 @@
+apiVersion: 1
+
+contactPoints:
+  - orgId: 1
+    name: Telegram Duplicates Alert
+    receivers:
+      - uid: telegram-duplicates-receiver
+        type: telegram
+        settings:
+          botToken: 8148427563:AAFobNVtCh8sxE1GSH8qXa3ssCTVryLZ_Cw
+          chatId: "5251389025"
+          message: |
+            🤖 >_ SYSTEM ALERT v.2077
+
+            🚨 [!] DUPLICATE DETECTION
+            ━━━━━━━━━━━━━━━━━━━━━━━
+            {{ range .Alerts }}
+            🎯 TARGET:   [{{ .Labels.table }}] {{ if eq .Labels.table "stores" }}🏪{{ else if eq .Labels.table "products" }}📦{{ else if eq .Labels.table "customers" }}👥{{ else if eq .Labels.table "purchases" }}🛒{{ end }}
+            🔍 STATUS:   [CHECK REQUIRED]
+            ━━━━━━━━━━━━━━━━━━━━━━━
+            📈 METRICS:
+
+              🔴 DUPLICATE RATE: {{ .Annotations.description | reReplaceAll ".*: " "" | reReplaceAll "\\n.*" "" }}
+              ⚡ THRESHOLD:      >50%
+            ━━━━━━━━━━━━━━━━━━━━━━━
+            🔗 ACCESS: http://localhost:3000/d/raw-duplicates-analysis/f09f9484-raw-layer-duplicates-analysis?orgId=1&from=now-24h&to=now&timezone=browser&refresh=30s
+            ⏱️ TIME: {{ .StartsAt.Format "2006-01-02 15:04:05" }}
+            ━━━━━━━━━━━━━━━━━━━━━━━
+            {{ end }}
+          parse_mode: HTML
+        disableResolveMessage: false
+
+policies:
+  - orgId: 1
+    receiver: Telegram Duplicates Alert
+    group_by: ['alertname']
+    group_wait: 5s
+    group_interval: 10s
+    repeat_interval: 10m

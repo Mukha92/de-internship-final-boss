@@ -1,0 +1,312 @@
+2026-03-07 23:59:49,748 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-07 23:59:49,752 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-07 23:59:49,755 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-07 23:59:49,762 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-07 23:59:49,763 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-07 23:59:49,768 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-07 23:59:49,772 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-07 23:59:49,775 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-07 23:59:49,778 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-07 23:59:49,872 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-07 23:59:49,872 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-07 23:59:49,873 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-07 23:59:49,893 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-07 23:59:50,020 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-07 23:59:50,122 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-07 23:59:50,263 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-07 23:59:50,359 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-07 23:59:50,491 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-07 23:59:50,593 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-07 23:59:50,904 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-07 23:59:50,906 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-07 23:59:50,908 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-07 23:59:50,908 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-07 23:59:50,909 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 00:22:02,032 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 00:22:02,037 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 00:22:02,040 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:22:02,046 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:22:02,047 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:22:02,053 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 00:22:02,055 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 00:22:02,057 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 00:22:02,059 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 00:22:02,156 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:22:02,157 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:22:02,157 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:22:02,173 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-08 00:22:02,302 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 00:22:02,400 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-08 00:22:02,536 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 00:22:02,632 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-08 00:22:02,767 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 00:22:02,865 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-08 00:22:03,152 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 00:22:03,154 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 00:22:03,156 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:22:03,156 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 00:22:03,157 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 00:25:26,783 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 00:25:26,787 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 00:25:26,790 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:25:26,796 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:25:26,797 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:25:26,802 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 00:25:26,805 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 00:25:26,807 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 00:25:26,809 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 00:25:26,904 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:25:26,905 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:25:26,906 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:25:26,944 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 00:25:27,097 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 00:25:27,173 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 00:25:27,580 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 00:25:27,585 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 00:25:27,586 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:25:27,587 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 00:25:27,590 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 00:35:16,222 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 00:35:16,226 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 00:35:16,229 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:35:16,236 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:35:16,237 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:35:16,243 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 00:35:16,246 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 00:35:16,249 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 00:35:16,251 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 00:35:16,355 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:35:16,356 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:35:16,356 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:35:16,367 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-08 00:35:16,494 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 00:35:16,600 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-08 00:35:16,738 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 00:35:16,836 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-08 00:35:16,966 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 00:35:17,077 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-08 00:35:17,362 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 00:35:17,364 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 00:35:17,365 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:35:17,366 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 00:35:17,366 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 00:43:18,582 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 00:43:18,588 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 00:43:18,593 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:43:18,599 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:43:18,599 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:43:18,607 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 00:43:18,612 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 00:43:18,615 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 00:43:18,618 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 00:43:18,714 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:43:18,714 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:43:18,715 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:43:18,728 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-08 00:43:18,861 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 00:43:18,960 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-08 00:43:19,104 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 00:43:19,196 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-08 00:43:19,337 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 00:43:19,434 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-08 00:43:19,764 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 00:43:19,767 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 00:43:19,769 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:43:19,769 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 00:43:19,770 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 01:08:16,224 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 01:08:16,230 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 01:08:16,235 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:08:16,241 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:08:16,242 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:08:16,249 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 01:08:16,251 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 01:08:16,253 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 01:08:16,255 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 01:08:16,358 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:08:16,359 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:08:16,360 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:08:16,376 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-08 01:08:16,502 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 01:08:16,605 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-08 01:08:16,742 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 01:08:16,841 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-08 01:08:16,971 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 01:08:17,072 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-08 01:08:17,375 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 01:08:17,377 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 01:08:17,379 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:08:17,380 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 01:08:17,381 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 01:21:20,032 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 01:21:20,039 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 01:21:20,045 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:21:20,054 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:21:20,055 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:21:20,069 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 01:21:20,072 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 01:21:20,075 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 01:21:20,079 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 01:21:20,177 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:21:20,178 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:21:20,179 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:21:20,203 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-08 01:21:20,343 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 01:21:20,436 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-08 01:21:20,578 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 01:21:20,671 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-08 01:21:20,806 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 01:21:20,903 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-08 01:21:21,179 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 01:21:21,181 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 01:21:21,183 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:21:21,183 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 01:21:21,184 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 01:42:57,387 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 01:42:57,391 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 01:42:57,394 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:42:57,402 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:42:57,403 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:42:57,411 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 01:42:57,413 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 01:42:57,415 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 01:42:57,417 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 01:42:57,509 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:42:57,510 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:42:57,510 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:42:57,522 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-08 01:42:57,652 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 01:42:57,753 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-08 01:42:57,892 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 01:42:57,988 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-08 01:42:58,128 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 01:42:58,223 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-08 01:42:58,589 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 01:42:58,594 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 01:42:58,595 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:42:58,596 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 01:42:58,596 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 01:54:17,365 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 01:54:17,371 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 01:54:17,375 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:54:17,382 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:54:17,382 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:54:17,389 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 01:54:17,391 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 01:54:17,394 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 01:54:17,396 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 01:54:17,494 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:54:17,494 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:54:17,494 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:54:17,516 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 01:54:17,627 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 01:54:17,732 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 01:54:18,027 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 01:54:18,029 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 01:54:18,030 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:54:18,031 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 01:54:18,032 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 02:16:40,232 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 02:16:40,239 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 02:16:40,243 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 02:16:40,252 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 02:16:40,253 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 02:16:40,261 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 02:16:40,263 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 02:16:40,266 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 02:16:40,269 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 02:16:40,368 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 02:16:40,368 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 02:16:40,369 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 02:16:40,404 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 02:16:40,536 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 02:16:40,634 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 02:16:40,926 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 02:16:40,928 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 02:16:40,929 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 02:16:40,930 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 02:16:40,930 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 02:25:07,459 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 02:25:07,463 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 02:25:07,466 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 02:25:07,472 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 02:25:07,472 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 02:25:07,477 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 02:25:07,480 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 02:25:07,481 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 02:25:07,483 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 02:25:07,576 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 02:25:07,577 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 02:25:07,577 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 02:25:07,616 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 02:25:07,724 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 02:25:07,827 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 02:25:08,094 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 02:25:08,097 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 02:25:08,097 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 02:25:08,098 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 02:25:08,099 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 02:32:47,543 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 02:32:47,547 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 02:32:47,550 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 02:32:47,556 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 02:32:47,557 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 02:32:47,563 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 02:32:47,565 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 02:32:47,568 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 02:32:47,571 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 02:32:47,663 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 02:32:47,664 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 02:32:47,664 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 02:32:47,695 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 02:32:47,798 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 02:32:47,907 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 02:32:48,180 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 02:32:48,182 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 02:32:48,183 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 02:32:48,183 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 02:32:48,183 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 19:57:03,657 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 19:57:03,662 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 19:57:03,666 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 19:57:03,674 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 19:57:03,674 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 19:57:03,684 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 19:57:03,686 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 19:57:03,688 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 19:57:03,690 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 19:57:03,795 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 19:57:03,797 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 19:57:03,798 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 19:57:03,840 - kafka.cluster - WARNING - Topic products is not available during auto-create initialization
+2026-03-08 19:57:04,007 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 19:57:04,107 - kafka.cluster - WARNING - Topic stores is not available during auto-create initialization
+2026-03-08 19:57:04,245 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 19:57:04,341 - kafka.cluster - WARNING - Topic customers is not available during auto-create initialization
+2026-03-08 19:57:04,476 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 19:57:04,572 - kafka.cluster - WARNING - Topic purchases is not available during auto-create initialization
+2026-03-08 19:57:04,884 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 19:57:04,886 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 19:57:04,887 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 19:57:04,888 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 19:57:04,888 - __main__ - INFO - Работа продюсера завершена
+2026-03-08 20:01:26,732 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://localhost:27017
+2026-03-08 20:01:26,737 - MongoKafkaProducer - INFO - Подключение к Kafka: localhost:9092
+2026-03-08 20:01:26,740 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 20:01:26,746 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 20:01:26,747 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 20:01:26,752 - MongoKafkaProducer - INFO - Коллекция products: 50 документов
+2026-03-08 20:01:26,755 - MongoKafkaProducer - INFO - Коллекция stores: 45 документов
+2026-03-08 20:01:26,757 - MongoKafkaProducer - INFO - Коллекция customers: 45 документов
+2026-03-08 20:01:26,759 - MongoKafkaProducer - INFO - Коллекция purchases: 200 документов
+2026-03-08 20:01:26,856 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 20:01:26,857 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 20:01:26,857 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 20:01:26,874 - MongoKafkaProducer - INFO - products: всего обработано 50 документов
+2026-03-08 20:01:26,991 - MongoKafkaProducer - INFO - stores: всего обработано 45 документов
+2026-03-08 20:01:27,095 - MongoKafkaProducer - INFO - customers: всего обработано 45 документов
+2026-03-08 20:01:27,336 - MongoKafkaProducer - INFO - purchases: всего обработано 200 документов
+2026-03-08 20:01:27,338 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 4294967.0 secs timeout.
+2026-03-08 20:01:27,339 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 20:01:27,340 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-08 20:01:27,340 - __main__ - INFO - Работа продюсера завершена

@@ -1,0 +1,98 @@
+# ========== ENVIRONMENT ==========
+.env
+*.env.local
+
+# ========== PYTHON ==========
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+*.pyc
+
+# ========== VIRTUAL ENVIRONMENTS ==========
+venv/
+ENV/
+env/
+.venv/
+
+# ========== IDE ==========
+.idea/
+*.swp
+*.swo
+*~
+
+# ========== JUPYTER NOTEBOOKS ==========
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+notebooks/*.ipynb_checkpoints
+
+# ========== LOGS ==========
+logs/*
+
+
+# ========== GENERATED DATA (ETL OUTPUT) ==========
+# Результаты ETL - генерируемые файлы
+output/*.csv
+output/*.json
+output/
+
+# Синтетические данные (генерируемые скриптами)
+data/customers/
+data/products/
+data/purchases/
+data/stores/
+data/spark/
+
+# ========== DOCKER VOLUMES (LOCAL) ==========
+# Тома Docker Compose (если создаются локально вне контейнеров)
+mongodb_data/
+clickhouse-data/
+kafka-data/
+zookeeper-data/
+zookeeper-log/
+grafana_data/
+postgres-db-volume/
+docker-volumes/
+
+# ========== AIRFLOW ==========
+# Airflow конфигурация и кэш
+airflow.cfg
+airflow.db
+*.db
+webserver_config.pyc
+
+# ========== JDBC & DRIVERS ==========
+# Тяжёлые JDBC драйверы (скачиваются отдельно)
+scripts/*.jar
+scripts/jars/
+
+# ========== OS ==========
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+
+# ========== TEMPORARY FILES ==========
+*.tmp
+*.bak
+*.swp
+*~

@@ -1,0 +1,715 @@
+2026-03-07 23:53:11,948 - __main__ - INFO - ============================================================
+2026-03-07 23:53:11,949 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-07 23:53:11,949 - __main__ - INFO - ============================================================
+2026-03-07 23:53:11,950 - __main__ - INFO - Будут удалены:
+2026-03-07 23:53:11,950 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-07 23:53:11,951 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-07 23:53:11,951 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-07 23:53:11,952 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-07 23:53:11,952 - __main__ - INFO - ============================================================
+2026-03-07 23:53:14,289 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-07 23:53:14,290 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-07 23:53:14,298 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-07 23:53:14,310 - __main__ - INFO -   ✓ Удалено: products
+2026-03-07 23:53:14,345 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-07 23:53:14,354 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-07 23:53:14,354 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-07 23:53:14,354 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-07 23:53:14,390 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-07 23:53:14,392 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-07 23:53:14,394 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-07 23:53:14,763 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-07 23:53:14,767 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-07 23:53:14,767 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-07 23:53:14,771 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-07 23:53:14,772 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-07 23:53:14,772 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-07 23:53:14,773 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-07 23:53:14,776 - __main__ - INFO -   ⊘ Топики не найдены
+2026-03-07 23:53:14,776 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-07 23:53:14,777 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-07 23:53:14,823 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-07 23:53:14,823 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-07 23:53:14,868 - __main__ - INFO -   ⊘ База данных 'raw' не найдена
+2026-03-07 23:53:14,868 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-07 23:53:14,911 - __main__ - INFO -   ⊘ База данных 'mart' не найдена
+2026-03-07 23:53:14,912 - __main__ - INFO - 
+============================================================
+2026-03-07 23:53:14,912 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-07 23:53:14,913 - __main__ - INFO - ============================================================
+2026-03-07 23:53:14,913 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-07 23:53:14,913 - __main__ - INFO - ============================================================
+2026-03-08 00:17:02,617 - __main__ - INFO - ============================================================
+2026-03-08 00:17:02,618 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 00:17:02,618 - __main__ - INFO - ============================================================
+2026-03-08 00:17:02,618 - __main__ - INFO - Будут удалены:
+2026-03-08 00:17:02,618 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 00:17:02,619 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 00:17:02,619 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 00:17:02,619 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 00:17:02,619 - __main__ - INFO - ============================================================
+2026-03-08 00:17:07,473 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 00:17:07,474 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 00:17:07,484 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 00:17:07,495 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 00:17:07,537 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 00:17:07,546 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 00:17:07,547 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 00:17:07,547 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 00:17:07,592 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 00:17:07,593 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 00:17:07,596 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 00:17:07,934 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:17:07,938 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:17:07,938 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:17:07,942 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:17:07,943 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:17:07,943 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:17:07,944 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 00:17:07,962 - __main__ - INFO -   ✓ Топик 'stores' удалён
+2026-03-08 00:17:07,987 - __main__ - INFO -   ✓ Топик 'customers' удалён
+2026-03-08 00:17:08,042 - __main__ - INFO -   ✓ Топик 'products' удалён
+2026-03-08 00:17:08,073 - __main__ - INFO -   ✓ Топик 'purchases' удалён
+2026-03-08 00:17:08,073 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:17:08,074 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 00:17:08,122 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 00:17:08,122 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 00:17:08,301 - __main__ - INFO -   ✓ Таблица 'raw.customers' удалена
+2026-03-08 00:17:08,345 - __main__ - INFO -   ✓ Таблица 'raw.products' удалена
+2026-03-08 00:17:08,389 - __main__ - INFO -   ✓ Таблица 'raw.purchases' удалена
+2026-03-08 00:17:08,433 - __main__ - INFO -   ✓ Таблица 'raw.stores' удалена
+2026-03-08 00:17:08,477 - __main__ - INFO -   ✓ База данных 'raw' удалена
+2026-03-08 00:17:08,478 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 00:17:08,657 - __main__ - INFO -   ✓ MV 'mart.mv_dim_customer' удалено
+2026-03-08 00:17:08,701 - __main__ - INFO -   ✓ MV 'mart.mv_dim_date' удалено
+2026-03-08 00:17:08,745 - __main__ - INFO -   ✓ MV 'mart.mv_dim_delivery_address_from_customers' удалено
+2026-03-08 00:17:08,789 - __main__ - INFO -   ✓ MV 'mart.mv_dim_manufacturer_from_products' удалено
+2026-03-08 00:17:08,846 - __main__ - INFO -   ✓ MV 'mart.mv_dim_product' удалено
+2026-03-08 00:17:08,897 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store' удалено
+2026-03-08 00:17:08,950 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store_location_from_stores' удалено
+2026-03-08 00:17:08,994 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchase_items' удалено
+2026-03-08 00:17:09,037 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchases' удалено
+2026-03-08 00:17:09,081 - __main__ - INFO -   ✓ Таблица 'mart.customer_features_mart' удалена
+2026-03-08 00:17:09,126 - __main__ - INFO -   ✓ Таблица 'mart.dim_customer' удалена
+2026-03-08 00:17:09,174 - __main__ - INFO -   ✓ Таблица 'mart.dim_date' удалена
+2026-03-08 00:17:09,225 - __main__ - INFO -   ✓ Таблица 'mart.dim_delivery_address' удалена
+2026-03-08 00:17:09,273 - __main__ - INFO -   ✓ Таблица 'mart.dim_manufacturer' удалена
+2026-03-08 00:17:09,317 - __main__ - INFO -   ✓ Таблица 'mart.dim_product' удалена
+2026-03-08 00:17:09,366 - __main__ - INFO -   ✓ Таблица 'mart.dim_store' удалена
+2026-03-08 00:17:09,412 - __main__ - INFO -   ✓ Таблица 'mart.dim_store_location' удалена
+2026-03-08 00:17:09,458 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchase_items' удалена
+2026-03-08 00:17:09,512 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchases' удалена
+2026-03-08 00:17:09,562 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_customer' удалена
+2026-03-08 00:17:09,613 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_date' удалена
+2026-03-08 00:17:09,678 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_delivery_address_from_customers' удалена
+2026-03-08 00:17:09,725 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_manufacturer_from_products' удалена
+2026-03-08 00:17:09,772 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_product' удалена
+2026-03-08 00:17:09,820 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store' удалена
+2026-03-08 00:17:09,865 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store_location_from_stores' удалена
+2026-03-08 00:17:09,909 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchase_items' удалена
+2026-03-08 00:17:09,953 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchases' удалена
+2026-03-08 00:17:09,997 - __main__ - INFO -   ✓ База данных 'mart' удалена
+2026-03-08 00:17:09,998 - __main__ - INFO - 
+============================================================
+2026-03-08 00:17:09,998 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 00:17:09,998 - __main__ - INFO - ============================================================
+2026-03-08 00:17:09,998 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 00:17:09,999 - __main__ - INFO - ============================================================
+2026-03-08 00:33:50,872 - __main__ - INFO - ============================================================
+2026-03-08 00:33:50,872 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 00:33:50,872 - __main__ - INFO - ============================================================
+2026-03-08 00:33:50,872 - __main__ - INFO - Будут удалены:
+2026-03-08 00:33:50,872 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 00:33:50,873 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 00:33:50,873 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 00:33:50,873 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 00:33:50,873 - __main__ - INFO - ============================================================
+2026-03-08 00:33:53,322 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 00:33:53,323 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 00:33:53,332 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 00:33:53,343 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 00:33:53,383 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 00:33:53,394 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 00:33:53,395 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 00:33:53,395 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 00:33:53,409 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 00:33:53,411 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 00:33:53,413 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 00:33:53,782 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:33:53,787 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:33:53,787 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:33:53,791 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:33:53,792 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:33:53,792 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:33:53,792 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 00:33:53,808 - __main__ - INFO -   ✓ Топик 'stores' удалён
+2026-03-08 00:33:53,834 - __main__ - INFO -   ✓ Топик 'customers' удалён
+2026-03-08 00:33:53,857 - __main__ - INFO -   ✓ Топик 'products' удалён
+2026-03-08 00:33:53,887 - __main__ - INFO -   ✓ Топик 'purchases' удалён
+2026-03-08 00:33:53,888 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:33:53,888 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 00:33:53,942 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 00:33:53,942 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 00:33:54,117 - __main__ - INFO -   ✓ Таблица 'raw.customers' удалена
+2026-03-08 00:33:54,161 - __main__ - INFO -   ✓ Таблица 'raw.products' удалена
+2026-03-08 00:33:54,205 - __main__ - INFO -   ✓ Таблица 'raw.purchases' удалена
+2026-03-08 00:33:54,269 - __main__ - INFO -   ✓ Таблица 'raw.stores' удалена
+2026-03-08 00:33:54,312 - __main__ - INFO -   ✓ База данных 'raw' удалена
+2026-03-08 00:33:54,313 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 00:33:54,493 - __main__ - INFO -   ✓ MV 'mart.mv_dim_customer' удалено
+2026-03-08 00:33:54,537 - __main__ - INFO -   ✓ MV 'mart.mv_dim_date' удалено
+2026-03-08 00:33:54,581 - __main__ - INFO -   ✓ MV 'mart.mv_dim_delivery_address_from_customers' удалено
+2026-03-08 00:33:54,625 - __main__ - INFO -   ✓ MV 'mart.mv_dim_manufacturer_from_products' удалено
+2026-03-08 00:33:54,669 - __main__ - INFO -   ✓ MV 'mart.mv_dim_product' удалено
+2026-03-08 00:33:54,713 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store' удалено
+2026-03-08 00:33:54,757 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store_location_from_stores' удалено
+2026-03-08 00:33:54,801 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchase_items' удалено
+2026-03-08 00:33:54,844 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchases' удалено
+2026-03-08 00:33:54,890 - __main__ - INFO -   ✓ Таблица 'mart.customer_features_mart' удалена
+2026-03-08 00:33:54,933 - __main__ - INFO -   ✓ Таблица 'mart.dim_customer' удалена
+2026-03-08 00:33:54,981 - __main__ - INFO -   ✓ Таблица 'mart.dim_date' удалена
+2026-03-08 00:33:55,024 - __main__ - INFO -   ✓ Таблица 'mart.dim_delivery_address' удалена
+2026-03-08 00:33:55,069 - __main__ - INFO -   ✓ Таблица 'mart.dim_manufacturer' удалена
+2026-03-08 00:33:55,113 - __main__ - INFO -   ✓ Таблица 'mart.dim_product' удалена
+2026-03-08 00:33:55,157 - __main__ - INFO -   ✓ Таблица 'mart.dim_store' удалена
+2026-03-08 00:33:55,201 - __main__ - INFO -   ✓ Таблица 'mart.dim_store_location' удалена
+2026-03-08 00:33:55,245 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchase_items' удалена
+2026-03-08 00:33:55,288 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchases' удалена
+2026-03-08 00:33:55,332 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_customer' удалена
+2026-03-08 00:33:55,377 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_date' удалена
+2026-03-08 00:33:55,421 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_delivery_address_from_customers' удалена
+2026-03-08 00:33:55,465 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_manufacturer_from_products' удалена
+2026-03-08 00:33:55,509 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_product' удалена
+2026-03-08 00:33:55,552 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store' удалена
+2026-03-08 00:33:55,597 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store_location_from_stores' удалена
+2026-03-08 00:33:55,641 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchase_items' удалена
+2026-03-08 00:33:55,685 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchases' удалена
+2026-03-08 00:33:55,729 - __main__ - INFO -   ✓ База данных 'mart' удалена
+2026-03-08 00:33:55,730 - __main__ - INFO - 
+============================================================
+2026-03-08 00:33:55,730 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 00:33:55,731 - __main__ - INFO - ============================================================
+2026-03-08 00:33:55,731 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 00:33:55,731 - __main__ - INFO - ============================================================
+2026-03-08 00:40:43,674 - __main__ - INFO - ============================================================
+2026-03-08 00:40:43,675 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 00:40:43,675 - __main__ - INFO - ============================================================
+2026-03-08 00:40:43,675 - __main__ - INFO - Будут удалены:
+2026-03-08 00:40:43,676 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 00:40:43,676 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 00:40:43,676 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 00:40:43,676 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 00:40:43,676 - __main__ - INFO - ============================================================
+2026-03-08 00:40:46,106 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 00:40:46,107 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 00:40:46,115 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 00:40:46,129 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 00:40:46,171 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 00:40:46,181 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 00:40:46,182 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 00:40:46,182 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 00:40:46,202 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 00:40:46,205 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 00:40:46,207 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 00:40:46,629 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:40:46,633 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:40:46,634 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:40:46,640 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:40:46,642 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:40:46,642 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:40:46,643 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 00:40:46,658 - __main__ - INFO -   ✓ Топик 'stores' удалён
+2026-03-08 00:40:46,691 - __main__ - INFO -   ✓ Топик 'customers' удалён
+2026-03-08 00:40:46,728 - __main__ - INFO -   ✓ Топик 'products' удалён
+2026-03-08 00:40:46,772 - __main__ - INFO -   ✓ Топик 'purchases' удалён
+2026-03-08 00:40:46,772 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:40:46,773 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 00:40:46,827 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 00:40:46,827 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 00:40:47,013 - __main__ - INFO -   ✓ Таблица 'raw.customers' удалена
+2026-03-08 00:40:47,058 - __main__ - INFO -   ✓ Таблица 'raw.products' удалена
+2026-03-08 00:40:47,101 - __main__ - INFO -   ✓ Таблица 'raw.purchases' удалена
+2026-03-08 00:40:47,145 - __main__ - INFO -   ✓ Таблица 'raw.stores' удалена
+2026-03-08 00:40:47,190 - __main__ - INFO -   ✓ База данных 'raw' удалена
+2026-03-08 00:40:47,190 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 00:40:47,378 - __main__ - INFO -   ✓ MV 'mart.mv_dim_customer' удалено
+2026-03-08 00:40:47,421 - __main__ - INFO -   ✓ MV 'mart.mv_dim_date' удалено
+2026-03-08 00:40:47,465 - __main__ - INFO -   ✓ MV 'mart.mv_dim_delivery_address_from_customers' удалено
+2026-03-08 00:40:47,510 - __main__ - INFO -   ✓ MV 'mart.mv_dim_manufacturer_from_products' удалено
+2026-03-08 00:40:47,554 - __main__ - INFO -   ✓ MV 'mart.mv_dim_product' удалено
+2026-03-08 00:40:47,606 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store' удалено
+2026-03-08 00:40:47,650 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store_location_from_stores' удалено
+2026-03-08 00:40:47,707 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchase_items' удалено
+2026-03-08 00:40:47,759 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchases' удалено
+2026-03-08 00:40:47,806 - __main__ - INFO -   ✓ Таблица 'mart.customer_features_mart' удалена
+2026-03-08 00:40:47,857 - __main__ - INFO -   ✓ Таблица 'mart.dim_customer' удалена
+2026-03-08 00:40:47,908 - __main__ - INFO -   ✓ Таблица 'mart.dim_date' удалена
+2026-03-08 00:40:47,962 - __main__ - INFO -   ✓ Таблица 'mart.dim_delivery_address' удалена
+2026-03-08 00:40:48,006 - __main__ - INFO -   ✓ Таблица 'mart.dim_manufacturer' удалена
+2026-03-08 00:40:48,086 - __main__ - INFO -   ✓ Таблица 'mart.dim_product' удалена
+2026-03-08 00:40:48,133 - __main__ - INFO -   ✓ Таблица 'mart.dim_store' удалена
+2026-03-08 00:40:48,178 - __main__ - INFO -   ✓ Таблица 'mart.dim_store_location' удалена
+2026-03-08 00:40:48,226 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchase_items' удалена
+2026-03-08 00:40:48,274 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchases' удалена
+2026-03-08 00:40:48,323 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_customer' удалена
+2026-03-08 00:40:48,369 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_date' удалена
+2026-03-08 00:40:48,413 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_delivery_address_from_customers' удалена
+2026-03-08 00:40:48,461 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_manufacturer_from_products' удалена
+2026-03-08 00:40:48,510 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_product' удалена
+2026-03-08 00:40:48,553 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store' удалена
+2026-03-08 00:40:48,601 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store_location_from_stores' удалена
+2026-03-08 00:40:48,645 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchase_items' удалена
+2026-03-08 00:40:48,689 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchases' удалена
+2026-03-08 00:40:48,733 - __main__ - INFO -   ✓ База данных 'mart' удалена
+2026-03-08 00:40:48,734 - __main__ - INFO - 
+============================================================
+2026-03-08 00:40:48,736 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 00:40:48,737 - __main__ - INFO - ============================================================
+2026-03-08 00:40:48,737 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 00:40:48,738 - __main__ - INFO - ============================================================
+2026-03-08 00:57:30,252 - __main__ - INFO - ============================================================
+2026-03-08 00:57:30,252 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 00:57:30,252 - __main__ - INFO - ============================================================
+2026-03-08 00:57:30,253 - __main__ - INFO - Будут удалены:
+2026-03-08 00:57:30,253 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 00:57:30,253 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 00:57:30,253 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 00:57:30,254 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 00:57:30,254 - __main__ - INFO - ============================================================
+2026-03-08 00:57:34,595 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 00:57:34,595 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 00:57:34,604 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 00:57:34,616 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 00:57:34,659 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 00:57:34,668 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 00:57:34,668 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 00:57:34,669 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 00:57:34,692 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 00:57:34,695 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 00:57:34,696 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 00:57:35,069 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:57:35,075 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 00:57:35,075 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:57:35,079 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 00:57:35,079 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 00:57:35,080 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:57:35,080 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 00:57:35,096 - __main__ - INFO -   ✓ Топик 'stores' удалён
+2026-03-08 00:57:35,120 - __main__ - INFO -   ✓ Топик 'customers' удалён
+2026-03-08 00:57:35,145 - __main__ - INFO -   ✓ Топик 'products' удалён
+2026-03-08 00:57:35,175 - __main__ - INFO -   ✓ Топик 'purchases' удалён
+2026-03-08 00:57:35,175 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 00:57:35,176 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 00:57:35,227 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 00:57:35,227 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 00:57:35,401 - __main__ - INFO -   ✓ Таблица 'raw.customers' удалена
+2026-03-08 00:57:35,445 - __main__ - INFO -   ✓ Таблица 'raw.products' удалена
+2026-03-08 00:57:35,489 - __main__ - INFO -   ✓ Таблица 'raw.purchases' удалена
+2026-03-08 00:57:35,533 - __main__ - INFO -   ✓ Таблица 'raw.stores' удалена
+2026-03-08 00:57:35,577 - __main__ - INFO -   ✓ База данных 'raw' удалена
+2026-03-08 00:57:35,589 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 00:57:35,773 - __main__ - INFO -   ✓ MV 'mart.mv_dim_customer' удалено
+2026-03-08 00:57:35,817 - __main__ - INFO -   ✓ MV 'mart.mv_dim_date' удалено
+2026-03-08 00:57:35,861 - __main__ - INFO -   ✓ MV 'mart.mv_dim_delivery_address_from_customers' удалено
+2026-03-08 00:57:35,910 - __main__ - INFO -   ✓ MV 'mart.mv_dim_manufacturer_from_products' удалено
+2026-03-08 00:57:35,953 - __main__ - INFO -   ✓ MV 'mart.mv_dim_product' удалено
+2026-03-08 00:57:36,009 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store' удалено
+2026-03-08 00:57:36,053 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store_location_from_stores' удалено
+2026-03-08 00:57:36,101 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchase_items' удалено
+2026-03-08 00:57:36,149 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchases' удалено
+2026-03-08 00:57:36,209 - __main__ - INFO -   ✓ Таблица 'mart.customer_features_mart' удалена
+2026-03-08 00:57:36,257 - __main__ - INFO -   ✓ Таблица 'mart.dim_customer' удалена
+2026-03-08 00:57:36,301 - __main__ - INFO -   ✓ Таблица 'mart.dim_date' удалена
+2026-03-08 00:57:36,345 - __main__ - INFO -   ✓ Таблица 'mart.dim_delivery_address' удалена
+2026-03-08 00:57:36,389 - __main__ - INFO -   ✓ Таблица 'mart.dim_manufacturer' удалена
+2026-03-08 00:57:36,433 - __main__ - INFO -   ✓ Таблица 'mart.dim_product' удалена
+2026-03-08 00:57:36,478 - __main__ - INFO -   ✓ Таблица 'mart.dim_store' удалена
+2026-03-08 00:57:36,521 - __main__ - INFO -   ✓ Таблица 'mart.dim_store_location' удалена
+2026-03-08 00:57:36,565 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchase_items' удалена
+2026-03-08 00:57:36,609 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchases' удалена
+2026-03-08 00:57:36,653 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_customer' удалена
+2026-03-08 00:57:36,696 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_date' удалена
+2026-03-08 00:57:36,741 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_delivery_address_from_customers' удалена
+2026-03-08 00:57:36,785 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_manufacturer_from_products' удалена
+2026-03-08 00:57:36,829 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_product' удалена
+2026-03-08 00:57:36,873 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store' удалена
+2026-03-08 00:57:36,917 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store_location_from_stores' удалена
+2026-03-08 00:57:36,961 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchase_items' удалена
+2026-03-08 00:57:37,009 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchases' удалена
+2026-03-08 00:57:37,053 - __main__ - INFO -   ✓ База данных 'mart' удалена
+2026-03-08 00:57:37,054 - __main__ - INFO - 
+============================================================
+2026-03-08 00:57:37,054 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 00:57:37,054 - __main__ - INFO - ============================================================
+2026-03-08 00:57:37,054 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 00:57:37,055 - __main__ - INFO - ============================================================
+2026-03-08 01:15:14,192 - __main__ - INFO - ============================================================
+2026-03-08 01:15:14,192 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 01:15:14,192 - __main__ - INFO - ============================================================
+2026-03-08 01:15:14,193 - __main__ - INFO - Будут удалены:
+2026-03-08 01:15:14,193 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 01:15:14,193 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 01:15:14,193 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 01:15:14,194 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 01:15:14,194 - __main__ - INFO - ============================================================
+2026-03-08 01:15:29,076 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 01:15:29,076 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 01:15:29,085 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 01:15:29,095 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 01:15:29,133 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 01:15:29,141 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 01:15:29,142 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 01:15:29,142 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 01:15:29,156 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 01:15:29,158 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 01:15:29,160 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 01:15:29,607 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:15:29,613 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:15:29,614 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:15:29,620 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:15:29,621 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:15:29,622 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:15:29,625 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 01:15:29,645 - __main__ - INFO -   ✓ Топик 'stores' удалён
+2026-03-08 01:15:29,683 - __main__ - INFO -   ✓ Топик 'customers' удалён
+2026-03-08 01:15:29,726 - __main__ - INFO -   ✓ Топик 'products' удалён
+2026-03-08 01:15:29,767 - __main__ - INFO -   ✓ Топик 'purchases' удалён
+2026-03-08 01:15:29,767 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:15:29,768 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 01:15:29,833 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 01:15:29,835 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 01:15:30,025 - __main__ - INFO -   ✓ Таблица 'raw.customers' удалена
+2026-03-08 01:15:30,068 - __main__ - INFO -   ✓ Таблица 'raw.products' удалена
+2026-03-08 01:15:30,112 - __main__ - INFO -   ✓ Таблица 'raw.purchases' удалена
+2026-03-08 01:15:30,156 - __main__ - INFO -   ✓ Таблица 'raw.stores' удалена
+2026-03-08 01:15:30,200 - __main__ - INFO -   ✓ База данных 'raw' удалена
+2026-03-08 01:15:30,201 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 01:15:30,376 - __main__ - INFO -   ✓ MV 'mart.mv_dim_customer' удалено
+2026-03-08 01:15:30,421 - __main__ - INFO -   ✓ MV 'mart.mv_dim_date' удалено
+2026-03-08 01:15:30,464 - __main__ - INFO -   ✓ MV 'mart.mv_dim_delivery_address_from_customers' удалено
+2026-03-08 01:15:30,508 - __main__ - INFO -   ✓ MV 'mart.mv_dim_manufacturer_from_products' удалено
+2026-03-08 01:15:30,552 - __main__ - INFO -   ✓ MV 'mart.mv_dim_product' удалено
+2026-03-08 01:15:30,596 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store' удалено
+2026-03-08 01:15:30,640 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store_location_from_stores' удалено
+2026-03-08 01:15:30,684 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchase_items' удалено
+2026-03-08 01:15:30,728 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchases' удалено
+2026-03-08 01:15:30,773 - __main__ - INFO -   ✓ Таблица 'mart.customer_features_mart' удалена
+2026-03-08 01:15:30,816 - __main__ - INFO -   ✓ Таблица 'mart.dim_customer' удалена
+2026-03-08 01:15:30,864 - __main__ - INFO -   ✓ Таблица 'mart.dim_date' удалена
+2026-03-08 01:15:30,909 - __main__ - INFO -   ✓ Таблица 'mart.dim_delivery_address' удалена
+2026-03-08 01:15:30,953 - __main__ - INFO -   ✓ Таблица 'mart.dim_manufacturer' удалена
+2026-03-08 01:15:30,997 - __main__ - INFO -   ✓ Таблица 'mart.dim_product' удалена
+2026-03-08 01:15:31,041 - __main__ - INFO -   ✓ Таблица 'mart.dim_store' удалена
+2026-03-08 01:15:31,085 - __main__ - INFO -   ✓ Таблица 'mart.dim_store_location' удалена
+2026-03-08 01:15:31,128 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchase_items' удалена
+2026-03-08 01:15:31,172 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchases' удалена
+2026-03-08 01:15:31,216 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_customer' удалена
+2026-03-08 01:15:31,260 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_date' удалена
+2026-03-08 01:15:31,304 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_delivery_address_from_customers' удалена
+2026-03-08 01:15:31,348 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_manufacturer_from_products' удалена
+2026-03-08 01:15:31,392 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_product' удалена
+2026-03-08 01:15:31,436 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store' удалена
+2026-03-08 01:15:31,480 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store_location_from_stores' удалена
+2026-03-08 01:15:31,524 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchase_items' удалена
+2026-03-08 01:15:31,568 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchases' удалена
+2026-03-08 01:15:31,613 - __main__ - INFO -   ✓ База данных 'mart' удалена
+2026-03-08 01:15:31,613 - __main__ - INFO - 
+============================================================
+2026-03-08 01:15:31,614 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 01:15:31,614 - __main__ - INFO - ============================================================
+2026-03-08 01:15:31,614 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 01:15:31,615 - __main__ - INFO - ============================================================
+2026-03-08 01:17:36,118 - __main__ - INFO - ============================================================
+2026-03-08 01:17:36,119 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 01:17:36,119 - __main__ - INFO - ============================================================
+2026-03-08 01:17:36,119 - __main__ - INFO - Будут удалены:
+2026-03-08 01:17:36,119 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 01:17:36,120 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 01:17:36,120 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 01:17:36,120 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 01:17:36,120 - __main__ - INFO - ============================================================
+2026-03-08 01:17:38,893 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 01:17:38,893 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 01:17:38,894 - __main__ - INFO -   ⊘ Пропущено (не существует): customers
+2026-03-08 01:17:38,894 - __main__ - INFO -   ⊘ Пропущено (не существует): products
+2026-03-08 01:17:38,894 - __main__ - INFO -   ⊘ Пропущено (не существует): purchases
+2026-03-08 01:17:38,895 - __main__ - INFO -   ⊘ Пропущено (не существует): stores
+2026-03-08 01:17:38,895 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 01:17:38,895 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 01:17:38,908 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 01:17:38,911 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 01:17:38,912 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 01:17:39,244 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:17:39,249 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:17:39,249 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:17:39,253 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:17:39,254 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:17:39,254 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:17:39,255 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 01:17:39,258 - __main__ - INFO -   ⊘ Топики не найдены
+2026-03-08 01:17:39,259 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:17:39,259 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 01:17:39,324 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 01:17:39,324 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 01:17:39,368 - __main__ - INFO -   ⊘ База данных 'raw' не найдена
+2026-03-08 01:17:39,368 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 01:17:39,415 - __main__ - INFO -   ⊘ База данных 'mart' не найдена
+2026-03-08 01:17:39,416 - __main__ - INFO - 
+============================================================
+2026-03-08 01:17:39,418 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 01:17:39,420 - __main__ - INFO - ============================================================
+2026-03-08 01:17:39,421 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 01:17:39,423 - __main__ - INFO - ============================================================
+2026-03-08 01:34:39,485 - __main__ - INFO - ============================================================
+2026-03-08 01:34:39,485 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 01:34:39,486 - __main__ - INFO - ============================================================
+2026-03-08 01:34:39,486 - __main__ - INFO - Будут удалены:
+2026-03-08 01:34:39,486 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 01:34:39,486 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 01:34:39,487 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 01:34:39,487 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 01:34:39,487 - __main__ - INFO - ============================================================
+2026-03-08 01:34:41,852 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 01:34:41,852 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 01:34:41,861 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 01:34:41,873 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 01:34:41,913 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 01:34:41,921 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 01:34:41,922 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 01:34:41,922 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 01:34:41,937 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 01:34:41,940 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 01:34:41,941 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 01:34:42,298 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:34:42,302 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:34:42,303 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:34:42,307 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:34:42,308 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:34:42,308 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:34:42,309 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 01:34:42,324 - __main__ - INFO -   ✓ Топик 'stores' удалён
+2026-03-08 01:34:42,350 - __main__ - INFO -   ✓ Топик 'customers' удалён
+2026-03-08 01:34:42,378 - __main__ - INFO -   ✓ Топик 'products' удалён
+2026-03-08 01:34:42,412 - __main__ - INFO -   ✓ Топик 'purchases' удалён
+2026-03-08 01:34:42,413 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:34:42,413 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 01:34:42,461 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 01:34:42,461 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 01:34:42,648 - __main__ - INFO -   ✓ Таблица 'raw.customers' удалена
+2026-03-08 01:34:42,692 - __main__ - INFO -   ✓ Таблица 'raw.products' удалена
+2026-03-08 01:34:42,740 - __main__ - INFO -   ✓ Таблица 'raw.purchases' удалена
+2026-03-08 01:34:42,783 - __main__ - INFO -   ✓ Таблица 'raw.stores' удалена
+2026-03-08 01:34:42,831 - __main__ - INFO -   ✓ База данных 'raw' удалена
+2026-03-08 01:34:42,832 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 01:34:43,023 - __main__ - INFO -   ✓ MV 'mart.mv_dim_customer' удалено
+2026-03-08 01:34:43,067 - __main__ - INFO -   ✓ MV 'mart.mv_dim_date' удалено
+2026-03-08 01:34:43,115 - __main__ - INFO -   ✓ MV 'mart.mv_dim_delivery_address_from_customers' удалено
+2026-03-08 01:34:43,163 - __main__ - INFO -   ✓ MV 'mart.mv_dim_manufacturer_from_products' удалено
+2026-03-08 01:34:43,212 - __main__ - INFO -   ✓ MV 'mart.mv_dim_product' удалено
+2026-03-08 01:34:43,260 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store' удалено
+2026-03-08 01:34:43,308 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store_location_from_stores' удалено
+2026-03-08 01:34:43,364 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchase_items' удалено
+2026-03-08 01:34:43,429 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchases' удалено
+2026-03-08 01:34:43,483 - __main__ - INFO -   ✓ Таблица 'mart.customer_features_mart' удалена
+2026-03-08 01:34:43,527 - __main__ - INFO -   ✓ Таблица 'mart.dim_customer' удалена
+2026-03-08 01:34:43,572 - __main__ - INFO -   ✓ Таблица 'mart.dim_date' удалена
+2026-03-08 01:34:43,615 - __main__ - INFO -   ✓ Таблица 'mart.dim_delivery_address' удалена
+2026-03-08 01:34:43,660 - __main__ - INFO -   ✓ Таблица 'mart.dim_manufacturer' удалена
+2026-03-08 01:34:43,703 - __main__ - INFO -   ✓ Таблица 'mart.dim_product' удалена
+2026-03-08 01:34:43,751 - __main__ - INFO -   ✓ Таблица 'mart.dim_store' удалена
+2026-03-08 01:34:43,795 - __main__ - INFO -   ✓ Таблица 'mart.dim_store_location' удалена
+2026-03-08 01:34:43,839 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchase_items' удалена
+2026-03-08 01:34:43,883 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchases' удалена
+2026-03-08 01:34:43,927 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_customer' удалена
+2026-03-08 01:34:43,971 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_date' удалена
+2026-03-08 01:34:44,015 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_delivery_address_from_customers' удалена
+2026-03-08 01:34:44,059 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_manufacturer_from_products' удалена
+2026-03-08 01:34:44,103 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_product' удалена
+2026-03-08 01:34:44,147 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store' удалена
+2026-03-08 01:34:44,191 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store_location_from_stores' удалена
+2026-03-08 01:34:44,235 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchase_items' удалена
+2026-03-08 01:34:44,279 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchases' удалена
+2026-03-08 01:34:44,323 - __main__ - INFO -   ✓ База данных 'mart' удалена
+2026-03-08 01:34:44,324 - __main__ - INFO - 
+============================================================
+2026-03-08 01:34:44,324 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 01:34:44,324 - __main__ - INFO - ============================================================
+2026-03-08 01:34:44,325 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 01:34:44,325 - __main__ - INFO - ============================================================
+2026-03-08 01:39:36,300 - __main__ - INFO - ============================================================
+2026-03-08 01:39:36,301 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 01:39:36,301 - __main__ - INFO - ============================================================
+2026-03-08 01:39:36,301 - __main__ - INFO - Будут удалены:
+2026-03-08 01:39:36,301 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 01:39:36,302 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 01:39:36,302 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 01:39:36,302 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 01:39:36,302 - __main__ - INFO - ============================================================
+2026-03-08 01:39:39,133 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 01:39:39,133 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 01:39:39,142 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 01:39:39,153 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 01:39:39,189 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 01:39:39,198 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 01:39:39,198 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 01:39:39,199 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 01:39:39,213 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 01:39:39,215 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 01:39:39,217 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 01:39:39,510 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:39:39,514 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 01:39:39,514 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:39:39,517 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 01:39:39,518 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 01:39:39,518 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:39:39,519 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 01:39:39,522 - __main__ - INFO -   ⊘ Топики не найдены
+2026-03-08 01:39:39,523 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 01:39:39,523 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 01:39:39,572 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 01:39:39,572 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 01:39:39,616 - __main__ - INFO -   ⊘ База данных 'raw' не найдена
+2026-03-08 01:39:39,616 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 01:39:39,660 - __main__ - INFO -   ⊘ База данных 'mart' не найдена
+2026-03-08 01:39:39,660 - __main__ - INFO - 
+============================================================
+2026-03-08 01:39:39,661 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 01:39:39,661 - __main__ - INFO - ============================================================
+2026-03-08 01:39:39,661 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 01:39:39,661 - __main__ - INFO - ============================================================
+2026-03-08 19:54:42,029 - __main__ - INFO - ============================================================
+2026-03-08 19:54:42,030 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 19:54:42,030 - __main__ - INFO - ============================================================
+2026-03-08 19:54:42,030 - __main__ - INFO - Будут удалены:
+2026-03-08 19:54:42,030 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 19:54:42,030 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 19:54:42,030 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 19:54:42,031 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 19:54:42,031 - __main__ - INFO - ============================================================
+2026-03-08 19:54:46,867 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 19:54:46,867 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 19:54:46,876 - __main__ - INFO -   ✓ Удалено: customers
+2026-03-08 19:54:46,888 - __main__ - INFO -   ✓ Удалено: products
+2026-03-08 19:54:46,928 - __main__ - INFO -   ✓ Удалено: purchases
+2026-03-08 19:54:46,936 - __main__ - INFO -   ✓ Удалено: stores
+2026-03-08 19:54:46,936 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 19:54:46,937 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 19:54:46,981 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 19:54:46,982 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 19:54:46,985 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 19:54:47,317 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 19:54:49,330 - __main__ - ERROR -   ✗ Ошибка очистки Kafka: NoBrokersAvailable
+2026-03-08 19:54:49,330 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 19:54:49,390 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 19:54:49,391 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 19:54:49,586 - __main__ - INFO -   ✓ Таблица 'raw.customers' удалена
+2026-03-08 19:54:49,633 - __main__ - INFO -   ✓ Таблица 'raw.products' удалена
+2026-03-08 19:54:49,677 - __main__ - INFO -   ✓ Таблица 'raw.purchases' удалена
+2026-03-08 19:54:49,721 - __main__ - INFO -   ✓ Таблица 'raw.stores' удалена
+2026-03-08 19:54:49,769 - __main__ - INFO -   ✓ База данных 'raw' удалена
+2026-03-08 19:54:49,770 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 19:54:49,961 - __main__ - INFO -   ✓ MV 'mart.mv_dim_customer' удалено
+2026-03-08 19:54:50,005 - __main__ - INFO -   ✓ MV 'mart.mv_dim_date' удалено
+2026-03-08 19:54:50,049 - __main__ - INFO -   ✓ MV 'mart.mv_dim_delivery_address_from_customers' удалено
+2026-03-08 19:54:50,096 - __main__ - INFO -   ✓ MV 'mart.mv_dim_manufacturer_from_products' удалено
+2026-03-08 19:54:50,142 - __main__ - INFO -   ✓ MV 'mart.mv_dim_product' удалено
+2026-03-08 19:54:50,194 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store' удалено
+2026-03-08 19:54:50,241 - __main__ - INFO -   ✓ MV 'mart.mv_dim_store_location_from_stores' удалено
+2026-03-08 19:54:50,292 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchase_items' удалено
+2026-03-08 19:54:50,337 - __main__ - INFO -   ✓ MV 'mart.mv_fact_purchases' удалено
+2026-03-08 19:54:50,385 - __main__ - INFO -   ✓ Таблица 'mart.customer_features_mart' удалена
+2026-03-08 19:54:50,433 - __main__ - INFO -   ✓ Таблица 'mart.dim_customer' удалена
+2026-03-08 19:54:50,481 - __main__ - INFO -   ✓ Таблица 'mart.dim_date' удалена
+2026-03-08 19:54:50,553 - __main__ - INFO -   ✓ Таблица 'mart.dim_delivery_address' удалена
+2026-03-08 19:54:50,596 - __main__ - INFO -   ✓ Таблица 'mart.dim_manufacturer' удалена
+2026-03-08 19:54:50,641 - __main__ - INFO -   ✓ Таблица 'mart.dim_product' удалена
+2026-03-08 19:54:50,684 - __main__ - INFO -   ✓ Таблица 'mart.dim_store' удалена
+2026-03-08 19:54:50,729 - __main__ - INFO -   ✓ Таблица 'mart.dim_store_location' удалена
+2026-03-08 19:54:50,773 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchase_items' удалена
+2026-03-08 19:54:50,816 - __main__ - INFO -   ✓ Таблица 'mart.fact_purchases' удалена
+2026-03-08 19:54:50,860 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_customer' удалена
+2026-03-08 19:54:50,905 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_date' удалена
+2026-03-08 19:54:50,949 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_delivery_address_from_customers' удалена
+2026-03-08 19:54:50,993 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_manufacturer_from_products' удалена
+2026-03-08 19:54:51,041 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_product' удалена
+2026-03-08 19:54:51,084 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store' удалена
+2026-03-08 19:54:51,128 - __main__ - INFO -   ✓ Таблица 'mart.mv_dim_store_location_from_stores' удалена
+2026-03-08 19:54:51,173 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchase_items' удалена
+2026-03-08 19:54:51,216 - __main__ - INFO -   ✓ Таблица 'mart.mv_fact_purchases' удалена
+2026-03-08 19:54:51,260 - __main__ - INFO -   ✓ База данных 'mart' удалена
+2026-03-08 19:54:51,261 - __main__ - INFO - 
+============================================================
+2026-03-08 19:54:51,261 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 19:54:51,261 - __main__ - INFO - ============================================================
+2026-03-08 19:54:51,262 - __main__ - WARNING - ⚠️  Очистка завершена с ошибками:
+2026-03-08 19:54:51,262 - __main__ - WARNING -   ✓ data
+2026-03-08 19:54:51,262 - __main__ - WARNING -   ✓ mongo
+2026-03-08 19:54:51,262 - __main__ - WARNING -   ✗ kafka
+2026-03-08 19:54:51,263 - __main__ - WARNING -   ✓ clickhouse
+2026-03-08 19:54:51,263 - __main__ - INFO - ============================================================
+2026-03-08 19:55:29,201 - __main__ - INFO - ============================================================
+2026-03-08 19:55:29,201 - __main__ - INFO - ⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL
+2026-03-08 19:55:29,201 - __main__ - INFO - ============================================================
+2026-03-08 19:55:29,202 - __main__ - INFO - Будут удалены:
+2026-03-08 19:55:29,202 - __main__ - INFO -   • Все папки в data/: customers, products, purchases, stores, spark
+2026-03-08 19:55:29,202 - __main__ - INFO -   • MongoDB база данных: mongo_db
+2026-03-08 19:55:29,202 - __main__ - INFO -   • Kafka топики: stores, customers, products, purchases
+2026-03-08 19:55:29,202 - __main__ - INFO -   • ClickHouse базы: raw, mart
+2026-03-08 19:55:29,203 - __main__ - INFO - ============================================================
+2026-03-08 19:55:32,163 - __main__ - INFO - 
+🚀 Начало очистки...
+
+2026-03-08 19:55:32,164 - __main__ - INFO - 📁 Очистка директории данных: data
+2026-03-08 19:55:32,164 - __main__ - INFO -   ⊘ Пропущено (не существует): customers
+2026-03-08 19:55:32,165 - __main__ - INFO -   ⊘ Пропущено (не существует): products
+2026-03-08 19:55:32,165 - __main__ - INFO -   ⊘ Пропущено (не существует): purchases
+2026-03-08 19:55:32,165 - __main__ - INFO -   ⊘ Пропущено (не существует): stores
+2026-03-08 19:55:32,165 - __main__ - INFO -   ⊘ Пропущено (не существует): spark
+2026-03-08 19:55:32,166 - __main__ - INFO - 🍃 Очистка MongoDB базы данных: mongo_db
+2026-03-08 19:55:32,196 - __main__ - INFO -   ✓ Подключение к MongoDB успешно
+2026-03-08 19:55:32,198 - __main__ - INFO -   ✓ База данных 'mongo_db' удалена
+2026-03-08 19:55:32,200 - __main__ - INFO - 📡 Очистка Kafka топиков: ['stores', 'customers', 'products', 'purchases']
+2026-03-08 19:55:32,498 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 19:55:32,504 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2026-03-08 19:55:32,505 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 19:55:32,511 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2026-03-08 19:55:32,511 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2026-03-08 19:55:32,513 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 19:55:32,514 - __main__ - INFO -   ✓ Подключение к Kafka успешно
+2026-03-08 19:55:32,556 - __main__ - INFO -   ✓ Топик 'stores' удалён
+2026-03-08 19:55:32,666 - __main__ - INFO -   ✓ Топик 'customers' удалён
+2026-03-08 19:55:32,745 - __main__ - INFO -   ✓ Топик 'products' удалён
+2026-03-08 19:55:32,831 - __main__ - INFO -   ✓ Топик 'purchases' удалён
+2026-03-08 19:55:32,832 - kafka.conn - INFO - <BrokerConnection client_id=cleanup_script, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2026-03-08 19:55:32,833 - __main__ - INFO - 🏛 Подключение к ClickHouse: localhost:9000
+2026-03-08 19:55:32,882 - __main__ - INFO -   ✓ Подключение к ClickHouse успешно
+2026-03-08 19:55:32,883 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: raw
+2026-03-08 19:55:32,927 - __main__ - INFO -   ⊘ База данных 'raw' не найдена
+2026-03-08 19:55:32,927 - __main__ - INFO - 📊 Очистка ClickHouse базы данных: mart
+2026-03-08 19:55:32,974 - __main__ - INFO -   ⊘ База данных 'mart' не найдена
+2026-03-08 19:55:32,975 - __main__ - INFO - 
+============================================================
+2026-03-08 19:55:32,975 - __main__ - INFO - 📊 ИТОГИ ОЧИСТКИ
+2026-03-08 19:55:32,975 - __main__ - INFO - ============================================================
+2026-03-08 19:55:32,976 - __main__ - INFO - ✅ Все компоненты успешно очищены!
+2026-03-08 19:55:32,976 - __main__ - INFO - ============================================================

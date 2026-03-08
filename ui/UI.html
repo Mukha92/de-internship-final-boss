@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERPUNK 2077 • PIKCHA CLUSTER</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #000;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            color: #0ff;
+        }
+
+        /* Видео-фон с неоном */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 20%, #0ff 0%, #00f 50%, #000 100%);
+            opacity: 0.1;
+            z-index: 0;
+            animation: pulse 10s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.15; }
+        }
+
+        /* Падающие цифры */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Неоновые линии */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Хедер в киберпанк стиле */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding: 40px 20px;
+            border: 3px solid #0ff;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 0 30px #0ff,
+                inset 0 0 30px rgba(0, 255, 255, 0.3);
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+            animation: borderFlicker 3s infinite;
+        }
+
+        @keyframes borderFlicker {
+            0%, 100% { border-color: #0ff; box-shadow: 0 0 30px #0ff; }
+            50% { border-color: #f0f; box-shadow: 0 0 50px #f0f; }
+        }
+
+        .header h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            color: transparent;
+            -webkit-text-stroke: 2px #0ff;
+            text-shadow: 
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            margin-bottom: 10px;
+            animation: glitch 5s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: skew(0deg); opacity: 1; }
+            95% { transform: skew(0deg); opacity: 1; }
+            96% { transform: skew(5deg); opacity: 0.8; }
+            97% { transform: skew(-5deg); opacity: 0.9; }
+            98% { transform: skew(3deg); opacity: 0.8; }
+        }
+
+        .header h1 span {
+            color: #f0f;
+            -webkit-text-stroke: 2px #f0f;
+            text-shadow: 0 0 20px #f0f;
+        }
+
+        .header p {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.2rem;
+            color: #0ff;
+            background: rgba(0, 0, 0, 0.8);
+            display: inline-block;
+            padding: 10px 40px;
+            border: 2px solid #f0f;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header p::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.3), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        /* Сетка */
+        .cyber-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+            align-items: stretch;
+        }
+
+        /* Отступ между рядами */
+        .cyber-grid + .cyber-grid {
+            margin-top: 30px;
+        }
+
+        /* Карточка в киберпанк стиле */
+        .cyber-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid #0ff;
+            padding: 30px 20px 25px;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+            box-shadow:
+                0 0 20px rgba(0, 255, 255, 0.3),
+                inset 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .cyber-card::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            pointer-events: none;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+
+        .cyber-card::after {
+            content: "//";
+            position: absolute;
+            bottom: 5px;
+            right: 15px;
+            color: #f0f;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #f0f;
+            box-shadow: 
+                0 0 40px #f0f,
+                inset 0 0 30px rgba(255, 0, 255, 0.3);
+        }
+
+        /* Статус */
+        .card-status {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #0ff;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #0ff;
+            padding: 5px 12px;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #0ff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #0ff;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* ID карточки */
+        .card-id {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #f0f;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            text-shadow: 0 0 10px #f0f;
+            z-index: 2;
+        }
+
+        /* Иконка */
+        .cyber-icon {
+            width: 120px;
+            height: 120px;
+            margin: 30px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 20px currentColor);
+            color: #0ff;
+        }
+
+        .cyber-icon svg {
+            width: 90px;
+            height: 90px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        .card-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 10px 0 5px;
+            text-shadow:
+                0 0 10px #0ff,
+                2px 2px 0 #f0f;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-desc {
+            font-family: 'Share Tech Mono', monospace;
+            color: #0ff;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-url {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            color: #f0f;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #f0f;
+            padding: 8px 20px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+            margin-top: auto;
+        }
+
+        .card-url::before {
+            content: ">";
+            margin-right: 5px;
+            color: #0ff;
+        }
+
+        .card-url::after {
+            content: "_";
+            margin-left: 5px;
+            color: #0ff;
+            animation: blink 1s infinite;
+        }
+
+        .card-creds {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: rgba(0, 255, 255, 0.6);
+            border: 1px dashed #0ff;
+            padding: 4px 15px;
+            margin-top: 5px;
+        }
+
+        /* Специальные цвета для разных сервисов при ховере */
+        .cyber-card[data-service="mongo"]:hover { border-color: #0f0; }
+        .cyber-card[data-service="kafka"]:hover { border-color: #ff0; }
+        .cyber-card[data-service="click"]:hover { border-color: #f60; }
+        .cyber-card[data-service="grafana"]:hover { border-color: #f0f; }
+        .cyber-card[data-service="spark"]:hover { border-color: #ff6600; }
+        .cyber-card[data-service="jupyter"]:hover { border-color: #f37726; }
+        .cyber-card[data-service="airflow"]:hover { border-color: #01ce97; }
+        .cyber-card[data-service="selectel"]:hover { border-color: #0066ff; }
+
+        /* Футер */
+        .cyber-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 30px;
+            border: 3px solid #0ff;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .footer-message {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .glitch-text {
+            font-family: 'Share Tech Mono', monospace;
+            color: #0ff;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            animation: glitchText 3s infinite;
+        }
+
+        @keyframes glitchText {
+            0%, 100% { opacity: 1; }
+            95% { opacity: 1; }
+            96% { opacity: 0; }
+            97% { opacity: 1; }
+            98% { opacity: 0; }
+            99% { opacity: 1; }
+        }
+
+        .footer-ports {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .port {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            padding: 5px 15px;
+            border: 1px solid #f0f;
+            color: #f0f;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+        }
+
+        .port span {
+            color: #0ff;
+            margin-right: 5px;
+        }
+
+        /* Нижняя строка */
+        .cyber-line {
+            margin-top: 20px;
+            text-align: center;
+            font-family: 'Share Tech Mono', monospace;
+            color: rgba(0, 255, 255, 0.5);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border-top: 1px solid #0ff;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .cyber-grid, .cyber-grid--four { grid-template-columns: repeat(3, 1fr); }
+            .header h1 { font-size: 3.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .cyber-grid, .cyber-grid--four { grid-template-columns: repeat(2, 1fr); }
+            .cyber-footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-bg"></div>
+    <canvas id="matrix-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>CYBER<span>PIKCHA</span>_2077</h1>
+            <p># DATA_CLUSTER // V.1.0.7</p>
+        </div>
+
+        <div class="cyber-grid">
+            <!-- MongoDB Card -->
+            <a href="http://localhost:8081" target="_blank" class="cyber-card" data-service="mongo">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[MDB-01]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">MONGODB</h2>
+                <div class="card-desc">// DOCUMENT_DATABASE</div>
+                <div class="card-url">localhost:8081</div>
+                <div class="card-creds">> admin:pass</div>
+            </a>
+
+            <!-- Kafka Card с 5 кольцами (2 слева, 3 справа) -->
+<!-- Kafka Card с правильным расположением: слева 3 кольца (среднее больше), справа 2 кольца связаны только со средним левым -->
+<!-- Kafka Card: слева 3 кольца (среднее больше), справа 2 кольца, связи сплошные -->
+<!-- Kafka Card: слева 3 кольца с промежутками, среднее больше, справа 2 кольца -->
+<!-- Kafka Card: без центральной точки, кольца ближе друг к другу, линии толще -->
+            <a href="http://localhost:8082" target="_blank" class="cyber-card" data-service="kafka">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[KFK-02]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 100 100" width="90" height="90" stroke="currentColor" fill="none">
+                        <!-- Левая группа - 3 кольца с увеличенными промежутками -->
+                        <!-- Верхнее левое кольцо -->
+                        <circle cx="30" cy="15" r="10" stroke-width="4"/>
+                        <!-- Среднее левое кольцо (БОЛЬШЕ) -->
+                        <circle cx="30" cy="50" r="15" stroke-width="4.5"/>
+                        <!-- Нижнее левое кольцо -->
+                        <circle cx="30" cy="85" r="10" stroke-width="4"/>
+
+                        <!-- Вертикальные соединения между левыми кольцами -->
+                        <line x1="30" y1="25" x2="30" y2="35" stroke-width="4"/>
+                        <line x1="30" y1="65" x2="30" y2="75" stroke-width="4"/>
+
+                        <!-- Правая группа - 2 кольца -->
+                        <!-- Верхнее правое кольцо -->
+                        <circle cx="65" cy="30" r="10" stroke-width="4"/>
+                        <!-- Нижнее правое кольцо -->
+                        <circle cx="65" cy="70" r="10" stroke-width="4"/>
+
+                        <!-- Сплошные соединения: от среднего левого к правым кольцам -->
+                        <!-- От среднего левого к верхнему правому -->
+                        <line x1="45" y1="42" x2="55" y2="32" stroke-width="4"/>
+                        <!-- От среднего левого к нижнему правому -->
+                        <line x1="45" y1="58" x2="55" y2="68" stroke-width="4"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">KAFKA</h2>
+                <div class="card-desc">// EVENT_STREAMING</div>
+                <div class="card-url">localhost:8082</div>
+                <div class="card-creds">> cluster: my-cluster</div>
+            </a>
+
+            <!-- ClickHouse Card -->
+            <a href="http://localhost:8123" target="_blank" class="cyber-card" data-service="click">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[CLK-03]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M3 13h3v7H3v-7zm5-5h3v12H8V8zm5-4h3v16h-3V4zm5 8h3v7h-3v-7z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">CLICKHOUSE</h2>
+                <div class="card-desc">// ANALYTICS_DB</div>
+                <div class="card-url">localhost:8123</div>
+                <div class="card-creds">> clickhouse:clickhouse</div>
+            </a>
+
+            <!-- Grafana Card -->
+            <a href="http://localhost:3000" target="_blank" class="cyber-card" data-service="grafana">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[GRF-04]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">GRAFANA</h2>
+                <div class="card-desc">// MONITORING</div>
+                <div class="card-url">localhost:3000</div>
+                <div class="card-creds">> admin:admin</div>
+            </a>
+        </div>
+
+        <!-- Второй ряд -->
+        <div class="cyber-grid" style="margin-top: 30px;">
+            <!-- Spark Card -->
+            <a href="http://localhost:4040" target="_blank" class="cyber-card" data-service="spark">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[SPK-05]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">SPARK</h2>
+                <div class="card-desc">// DISTRIBUTED_PROCESSING</div>
+                <div class="card-url">localhost:4040</div>
+                <div class="card-creds">> PySpark</div>
+            </a>
+
+            <!-- Jupyter Card -->
+            <a href="http://localhost:8888" target="_blank" class="cyber-card" data-service="jupyter">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[JUP-06]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5">
+                        <rect x="4" y="5" width="16" height="15" rx="1" ry="1"/>
+                        <line x1="7" y1="9" x2="17" y2="9"/>
+                        <line x1="7" y1="12" x2="17" y2="12"/>
+                        <line x1="7" y1="15" x2="17" y2="15"/>
+                        <circle cx="7" cy="4" r="0.8" fill="currentColor" stroke="none"/>
+                        <circle cx="10" cy="4" r="0.8" fill="currentColor" stroke="none"/>
+                        <circle cx="13" cy="4" r="0.8" fill="currentColor" stroke="none"/>
+                        <circle cx="16" cy="4" r="0.8" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">JUPYTER</h2>
+                <div class="card-desc">// NOTEBOOK_ENVIRONMENT</div>
+                <div class="card-url">localhost:8888</div>
+                <div class="card-creds">> no password</div>
+            </a>
+
+            <!-- Airflow Card -->
+            <a href="http://localhost:8080" target="_blank" class="cyber-card" data-service="airflow">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[AFL-07]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">AIRFLOW</h2>
+                <div class="card-desc">// WORKFLOW_ORCHESTRATION</div>
+                <div class="card-url">localhost:8080</div>
+                <div class="card-creds">> airflow:airflow</div>
+            </a>
+
+            <!-- Selectel Card -->
+            <a href="https://my.selectel.ru/storage/8dca01ed53394dc0a81148dad7b4e255/containers?region=ru-7&limit=25" target="_blank" class="cyber-card" data-service="selectel">
+                <div class="card-status">
+                    <div class="status-dot"></div>
+                    SYSTEM_ONLINE
+                </div>
+                <div class="card-id">[SLC-08]</div>
+                <div class="cyber-icon">
+                    <svg viewBox="0 0 32 32" stroke="currentColor" fill="none" stroke-width="1.5">
+                        <path d="M22 13c-1-3-4-6-8-6s-7 2.5-8.5 5.5c-2 .5-4 2.5-4 5.5 0 4 3.5 7.5 7.5 7.5h10c3.5 0 6.5-3 6.5-6.5 0-2.5-1.5-4.5-3.5-6z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">SELECTEL</h2>
+                <div class="card-desc">// S3_CLOUD_STORAGE</div>
+                <div class="card-url">s3.ru-7.storage.selcloud.ru</div>
+                <div class="card-creds">> de-internship-pikcha</div>
+            </a>
+        </div>
+
+        <!-- Футер -->
+        <div class="cyber-footer">
+            <div class="footer-message">
+                <div class="status-dot"></div>
+                <span class="glitch-text"># SYSTEM_STATUS: OPERATIONAL // ALL_NODES_ACTIVE</span>
+            </div>
+            <div class="footer-ports">
+                <div class="port"><span>MONGO:</span>27017</div>
+                <div class="port"><span>KAFKA:</span>8082</div>
+                <div class="port"><span>CLICK:</span>9000</div>
+                <div class="port"><span>GRAF:</span>3000</div>
+                <div class="port"><span>JUPY:</span>8888</div>
+                <div class="port"><span>AIRFL:</span>8080</div>
+            </div>
+        </div>
+
+        <!-- Нижняя строка -->
+        <div class="cyber-line">
+            > CONNECTION_ESTABLISHED // ENCRYPTION: AES-256 // LOCATION: NIGHT_CITY // USER: PIkCHA
+        </div>
+    </div>
+
+    <script>
+        // Киберпанк падающие цифры
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Только цифры для киберпанк стиля
+        const chars = "0123456789";
+        const charArray = chars.split("");
+        const fontSize = 20;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+        }
+
+        function drawCyberMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Чередуем цвета: синий и розовый
+            ctx.font = fontSize + "px 'Share Tech Mono', monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                // Чередование цветов для киберпанк эффекта
+                if (Math.random() > 0.5) {
+                    ctx.fillStyle = "#0ff"; // синий
+                } else {
+                    ctx.fillStyle = "#f0f"; // розовый
+                }
+                
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawCyberMatrix, 60);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Эффект появления карточек
+        const cards = document.querySelectorAll('.cyber-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            observer.observe(card);
+        });
+
+        // Случайные глитч-эффекты
+        setInterval(() => {
+            const glitchText = document.querySelector('.glitch-text');
+            if (glitchText && Math.random() > 0.9) {
+                glitchText.style.transform = `skew(${Math.random() * 10 - 5}deg)`;
+                setTimeout(() => {
+                    glitchText.style.transform = 'skew(0deg)';
+                }, 100);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

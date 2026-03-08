@@ -1,0 +1,128 @@
+2026-03-07 23:58:54,768 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-07 23:58:54,783 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-07 23:58:54,786 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-07 23:58:54,788 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-07 23:58:54,790 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-07 23:58:54,792 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-07 23:58:55,225 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-07 23:58:55,730 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-07 23:58:56,249 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-07 23:58:58,495 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-07 23:58:58,500 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-07 23:58:58,501 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-07 23:58:58,501 - __main__ - INFO -   stores: 45
+2026-03-07 23:58:58,502 - __main__ - INFO -   products: 50
+2026-03-07 23:58:58,502 - __main__ - INFO -   customers: 45
+2026-03-07 23:58:58,502 - __main__ - INFO -   purchases: 200
+2026-03-08 00:21:53,875 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-08 00:21:53,889 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-08 00:21:53,891 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-08 00:21:53,893 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-08 00:21:53,894 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-08 00:21:53,896 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-08 00:21:54,213 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-08 00:21:54,529 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-08 00:21:54,869 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-08 00:21:56,453 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-08 00:21:56,456 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-08 00:21:56,456 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-08 00:21:56,456 - __main__ - INFO -   stores: 45
+2026-03-08 00:21:56,457 - __main__ - INFO -   products: 50
+2026-03-08 00:21:56,457 - __main__ - INFO -   customers: 45
+2026-03-08 00:21:56,457 - __main__ - INFO -   purchases: 200
+2026-03-08 00:34:54,117 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-08 00:34:54,132 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-08 00:34:54,133 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-08 00:34:54,135 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-08 00:34:54,137 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-08 00:34:54,138 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-08 00:34:54,462 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-08 00:34:54,794 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-08 00:34:55,084 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-08 00:34:56,514 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-08 00:34:56,516 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-08 00:34:56,517 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-08 00:34:56,518 - __main__ - INFO -   stores: 45
+2026-03-08 00:34:56,518 - __main__ - INFO -   products: 50
+2026-03-08 00:34:56,518 - __main__ - INFO -   customers: 45
+2026-03-08 00:34:56,518 - __main__ - INFO -   purchases: 200
+2026-03-08 00:42:22,599 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-08 00:42:22,619 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-08 00:42:22,621 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-08 00:42:22,623 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-08 00:42:22,625 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-08 00:42:22,628 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-08 00:42:23,097 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-08 00:42:23,587 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-08 00:42:23,967 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-08 00:42:25,845 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-08 00:42:25,848 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-08 00:42:25,848 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-08 00:42:25,849 - __main__ - INFO -   stores: 45
+2026-03-08 00:42:25,849 - __main__ - INFO -   products: 50
+2026-03-08 00:42:25,849 - __main__ - INFO -   customers: 45
+2026-03-08 00:42:25,850 - __main__ - INFO -   purchases: 200
+2026-03-08 01:07:17,306 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-08 01:07:17,321 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-08 01:07:17,324 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-08 01:07:17,326 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-08 01:07:17,329 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-08 01:07:17,331 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-08 01:07:17,677 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-08 01:07:18,040 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-08 01:07:18,355 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-08 01:07:20,203 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-08 01:07:20,205 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-08 01:07:20,206 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-08 01:07:20,206 - __main__ - INFO -   stores: 45
+2026-03-08 01:07:20,207 - __main__ - INFO -   products: 50
+2026-03-08 01:07:20,207 - __main__ - INFO -   customers: 45
+2026-03-08 01:07:20,207 - __main__ - INFO -   purchases: 200
+2026-03-08 01:20:27,675 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-08 01:20:27,688 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-08 01:20:27,691 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-08 01:20:27,693 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-08 01:20:27,695 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-08 01:20:27,697 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-08 01:20:28,062 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-08 01:20:28,438 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-08 01:20:28,744 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-08 01:20:30,663 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-08 01:20:30,666 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-08 01:20:30,666 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-08 01:20:30,667 - __main__ - INFO -   stores: 45
+2026-03-08 01:20:30,667 - __main__ - INFO -   products: 50
+2026-03-08 01:20:30,667 - __main__ - INFO -   customers: 45
+2026-03-08 01:20:30,668 - __main__ - INFO -   purchases: 200
+2026-03-08 01:42:00,476 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-08 01:42:00,494 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-08 01:42:00,496 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-08 01:42:00,500 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-08 01:42:00,502 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-08 01:42:00,504 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-08 01:42:00,962 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-08 01:42:01,506 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-08 01:42:01,980 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-08 01:42:04,011 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-08 01:42:04,013 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-08 01:42:04,014 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-08 01:42:04,015 - __main__ - INFO -   stores: 45
+2026-03-08 01:42:04,015 - __main__ - INFO -   products: 50
+2026-03-08 01:42:04,015 - __main__ - INFO -   customers: 45
+2026-03-08 01:42:04,016 - __main__ - INFO -   purchases: 200
+2026-03-08 19:56:56,742 - __main__ - INFO - Загрузка данных из директории: data
+2026-03-08 19:56:56,787 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://localhost:27017
+2026-03-08 19:56:56,789 - MongoDataLoader - INFO - Коллекция 'stores' очищена.
+2026-03-08 19:56:56,790 - MongoDataLoader - INFO - Коллекция 'products' очищена.
+2026-03-08 19:56:56,792 - MongoDataLoader - INFO - Коллекция 'customers' очищена.
+2026-03-08 19:56:56,793 - MongoDataLoader - INFO - Коллекция 'purchases' очищена.
+2026-03-08 19:56:57,150 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-08 19:56:57,615 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-08 19:56:58,189 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-08 19:57:00,167 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-08 19:57:00,170 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-08 19:57:00,170 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-08 19:57:00,171 - __main__ - INFO -   stores: 45
+2026-03-08 19:57:00,171 - __main__ - INFO -   products: 50
+2026-03-08 19:57:00,171 - __main__ - INFO -   customers: 45
+2026-03-08 19:57:00,172 - __main__ - INFO -   purchases: 200

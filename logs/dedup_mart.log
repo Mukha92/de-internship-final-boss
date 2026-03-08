@@ -1,0 +1,1049 @@
+2026-03-08 01:59:13,090 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:13,091 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 01:59:13,091 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:13,163 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 01:59:13,216 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart
+2026-03-08 01:59:13,218 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 01:59:19,037 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 01:59:19,038 - __main__ - INFO - Стратегия: OPTIMIZE FINAL
+2026-03-08 01:59:19,038 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:19,038 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 01:59:19,139 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 01:59:19,140 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL
+2026-03-08 01:59:19,304 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.06 сек)
+2026-03-08 01:59:19,305 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 01:59:19,410 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:19,411 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL
+2026-03-08 01:59:19,575 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:19,576 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 01:59:19,695 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:19,695 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL
+2026-03-08 01:59:19,849 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:19,849 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 01:59:19,957 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 01:59:19,958 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL
+2026-03-08 01:59:20,119 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.06 сек)
+2026-03-08 01:59:20,120 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 01:59:20,216 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:20,216 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL
+2026-03-08 01:59:20,359 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:20,360 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 01:59:20,451 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:20,451 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL
+2026-03-08 01:59:20,592 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:20,592 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 01:59:20,683 - __main__ - INFO -   Строк до: 202, Частей: 6
+2026-03-08 01:59:20,683 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL
+2026-03-08 01:59:20,838 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 2 (0.06 сек)
+2026-03-08 01:59:20,839 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 01:59:20,935 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 01:59:20,935 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL
+2026-03-08 01:59:21,075 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:21,075 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 01:59:21,175 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:21,176 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL
+2026-03-08 01:59:21,314 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:21,314 - __main__ - INFO - 
+======================================================================
+2026-03-08 01:59:21,315 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 01:59:21,315 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:21,315 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.06 сек)
+2026-03-08 01:59:21,316 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:21,316 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:21,316 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.06 сек)
+2026-03-08 01:59:21,316 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:21,317 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:21,317 - __main__ - INFO - ✓ fact_purchases: 202 → 200 строк (удалено: 2, 0.06 сек)
+2026-03-08 01:59:21,318 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:21,318 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:21,319 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 01:59:21,319 - __main__ - INFO - Всего таблиц обработано: 9
+2026-03-08 01:59:21,319 - __main__ - INFO -   ✓ Успешно: 9
+2026-03-08 01:59:21,319 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 01:59:21,320 - __main__ - INFO - Всего строк: 907 → 905
+2026-03-08 01:59:21,320 - __main__ - INFO - Всего удалено дубликатов: 2
+2026-03-08 01:59:21,320 - __main__ - INFO - Общее время выполнения: 0.48 сек
+2026-03-08 01:59:21,320 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:47,775 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:47,775 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 01:59:47,776 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:47,832 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 01:59:47,876 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart
+2026-03-08 01:59:47,876 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 01:59:51,020 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 01:59:51,021 - __main__ - INFO - Стратегия: OPTIMIZE FINAL
+2026-03-08 01:59:51,021 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:51,021 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 01:59:51,118 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 01:59:51,118 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL
+2026-03-08 01:59:51,257 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:51,258 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 01:59:51,353 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:51,353 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL
+2026-03-08 01:59:51,497 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:51,498 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 01:59:51,592 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:51,593 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL
+2026-03-08 01:59:51,746 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:51,746 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 01:59:51,843 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 01:59:51,844 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL
+2026-03-08 01:59:51,999 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:52,000 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 01:59:52,102 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:52,103 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL
+2026-03-08 01:59:52,261 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:52,261 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 01:59:52,353 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:52,353 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL
+2026-03-08 01:59:52,498 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:52,498 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 01:59:52,595 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 01:59:52,595 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL
+2026-03-08 01:59:52,753 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 0 (0.07 сек)
+2026-03-08 01:59:52,753 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 01:59:52,844 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 01:59:52,845 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL
+2026-03-08 01:59:52,990 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:52,990 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 01:59:53,084 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 01:59:53,084 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL
+2026-03-08 01:59:53,225 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 01:59:53,225 - __main__ - INFO - 
+======================================================================
+2026-03-08 01:59:53,225 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 01:59:53,225 - __main__ - INFO - ======================================================================
+2026-03-08 01:59:53,226 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,226 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,226 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,227 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,227 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,227 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,227 - __main__ - INFO - ✓ fact_purchases: 200 → 200 строк (удалено: 0, 0.07 сек)
+2026-03-08 01:59:53,228 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,228 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 01:59:53,228 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 01:59:53,229 - __main__ - INFO - Всего таблиц обработано: 9
+2026-03-08 01:59:53,229 - __main__ - INFO -   ✓ Успешно: 9
+2026-03-08 01:59:53,229 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 01:59:53,229 - __main__ - INFO - Всего строк: 905 → 905
+2026-03-08 01:59:53,230 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 01:59:53,230 - __main__ - INFO - Общее время выполнения: 0.47 сек
+2026-03-08 01:59:53,230 - __main__ - INFO - ======================================================================
+2026-03-08 02:00:32,537 - __main__ - INFO - ======================================================================
+2026-03-08 02:00:32,538 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:00:32,538 - __main__ - INFO - ======================================================================
+2026-03-08 02:00:32,593 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:00:32,638 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart
+2026-03-08 02:00:32,639 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 02:00:35,686 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:00:35,686 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:00:35,686 - __main__ - INFO - ======================================================================
+2026-03-08 02:00:35,686 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:00:35,780 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:00:35,788 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL DEDUPLICATE BY manufacturer_sk
+2026-03-08 02:00:35,931 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:00:35,931 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:00:36,026 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:00:36,027 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL DEDUPLICATE BY store_location_sk
+2026-03-08 02:00:36,166 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:00:36,167 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:00:36,259 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:00:36,260 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL DEDUPLICATE BY delivery_address_sk
+2026-03-08 02:00:36,403 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:00:36,404 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:00:36,500 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:00:36,500 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL DEDUPLICATE BY product_sk
+2026-03-08 02:00:36,638 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:00:36,638 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:00:36,730 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:00:36,731 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL DEDUPLICATE BY customer_sk
+2026-03-08 02:00:36,870 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:00:36,871 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:00:36,966 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:00:36,966 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL DEDUPLICATE BY store_sk
+2026-03-08 02:00:37,107 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:00:37,107 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:00:37,203 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:00:37,203 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL DEDUPLICATE BY purchase_id
+2026-03-08 02:00:37,251 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'raw_event_time' is missing. Expanded DEDUPLICATE BY columns expression: ['purchase_id']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:00:37,254 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:00:37,354 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:00:37,354 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL DEDUPLICATE BY fact_sk
+2026-03-08 02:00:37,399 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'purchase_id' is missing. Expanded DEDUPLICATE BY columns expression: ['fact_sk']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:00:37,402 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:00:37,499 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:00:37,499 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL DEDUPLICATE BY customer_sk
+2026-03-08 02:00:37,543 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'customer_id' is missing. Expanded DEDUPLICATE BY columns expression: ['customer_sk']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:00:37,545 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:00:37,546 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:00:37,546 - __main__ - INFO - ======================================================================
+2026-03-08 02:00:37,546 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:00:37,547 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:00:37,547 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:00:37,547 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:00:37,547 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:00:37,548 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:00:37,548 - __main__ - INFO - ✗ fact_purchases: 200 → 0 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:00:37,548 - __main__ - INFO - ✗ fact_purchase_items: 380 → 0 строк (удалено: 0, 0.04 сек)
+2026-03-08 02:00:37,548 - __main__ - INFO - ✗ customer_features_mart: 45 → 0 строк (удалено: 0, 0.04 сек)
+2026-03-08 02:00:37,549 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:00:37,549 - __main__ - INFO - Всего таблиц обработано: 9
+2026-03-08 02:00:37,549 - __main__ - INFO -   ✓ Успешно: 6
+2026-03-08 02:00:37,550 - __main__ - INFO -   ✗ С ошибками: 3
+2026-03-08 02:00:37,550 - __main__ - INFO - Всего строк: 905 → 280
+2026-03-08 02:00:37,550 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:00:37,550 - __main__ - INFO - Общее время выполнения: 0.43 сек
+2026-03-08 02:00:37,551 - __main__ - INFO - ======================================================================
+2026-03-08 02:04:10,711 - __main__ - INFO - ======================================================================
+2026-03-08 02:04:10,711 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:04:10,711 - __main__ - INFO - ======================================================================
+2026-03-08 02:04:10,770 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:04:10,818 - __main__ - INFO - 
+📋 Таблицы для обработки: fact_purchases
+2026-03-08 02:04:10,819 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 02:04:15,334 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:04:15,334 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:04:15,334 - __main__ - INFO - ======================================================================
+2026-03-08 02:04:15,335 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:04:15,431 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:04:15,432 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL DEDUPLICATE BY purchase_id
+2026-03-08 02:04:15,477 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'raw_event_time' is missing. Expanded DEDUPLICATE BY columns expression: ['purchase_id']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:04:15,479 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:04:15,479 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:04:15,479 - __main__ - INFO - ======================================================================
+2026-03-08 02:04:15,480 - __main__ - INFO - ✗ fact_purchases: 200 → 0 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:04:15,480 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:04:15,480 - __main__ - INFO - Всего таблиц обработано: 1
+2026-03-08 02:04:15,480 - __main__ - INFO -   ✓ Успешно: 0
+2026-03-08 02:04:15,481 - __main__ - INFO -   ✗ С ошибками: 1
+2026-03-08 02:04:15,481 - __main__ - INFO - Всего строк: 200 → 0
+2026-03-08 02:04:15,481 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:04:15,481 - __main__ - INFO - Общее время выполнения: 0.05 сек
+2026-03-08 02:04:15,481 - __main__ - INFO - ======================================================================
+2026-03-08 02:05:09,279 - __main__ - INFO - ======================================================================
+2026-03-08 02:05:09,280 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:05:09,280 - __main__ - INFO - ======================================================================
+2026-03-08 02:05:09,341 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:05:09,392 - __main__ - WARNING - Нет таблиц для обработки
+2026-03-08 02:05:33,944 - __main__ - INFO - ======================================================================
+2026-03-08 02:05:33,945 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:05:33,945 - __main__ - INFO - ======================================================================
+2026-03-08 02:05:34,002 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:05:34,048 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart
+2026-03-08 02:05:34,049 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 02:05:37,277 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:05:37,277 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:05:37,277 - __main__ - INFO - ======================================================================
+2026-03-08 02:05:37,278 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:05:37,371 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:05:37,372 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL DEDUPLICATE BY manufacturer_sk
+2026-03-08 02:05:37,511 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:05:37,511 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:05:37,603 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:05:37,603 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL DEDUPLICATE BY store_location_sk
+2026-03-08 02:05:37,747 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:05:37,748 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:05:37,847 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:05:37,848 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL DEDUPLICATE BY delivery_address_sk
+2026-03-08 02:05:37,995 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:05:37,996 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:05:38,096 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:05:38,097 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL DEDUPLICATE BY product_sk
+2026-03-08 02:05:38,249 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:05:38,250 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:05:38,347 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:05:38,348 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL DEDUPLICATE BY customer_sk
+2026-03-08 02:05:38,487 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:05:38,487 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:05:38,583 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:05:38,584 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL DEDUPLICATE BY store_sk
+2026-03-08 02:05:38,731 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:05:38,732 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:05:38,827 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:05:38,827 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL DEDUPLICATE BY purchase_id
+2026-03-08 02:05:38,873 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'raw_event_time' is missing. Expanded DEDUPLICATE BY columns expression: ['purchase_id']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:05:38,876 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:05:38,970 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:05:38,970 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL DEDUPLICATE BY fact_sk
+2026-03-08 02:05:39,016 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'purchase_id' is missing. Expanded DEDUPLICATE BY columns expression: ['fact_sk']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:05:39,017 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:05:39,134 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:05:39,135 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL DEDUPLICATE BY customer_sk
+2026-03-08 02:05:39,181 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'customer_id' is missing. Expanded DEDUPLICATE BY columns expression: ['customer_sk']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:05:39,182 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:05:39,182 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:05:39,183 - __main__ - INFO - ======================================================================
+2026-03-08 02:05:39,183 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,183 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,183 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,184 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,184 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,184 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,184 - __main__ - INFO - ✗ fact_purchases: 200 → 0 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,184 - __main__ - INFO - ✗ fact_purchase_items: 380 → 0 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,185 - __main__ - INFO - ✗ customer_features_mart: 45 → 0 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:05:39,185 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:05:39,185 - __main__ - INFO - Всего таблиц обработано: 9
+2026-03-08 02:05:39,185 - __main__ - INFO -   ✓ Успешно: 6
+2026-03-08 02:05:39,185 - __main__ - INFO -   ✗ С ошибками: 3
+2026-03-08 02:05:39,186 - __main__ - INFO - Всего строк: 905 → 280
+2026-03-08 02:05:39,186 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:05:39,186 - __main__ - INFO - Общее время выполнения: 0.44 сек
+2026-03-08 02:05:39,186 - __main__ - INFO - ======================================================================
+2026-03-08 02:09:36,784 - __main__ - INFO - ======================================================================
+2026-03-08 02:09:36,784 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:09:36,798 - __main__ - INFO - ======================================================================
+2026-03-08 02:09:36,854 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:09:36,899 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart
+2026-03-08 02:09:36,899 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:09:36,900 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:09:36,900 - __main__ - INFO - ======================================================================
+2026-03-08 02:09:36,900 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:09:36,991 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:09:37,038 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL DEDUPLICATE BY manufacturer_sk
+2026-03-08 02:09:37,180 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.10 сек)
+2026-03-08 02:09:37,180 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:09:37,277 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:09:37,323 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL DEDUPLICATE BY store_location_sk
+2026-03-08 02:09:37,468 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.10 сек)
+2026-03-08 02:09:37,469 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:09:37,560 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:09:37,606 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL DEDUPLICATE BY delivery_address_sk
+2026-03-08 02:09:37,752 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.10 сек)
+2026-03-08 02:09:37,752 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:09:37,844 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:09:37,890 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL DEDUPLICATE BY product_sk
+2026-03-08 02:09:38,031 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.10 сек)
+2026-03-08 02:09:38,032 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:09:38,123 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:09:38,170 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL DEDUPLICATE BY customer_sk
+2026-03-08 02:09:38,323 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.09 сек)
+2026-03-08 02:09:38,325 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:09:38,439 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:09:38,494 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL DEDUPLICATE BY store_sk
+2026-03-08 02:09:38,684 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.13 сек)
+2026-03-08 02:09:38,686 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:09:38,794 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:09:38,846 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL DEDUPLICATE BY purchase_id
+2026-03-08 02:09:38,894 - __main__ - ERROR -   ✗ Ошибка DEDUPLICATE: Code: 8.
+DB::Exception: DEDUPLICATE BY expression must include all columns used in table's ORDER BY, PRIMARY KEY, or PARTITION BY but 'raw_event_time' is missing. Expanded DEDUPLICATE BY columns expression: ['purchase_id']. Stack trace:
+
+0. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000000127d5c3b
+1. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x000000000bfe4a4c
+2. DB::Exception::Exception<String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>>::type>, String const&, fmt::v11::join_view<std::__wrap_iter<String*>, std::__wrap_iter<String*>, char>&&) @ 0x0000000015682eeb
+3. DB::InterpreterOptimizeQuery::execute() @ 0x000000001714013d
+4. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, DB::ReadBuffer*, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x00000000170da893
+5. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x00000000170d4140
+6. DB::TCPHandler::runImpl() @ 0x000000001858336c
+7. DB::TCPHandler::run() @ 0x00000000185a2d39
+8. Poco::Net::TCPServerConnection::start() @ 0x000000001d918f67
+9. Poco::Net::TCPServerDispatcher::run() @ 0x000000001d9193b9
+10. Poco::PooledThread::run() @ 0x000000001d8e4647
+11. Poco::ThreadImpl::runnableEntry(void*) @ 0x000000001d8e2be1
+12. ? @ 0x0000000000094ac3
+13. ? @ 0x0000000000125a74
+
+2026-03-08 02:09:38,898 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:09:39,004 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:09:39,050 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL DEDUPLICATE BY purchase_id, product_id
+2026-03-08 02:09:39,196 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.09 сек)
+2026-03-08 02:09:39,198 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:09:39,306 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:09:39,359 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL DEDUPLICATE BY customer_sk, customer_id
+2026-03-08 02:09:39,528 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.12 сек)
+2026-03-08 02:09:39,528 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:09:39,528 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:09:39,529 - __main__ - INFO - ======================================================================
+2026-03-08 02:09:39,530 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.10 сек)
+2026-03-08 02:09:39,530 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.10 сек)
+2026-03-08 02:09:39,531 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.10 сек)
+2026-03-08 02:09:39,531 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.10 сек)
+2026-03-08 02:09:39,532 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.09 сек)
+2026-03-08 02:09:39,532 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.13 сек)
+2026-03-08 02:09:39,533 - __main__ - INFO - ✗ fact_purchases: 200 → 0 строк (удалено: 0, 0.10 сек)
+2026-03-08 02:09:39,534 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.09 сек)
+2026-03-08 02:09:39,534 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.12 сек)
+2026-03-08 02:09:39,535 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:09:39,535 - __main__ - INFO - Всего таблиц обработано: 9
+2026-03-08 02:09:39,535 - __main__ - INFO -   ✓ Успешно: 8
+2026-03-08 02:09:39,536 - __main__ - INFO -   ✗ С ошибками: 1
+2026-03-08 02:09:39,537 - __main__ - INFO - Всего строк: 905 → 705
+2026-03-08 02:09:39,537 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:09:39,537 - __main__ - INFO - Общее время выполнения: 0.92 сек
+2026-03-08 02:09:39,537 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:06,931 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:06,932 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:11:06,933 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:06,989 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:11:07,033 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart
+2026-03-08 02:11:07,034 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:11:07,034 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:11:07,034 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:07,034 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:11:07,130 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:11:07,221 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL DEDUPLICATE BY manufacturer_sk
+2026-03-08 02:11:07,376 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:07,378 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:11:07,500 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:07,605 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL DEDUPLICATE BY store_location_sk
+2026-03-08 02:11:07,772 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.16 сек)
+2026-03-08 02:11:07,774 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:11:07,880 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:07,975 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL DEDUPLICATE BY delivery_address_sk
+2026-03-08 02:11:08,148 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.16 сек)
+2026-03-08 02:11:08,149 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:11:08,247 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:11:08,337 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL DEDUPLICATE BY product_sk
+2026-03-08 02:11:08,493 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:08,495 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:11:08,599 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:08,697 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL DEDUPLICATE BY customer_sk
+2026-03-08 02:11:08,838 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.15 сек)
+2026-03-08 02:11:08,839 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:11:08,930 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:09,021 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL DEDUPLICATE BY store_sk
+2026-03-08 02:11:09,158 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:09,159 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:11:09,250 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:11:09,340 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL DEDUPLICATE BY purchase_id, raw_event_time
+2026-03-08 02:11:09,489 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 0 (0.15 сек)
+2026-03-08 02:11:09,490 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:11:09,584 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:11:09,682 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL DEDUPLICATE BY purchase_id, product_id
+2026-03-08 02:11:09,837 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.15 сек)
+2026-03-08 02:11:09,838 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:11:09,939 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:10,037 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL DEDUPLICATE BY customer_sk, customer_id
+2026-03-08 02:11:10,207 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.16 сек)
+2026-03-08 02:11:10,208 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:11:10,208 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:11:10,209 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:10,210 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:10,211 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.16 сек)
+2026-03-08 02:11:10,212 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.16 сек)
+2026-03-08 02:11:10,212 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:10,213 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.15 сек)
+2026-03-08 02:11:10,215 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:10,215 - __main__ - INFO - ✓ fact_purchases: 200 → 200 строк (удалено: 0, 0.15 сек)
+2026-03-08 02:11:10,216 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.15 сек)
+2026-03-08 02:11:10,217 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.16 сек)
+2026-03-08 02:11:10,218 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:11:10,218 - __main__ - INFO - Всего таблиц обработано: 9
+2026-03-08 02:11:10,219 - __main__ - INFO -   ✓ Успешно: 9
+2026-03-08 02:11:10,220 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:11:10,221 - __main__ - INFO - Всего строк: 905 → 905
+2026-03-08 02:11:10,222 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:11:10,222 - __main__ - INFO - Общее время выполнения: 1.35 сек
+2026-03-08 02:11:10,222 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:41,889 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:41,890 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:11:41,890 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:41,946 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:11:41,991 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart
+2026-03-08 02:11:41,992 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 02:11:48,902 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:11:48,902 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:11:48,902 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:48,903 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:11:49,000 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:11:49,095 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL DEDUPLICATE BY manufacturer_sk
+2026-03-08 02:11:49,231 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:49,232 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:11:49,324 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:49,426 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL DEDUPLICATE BY store_location_sk
+2026-03-08 02:11:49,586 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.16 сек)
+2026-03-08 02:11:49,586 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:11:49,691 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:49,796 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL DEDUPLICATE BY delivery_address_sk
+2026-03-08 02:11:49,953 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.16 сек)
+2026-03-08 02:11:49,953 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:11:50,053 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:11:50,149 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL DEDUPLICATE BY product_sk
+2026-03-08 02:11:50,315 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.16 сек)
+2026-03-08 02:11:50,315 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:11:50,412 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:50,503 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL DEDUPLICATE BY customer_sk
+2026-03-08 02:11:50,640 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:50,640 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:11:50,732 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:50,823 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL DEDUPLICATE BY store_sk
+2026-03-08 02:11:50,981 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:50,982 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:11:51,085 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:11:51,183 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL DEDUPLICATE BY purchase_id, raw_event_time
+2026-03-08 02:11:51,340 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 0 (0.16 сек)
+2026-03-08 02:11:51,340 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:11:51,436 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:11:51,526 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL DEDUPLICATE BY purchase_id, product_id
+2026-03-08 02:11:51,663 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:51,663 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:11:51,761 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:11:51,850 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL DEDUPLICATE BY customer_sk, customer_id
+2026-03-08 02:11:51,988 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.14 сек)
+2026-03-08 02:11:51,988 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:11:51,989 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:11:51,989 - __main__ - INFO - ======================================================================
+2026-03-08 02:11:51,989 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:51,989 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.16 сек)
+2026-03-08 02:11:51,989 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.16 сек)
+2026-03-08 02:11:51,990 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.16 сек)
+2026-03-08 02:11:51,990 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:51,990 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:51,991 - __main__ - INFO - ✓ fact_purchases: 200 → 200 строк (удалено: 0, 0.16 сек)
+2026-03-08 02:11:51,991 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:51,991 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.14 сек)
+2026-03-08 02:11:51,991 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:11:51,991 - __main__ - INFO - Всего таблиц обработано: 9
+2026-03-08 02:11:51,992 - __main__ - INFO -   ✓ Успешно: 9
+2026-03-08 02:11:51,992 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:11:51,992 - __main__ - INFO - Всего строк: 905 → 905
+2026-03-08 02:11:51,992 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:11:51,992 - __main__ - INFO - Общее время выполнения: 1.33 сек
+2026-03-08 02:11:51,993 - __main__ - INFO - ======================================================================
+2026-03-08 02:16:10,924 - __main__ - INFO - ======================================================================
+2026-03-08 02:16:10,924 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:16:10,926 - __main__ - INFO - ======================================================================
+2026-03-08 02:16:10,979 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:16:11,028 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_date
+2026-03-08 02:16:11,029 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:16:11,030 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:16:11,030 - __main__ - INFO - ======================================================================
+2026-03-08 02:16:11,030 - __main__ - INFO - 
+📊 Обработка таблицы: dim_date
+2026-03-08 02:16:11,121 - __main__ - INFO -   Строк до: 84, Частей: 3
+2026-03-08 02:16:11,212 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_date FINAL DEDUPLICATE BY date_sk
+2026-03-08 02:16:11,353 - __main__ - INFO -   ✓ Строк после: 82, Частей: 1, Удалено дубликатов: 2 (0.14 сек)
+2026-03-08 02:16:11,353 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:16:11,353 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:16:11,354 - __main__ - INFO - ======================================================================
+2026-03-08 02:16:11,354 - __main__ - INFO - ✓ dim_date: 84 → 82 строк (удалено: 2, 0.14 сек)
+2026-03-08 02:16:11,354 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:16:11,354 - __main__ - INFO - Всего таблиц обработано: 1
+2026-03-08 02:16:11,354 - __main__ - INFO -   ✓ Успешно: 1
+2026-03-08 02:16:11,355 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:16:11,355 - __main__ - INFO - Всего строк: 84 → 82
+2026-03-08 02:16:11,356 - __main__ - INFO - Всего удалено дубликатов: 2
+2026-03-08 02:16:11,356 - __main__ - INFO - Общее время выполнения: 0.14 сек
+2026-03-08 02:16:11,356 - __main__ - INFO - ======================================================================
+2026-03-08 02:20:35,617 - __main__ - INFO - ======================================================================
+2026-03-08 02:20:35,617 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:20:35,619 - __main__ - INFO - ======================================================================
+2026-03-08 02:20:35,673 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:20:35,718 - __main__ - INFO - 
+📋 Таблицы для обработки: fact_purchases
+2026-03-08 02:20:35,719 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:20:35,719 - __main__ - INFO - Стратегия: DEDUPLICATE BY
+2026-03-08 02:20:35,719 - __main__ - INFO - ======================================================================
+2026-03-08 02:20:35,719 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:20:35,811 - __main__ - INFO -   Строк до: 205, Частей: 9
+2026-03-08 02:20:35,901 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL DEDUPLICATE BY purchase_id, raw_event_time
+2026-03-08 02:20:36,055 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 5 (0.15 сек)
+2026-03-08 02:20:36,056 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:20:36,056 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:20:36,056 - __main__ - INFO - ======================================================================
+2026-03-08 02:20:36,056 - __main__ - INFO - ✓ fact_purchases: 205 → 200 строк (удалено: 5, 0.15 сек)
+2026-03-08 02:20:36,057 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:20:36,057 - __main__ - INFO - Всего таблиц обработано: 1
+2026-03-08 02:20:36,057 - __main__ - INFO -   ✓ Успешно: 1
+2026-03-08 02:20:36,057 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:20:36,058 - __main__ - INFO - Всего строк: 205 → 200
+2026-03-08 02:20:36,058 - __main__ - INFO - Всего удалено дубликатов: 5
+2026-03-08 02:20:36,058 - __main__ - INFO - Общее время выполнения: 0.15 сек
+2026-03-08 02:20:36,059 - __main__ - INFO - ======================================================================
+2026-03-08 02:22:48,247 - __main__ - INFO - ======================================================================
+2026-03-08 02:22:48,247 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:22:48,249 - __main__ - INFO - ======================================================================
+2026-03-08 02:22:48,304 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:22:48,349 - __main__ - INFO - 
+📋 Таблицы для обработки: fact_purchases
+2026-03-08 02:22:48,349 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:22:48,350 - __main__ - INFO - Стратегия: OPTIMIZE FINAL
+2026-03-08 02:22:48,350 - __main__ - INFO - ======================================================================
+2026-03-08 02:22:48,350 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:22:48,442 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:22:48,442 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL
+2026-03-08 02:22:48,596 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 0 (0.06 сек)
+2026-03-08 02:22:48,598 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:22:48,598 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:22:48,599 - __main__ - INFO - ======================================================================
+2026-03-08 02:22:48,600 - __main__ - INFO - ✓ fact_purchases: 200 → 200 строк (удалено: 0, 0.06 сек)
+2026-03-08 02:22:48,601 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:22:48,601 - __main__ - INFO - Всего таблиц обработано: 1
+2026-03-08 02:22:48,601 - __main__ - INFO -   ✓ Успешно: 1
+2026-03-08 02:22:48,603 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:22:48,604 - __main__ - INFO - Всего строк: 200 → 200
+2026-03-08 02:22:48,606 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:22:48,606 - __main__ - INFO - Общее время выполнения: 0.06 сек
+2026-03-08 02:22:48,606 - __main__ - INFO - ======================================================================
+2026-03-08 02:29:45,388 - __main__ - INFO - ======================================================================
+2026-03-08 02:29:45,388 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:29:45,388 - __main__ - INFO - ======================================================================
+2026-03-08 02:29:45,444 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:29:45,489 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart, dim_date
+2026-03-08 02:29:45,489 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 02:29:55,142 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:29:55,142 - __main__ - INFO - Стратегия: OPTIMIZE FINAL
+2026-03-08 02:29:55,142 - __main__ - INFO - ======================================================================
+2026-03-08 02:29:55,142 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:29:55,233 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:29:55,234 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL
+2026-03-08 02:29:55,377 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:55,377 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:29:55,469 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:29:55,469 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL
+2026-03-08 02:29:55,608 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:55,609 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:29:55,701 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:29:55,702 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL
+2026-03-08 02:29:55,841 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:55,841 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:29:55,933 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:29:55,933 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL
+2026-03-08 02:29:56,073 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:56,073 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:29:56,165 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:29:56,165 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL
+2026-03-08 02:29:56,309 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:56,309 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:29:56,405 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:29:56,405 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL
+2026-03-08 02:29:56,554 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:56,554 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:29:56,652 - __main__ - INFO -   Строк до: 205, Частей: 9
+2026-03-08 02:29:56,653 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL
+2026-03-08 02:29:56,830 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 5 (0.08 сек)
+2026-03-08 02:29:56,830 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:29:56,920 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:29:56,921 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL
+2026-03-08 02:29:57,066 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:57,067 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:29:57,157 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:29:57,158 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL
+2026-03-08 02:29:57,314 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:57,315 - __main__ - INFO - 
+📊 Обработка таблицы: dim_date
+2026-03-08 02:29:57,415 - __main__ - INFO -   Строк до: 82, Частей: 1
+2026-03-08 02:29:57,415 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_date FINAL
+2026-03-08 02:29:57,567 - __main__ - INFO -   ✓ Строк после: 82, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:29:57,568 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:29:57,568 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:29:57,569 - __main__ - INFO - ======================================================================
+2026-03-08 02:29:57,569 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,569 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,570 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,570 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,570 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,571 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,571 - __main__ - INFO - ✓ fact_purchases: 205 → 200 строк (удалено: 5, 0.08 сек)
+2026-03-08 02:29:57,571 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,572 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,572 - __main__ - INFO - ✓ dim_date: 82 → 82 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:29:57,572 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:29:57,572 - __main__ - INFO - Всего таблиц обработано: 10
+2026-03-08 02:29:57,573 - __main__ - INFO -   ✓ Успешно: 10
+2026-03-08 02:29:57,573 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:29:57,573 - __main__ - INFO - Всего строк: 992 → 987
+2026-03-08 02:29:57,574 - __main__ - INFO - Всего удалено дубликатов: 5
+2026-03-08 02:29:57,574 - __main__ - INFO - Общее время выполнения: 0.53 сек
+2026-03-08 02:29:57,574 - __main__ - INFO - ======================================================================
+2026-03-08 02:32:32,850 - __main__ - INFO - ======================================================================
+2026-03-08 02:32:32,851 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:32:32,851 - __main__ - INFO - ======================================================================
+2026-03-08 02:32:32,911 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:32:32,957 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart, dim_date
+2026-03-08 02:32:32,957 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 02:32:39,047 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:32:39,047 - __main__ - INFO - Стратегия: OPTIMIZE FINAL
+2026-03-08 02:32:39,047 - __main__ - INFO - ======================================================================
+2026-03-08 02:32:39,047 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:32:39,142 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:32:39,151 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL
+2026-03-08 02:32:39,293 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:39,294 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:32:39,393 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:32:39,393 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL
+2026-03-08 02:32:39,533 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:39,534 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:32:39,625 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:32:39,626 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL
+2026-03-08 02:32:39,765 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:39,766 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:32:39,865 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:32:39,865 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL
+2026-03-08 02:32:40,005 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:40,005 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:32:40,101 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:32:40,102 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL
+2026-03-08 02:32:40,245 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:40,246 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:32:40,337 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:32:40,337 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL
+2026-03-08 02:32:40,477 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:40,477 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:32:40,574 - __main__ - INFO -   Строк до: 200, Частей: 4
+2026-03-08 02:32:40,574 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL
+2026-03-08 02:32:40,726 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 0 (0.06 сек)
+2026-03-08 02:32:40,727 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:32:40,823 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:32:40,823 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL
+2026-03-08 02:32:40,968 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:40,968 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:32:41,069 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:32:41,069 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL
+2026-03-08 02:32:41,226 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.06 сек)
+2026-03-08 02:32:41,227 - __main__ - INFO - 
+📊 Обработка таблицы: dim_date
+2026-03-08 02:32:41,331 - __main__ - INFO -   Строк до: 82, Частей: 1
+2026-03-08 02:32:41,332 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_date FINAL
+2026-03-08 02:32:41,473 - __main__ - INFO -   ✓ Строк после: 82, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:32:41,474 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:32:41,474 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:32:41,474 - __main__ - INFO - ======================================================================
+2026-03-08 02:32:41,475 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,475 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,475 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,476 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,476 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,476 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,476 - __main__ - INFO - ✓ fact_purchases: 200 → 200 строк (удалено: 0, 0.06 сек)
+2026-03-08 02:32:41,476 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,477 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.06 сек)
+2026-03-08 02:32:41,477 - __main__ - INFO - ✓ dim_date: 82 → 82 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:32:41,477 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:32:41,477 - __main__ - INFO - Всего таблиц обработано: 10
+2026-03-08 02:32:41,477 - __main__ - INFO -   ✓ Успешно: 10
+2026-03-08 02:32:41,477 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:32:41,478 - __main__ - INFO - Всего строк: 987 → 987
+2026-03-08 02:32:41,478 - __main__ - INFO - Всего удалено дубликатов: 0
+2026-03-08 02:32:41,478 - __main__ - INFO - Общее время выполнения: 0.51 сек
+2026-03-08 02:32:41,478 - __main__ - INFO - ======================================================================
+2026-03-08 02:36:18,938 - __main__ - INFO - ======================================================================
+2026-03-08 02:36:18,938 - __main__ - INFO - 🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: localhost:9000
+2026-03-08 02:36:18,938 - __main__ - INFO - ======================================================================
+2026-03-08 02:36:18,994 - __main__ - INFO - ✓ Подключение успешно
+2026-03-08 02:36:19,047 - __main__ - INFO - 
+📋 Таблицы для обработки: dim_manufacturer, dim_store_location, dim_delivery_address, dim_product, dim_customer, dim_store, fact_purchases, fact_purchase_items, customer_features_mart, dim_date
+2026-03-08 02:36:19,050 - __main__ - WARNING - 
+⚠️  ВНИМАНИЕ: Будет выполнена дедупликация таблиц
+2026-03-08 02:36:22,886 - __main__ - INFO - 
+🚀 ЗАПУСК ДЕДУПЛИКАЦИИ
+2026-03-08 02:36:22,886 - __main__ - INFO - Стратегия: OPTIMIZE FINAL
+2026-03-08 02:36:22,887 - __main__ - INFO - ======================================================================
+2026-03-08 02:36:22,887 - __main__ - INFO - 
+📊 Обработка таблицы: dim_manufacturer
+2026-03-08 02:36:22,982 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:36:22,983 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_manufacturer FINAL
+2026-03-08 02:36:23,123 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:23,123 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store_location
+2026-03-08 02:36:23,216 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:36:23,217 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store_location FINAL
+2026-03-08 02:36:23,359 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:23,359 - __main__ - INFO - 
+📊 Обработка таблицы: dim_delivery_address
+2026-03-08 02:36:23,457 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:36:23,458 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_delivery_address FINAL
+2026-03-08 02:36:23,608 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:23,609 - __main__ - INFO - 
+📊 Обработка таблицы: dim_product
+2026-03-08 02:36:23,705 - __main__ - INFO -   Строк до: 50, Частей: 1
+2026-03-08 02:36:23,705 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_product FINAL
+2026-03-08 02:36:23,864 - __main__ - INFO -   ✓ Строк после: 50, Частей: 1, Удалено дубликатов: 0 (0.06 сек)
+2026-03-08 02:36:23,865 - __main__ - INFO - 
+📊 Обработка таблицы: dim_customer
+2026-03-08 02:36:23,963 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:36:23,963 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_customer FINAL
+2026-03-08 02:36:24,107 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:24,107 - __main__ - INFO - 
+📊 Обработка таблицы: dim_store
+2026-03-08 02:36:24,204 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:36:24,204 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_store FINAL
+2026-03-08 02:36:24,343 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:24,344 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchases
+2026-03-08 02:36:24,440 - __main__ - INFO -   Строк до: 205, Частей: 9
+2026-03-08 02:36:24,441 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchases FINAL
+2026-03-08 02:36:24,619 - __main__ - INFO -   ✓ Строк после: 200, Частей: 4, Удалено дубликатов: 5 (0.08 сек)
+2026-03-08 02:36:24,619 - __main__ - INFO - 
+📊 Обработка таблицы: fact_purchase_items
+2026-03-08 02:36:24,712 - __main__ - INFO -   Строк до: 380, Частей: 1
+2026-03-08 02:36:24,712 - __main__ - INFO -   → OPTIMIZE TABLE mart.fact_purchase_items FINAL
+2026-03-08 02:36:24,859 - __main__ - INFO -   ✓ Строк после: 380, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:24,859 - __main__ - INFO - 
+📊 Обработка таблицы: customer_features_mart
+2026-03-08 02:36:24,951 - __main__ - INFO -   Строк до: 45, Частей: 1
+2026-03-08 02:36:24,951 - __main__ - INFO -   → OPTIMIZE TABLE mart.customer_features_mart FINAL
+2026-03-08 02:36:25,090 - __main__ - INFO -   ✓ Строк после: 45, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:25,091 - __main__ - INFO - 
+📊 Обработка таблицы: dim_date
+2026-03-08 02:36:25,182 - __main__ - INFO -   Строк до: 82, Частей: 1
+2026-03-08 02:36:25,183 - __main__ - INFO -   → OPTIMIZE TABLE mart.dim_date FINAL
+2026-03-08 02:36:25,323 - __main__ - INFO -   ✓ Строк после: 82, Частей: 1, Удалено дубликатов: 0 (0.05 сек)
+2026-03-08 02:36:25,324 - __main__ - INFO - 
+======================================================================
+2026-03-08 02:36:25,324 - __main__ - INFO - 📊 ИТОГОВЫЙ ОТЧЁТ
+2026-03-08 02:36:25,324 - __main__ - INFO - ======================================================================
+2026-03-08 02:36:25,325 - __main__ - INFO - ✓ dim_manufacturer: 50 → 50 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,325 - __main__ - INFO - ✓ dim_store_location: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,325 - __main__ - INFO - ✓ dim_delivery_address: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,325 - __main__ - INFO - ✓ dim_product: 50 → 50 строк (удалено: 0, 0.06 сек)
+2026-03-08 02:36:25,326 - __main__ - INFO - ✓ dim_customer: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,326 - __main__ - INFO - ✓ dim_store: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,326 - __main__ - INFO - ✓ fact_purchases: 205 → 200 строк (удалено: 5, 0.08 сек)
+2026-03-08 02:36:25,326 - __main__ - INFO - ✓ fact_purchase_items: 380 → 380 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,327 - __main__ - INFO - ✓ customer_features_mart: 45 → 45 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,327 - __main__ - INFO - ✓ dim_date: 82 → 82 строк (удалено: 0, 0.05 сек)
+2026-03-08 02:36:25,327 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-08 02:36:25,328 - __main__ - INFO - Всего таблиц обработано: 10
+2026-03-08 02:36:25,328 - __main__ - INFO -   ✓ Успешно: 10
+2026-03-08 02:36:25,328 - __main__ - INFO -   ✗ С ошибками: 0
+2026-03-08 02:36:25,328 - __main__ - INFO - Всего строк: 992 → 987
+2026-03-08 02:36:25,328 - __main__ - INFO - Всего удалено дубликатов: 5
+2026-03-08 02:36:25,329 - __main__ - INFO - Общее время выполнения: 0.54 сек
+2026-03-08 02:36:25,329 - __main__ - INFO - ======================================================================

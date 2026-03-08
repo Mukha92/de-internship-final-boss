@@ -1,0 +1,135 @@
+2026-03-08 01:49:48,018 - __main__ - INFO - Запуск ETL с форматом вывода: all
+2026-03-08 01:49:48,018 - src.pikcha_etl.etl.process - INFO - Создание SparkSession...
+2026-03-08 01:49:54,338 - src.pikcha_etl.etl.process - INFO - SparkSession создана успешно
+2026-03-08 01:49:54,339 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:49:54,340 - src.pikcha_etl.etl.process - INFO - ЗАПУСК ETL ПРОЦЕССА
+2026-03-08 01:49:54,341 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:49:54,342 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ИЗВЛЕЧЕНИЯ ДАННЫХ ===
+2026-03-08 01:49:54,344 - src.pikcha_etl.etl.process - INFO - Чтение таблицы fact_purchases из Clickhouse...
+2026-03-08 01:50:00,822 - src.pikcha_etl.etl.process - INFO - Загружено 200 строк из fact_purchases
+2026-03-08 01:50:00,823 - src.pikcha_etl.etl.process - INFO - Чтение таблицы fact_purchase_items из Clickhouse...
+2026-03-08 01:50:01,152 - src.pikcha_etl.etl.process - INFO - Загружено 380 строк из fact_purchase_items
+2026-03-08 01:50:01,153 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_customer из Clickhouse...
+2026-03-08 01:50:01,583 - src.pikcha_etl.etl.process - INFO - Загружено 45 строк из dim_customer
+2026-03-08 01:50:01,583 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_product из Clickhouse...
+2026-03-08 01:50:01,916 - src.pikcha_etl.etl.process - INFO - Загружено 50 строк из dim_product
+2026-03-08 01:50:01,916 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_store из Clickhouse...
+2026-03-08 01:50:02,296 - src.pikcha_etl.etl.process - INFO - Загружено 45 строк из dim_store
+2026-03-08 01:50:02,297 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_date из Clickhouse...
+2026-03-08 01:50:02,581 - src.pikcha_etl.etl.process - INFO - Загружено 85 строк из dim_date
+2026-03-08 01:50:02,581 - src.pikcha_etl.etl.process - INFO - === ИЗВЛЕЧЕНИЕ ЗАВЕРШЕНО ===
+2026-03-08 01:50:02,581 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ТРАНСФОРМАЦИИ ===
+2026-03-08 01:50:03,247 - src.pikcha_etl.etl.process - INFO - Расчёт агрегированных метрик...
+2026-03-08 01:50:03,951 - src.pikcha_etl.etl.process - INFO - Вычисление итоговых признаков...
+2026-03-08 01:50:04,962 - src.pikcha_etl.etl.process - INFO - === ТРАНСФОРМАЦИЯ ЗАВЕРШЕНА ===
+2026-03-08 01:50:04,968 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ЗАГРУЗКИ в customer_features_mart ===
+2026-03-08 01:50:05,324 - src.pikcha_etl.etl.process - INFO - Очистка таблицы customer_features_mart...
+2026-03-08 01:50:13,903 - src.pikcha_etl.etl.process - INFO - === ЗАГРУЗКА ЗАВЕРШЕНА: сохранено 45 записей ===
+2026-03-08 01:50:13,904 - src.pikcha_etl.etl.process - INFO - Сохранение результатов в output\analytic_result_2026_03_08.csv...
+2026-03-08 01:50:18,028 - src.pikcha_etl.etl.process - INFO - Результаты сохранены в output\analytic_result_2026_03_08.csv
+2026-03-08 01:50:18,029 - src.pikcha_etl.etl.process - INFO - Сохранение результатов в output\analytic_result_2026_03_08.json...
+2026-03-08 01:50:20,912 - src.pikcha_etl.etl.process - INFO - Результаты сохранены в output\analytic_result_2026_03_08.json
+2026-03-08 01:50:20,913 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:50:20,913 - src.pikcha_etl.etl.process - INFO - ETL ПРОЦЕСС УСПЕШНО ЗАВЕРШЁН
+2026-03-08 01:50:20,914 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:50:20,914 - __main__ - INFO - ETL процесс завершён успешно
+2026-03-08 01:50:20,915 - __main__ - INFO - Сохранённые файлы:
+2026-03-08 01:50:20,915 - __main__ - INFO -   csv: output\analytic_result_2026_03_08.csv
+2026-03-08 01:50:20,915 - __main__ - INFO -   json: output\analytic_result_2026_03_08.json
+2026-03-08 01:50:20,937 - py4j.clientserver - INFO - Closing down clientserver connection
+2026-03-08 01:51:54,417 - __main__ - INFO - Запуск ETL с форматом вывода: all
+2026-03-08 01:51:54,417 - src.pikcha_etl.etl.process - INFO - Создание SparkSession...
+2026-03-08 01:51:59,418 - src.pikcha_etl.etl.process - INFO - SparkSession создана успешно
+2026-03-08 01:51:59,418 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:51:59,419 - src.pikcha_etl.etl.process - INFO - ЗАПУСК ETL ПРОЦЕССА
+2026-03-08 01:51:59,419 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:51:59,419 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ИЗВЛЕЧЕНИЯ ДАННЫХ ===
+2026-03-08 01:51:59,420 - src.pikcha_etl.etl.process - INFO - Чтение таблицы fact_purchases из Clickhouse...
+2026-03-08 01:52:05,199 - src.pikcha_etl.etl.process - INFO - Загружено 200 строк из fact_purchases
+2026-03-08 01:52:05,200 - src.pikcha_etl.etl.process - INFO - Чтение таблицы fact_purchase_items из Clickhouse...
+2026-03-08 01:52:05,517 - src.pikcha_etl.etl.process - INFO - Загружено 380 строк из fact_purchase_items
+2026-03-08 01:52:05,520 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_customer из Clickhouse...
+2026-03-08 01:52:05,779 - src.pikcha_etl.etl.process - INFO - Загружено 45 строк из dim_customer
+2026-03-08 01:52:05,780 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_product из Clickhouse...
+2026-03-08 01:52:06,031 - src.pikcha_etl.etl.process - INFO - Загружено 50 строк из dim_product
+2026-03-08 01:52:06,032 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_store из Clickhouse...
+2026-03-08 01:52:06,254 - src.pikcha_etl.etl.process - INFO - Загружено 45 строк из dim_store
+2026-03-08 01:52:06,254 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_date из Clickhouse...
+2026-03-08 01:52:06,478 - src.pikcha_etl.etl.process - INFO - Загружено 85 строк из dim_date
+2026-03-08 01:52:06,479 - src.pikcha_etl.etl.process - INFO - === ИЗВЛЕЧЕНИЕ ЗАВЕРШЕНО ===
+2026-03-08 01:52:06,479 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ТРАНСФОРМАЦИИ ===
+2026-03-08 01:52:07,204 - src.pikcha_etl.etl.process - INFO - Расчёт агрегированных метрик...
+2026-03-08 01:52:07,696 - src.pikcha_etl.etl.process - INFO - Вычисление итоговых признаков...
+2026-03-08 01:52:08,117 - src.pikcha_etl.etl.process - INFO - === ТРАНСФОРМАЦИЯ ЗАВЕРШЕНА ===
+2026-03-08 01:52:08,117 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ЗАГРУЗКИ в customer_features_mart ===
+2026-03-08 01:52:08,402 - src.pikcha_etl.etl.process - INFO - Очистка таблицы customer_features_mart...
+2026-03-08 01:52:17,298 - src.pikcha_etl.etl.process - INFO - === ЗАГРУЗКА ЗАВЕРШЕНА: сохранено 45 записей ===
+2026-03-08 01:52:17,299 - src.pikcha_etl.etl.process - INFO - Сохранение результатов в output\analytic_result_2026_03_08.csv...
+2026-03-08 01:52:21,247 - src.pikcha_etl.etl.process - INFO - Результаты сохранены в output\analytic_result_2026_03_08.csv
+2026-03-08 01:52:21,247 - src.pikcha_etl.etl.process - INFO - Сохранение результатов в output\analytic_result_2026_03_08.json...
+2026-03-08 01:52:24,634 - src.pikcha_etl.etl.process - INFO - Результаты сохранены в output\analytic_result_2026_03_08.json
+2026-03-08 01:52:24,634 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:52:24,635 - src.pikcha_etl.etl.process - INFO - ETL ПРОЦЕСС УСПЕШНО ЗАВЕРШЁН
+2026-03-08 01:52:24,635 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 01:52:24,635 - __main__ - INFO - ETL процесс завершён успешно
+2026-03-08 01:52:24,635 - __main__ - INFO - Сохранённые файлы:
+2026-03-08 01:52:24,636 - __main__ - INFO -   csv: output\analytic_result_2026_03_08.csv
+2026-03-08 01:52:24,636 - __main__ - INFO -   json: output\analytic_result_2026_03_08.json
+2026-03-08 01:52:24,636 - __main__ - INFO - ============================================================
+2026-03-08 01:52:24,637 - __main__ - INFO - ЗАГРУЗКА В S3
+2026-03-08 01:52:24,637 - __main__ - INFO - ============================================================
+2026-03-08 01:52:25,039 - src.pikcha_etl.etl.upload_to_s3 - INFO - S3 клиент создан: endpoint=https://s3.ru-7.storage.selcloud.ru, bucket=de-internship-pikcha
+2026-03-08 01:52:25,041 - src.pikcha_etl.etl.upload_to_s3 - INFO - Загрузка output\analytic_result_2026_03_08.csv в s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.csv
+2026-03-08 01:52:25,538 - src.pikcha_etl.etl.upload_to_s3 - INFO - Файл успешно загружен: s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.csv
+2026-03-08 01:52:25,539 - src.pikcha_etl.etl.upload_to_s3 - INFO - Загрузка output\analytic_result_2026_03_08.json в s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.json
+2026-03-08 01:52:25,654 - src.pikcha_etl.etl.upload_to_s3 - INFO - Файл успешно загружен: s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.json
+2026-03-08 01:52:25,654 - __main__ - INFO - Результаты загрузки S3: CSV=True, JSON=True
+2026-03-08 01:52:25,663 - py4j.clientserver - INFO - Closing down clientserver connection
+2026-03-08 20:04:48,395 - __main__ - INFO - Запуск ETL с форматом вывода: all
+2026-03-08 20:04:48,396 - src.pikcha_etl.etl.process - INFO - Создание SparkSession...
+2026-03-08 20:05:02,556 - src.pikcha_etl.etl.process - INFO - SparkSession создана успешно
+2026-03-08 20:05:02,557 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 20:05:02,557 - src.pikcha_etl.etl.process - INFO - ЗАПУСК ETL ПРОЦЕССА
+2026-03-08 20:05:02,557 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 20:05:02,557 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ИЗВЛЕЧЕНИЯ ДАННЫХ ===
+2026-03-08 20:05:02,558 - src.pikcha_etl.etl.process - INFO - Чтение таблицы fact_purchases из Clickhouse...
+2026-03-08 20:05:06,362 - src.pikcha_etl.etl.process - INFO - Загружено 206 строк из fact_purchases
+2026-03-08 20:05:06,362 - src.pikcha_etl.etl.process - INFO - Чтение таблицы fact_purchase_items из Clickhouse...
+2026-03-08 20:05:06,621 - src.pikcha_etl.etl.process - INFO - Загружено 389 строк из fact_purchase_items
+2026-03-08 20:05:06,622 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_customer из Clickhouse...
+2026-03-08 20:05:06,857 - src.pikcha_etl.etl.process - INFO - Загружено 45 строк из dim_customer
+2026-03-08 20:05:06,857 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_product из Clickhouse...
+2026-03-08 20:05:07,083 - src.pikcha_etl.etl.process - INFO - Загружено 50 строк из dim_product
+2026-03-08 20:05:07,083 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_store из Clickhouse...
+2026-03-08 20:05:07,246 - src.pikcha_etl.etl.process - INFO - Загружено 45 строк из dim_store
+2026-03-08 20:05:07,246 - src.pikcha_etl.etl.process - INFO - Чтение таблицы dim_date из Clickhouse...
+2026-03-08 20:05:07,398 - src.pikcha_etl.etl.process - INFO - Загружено 78 строк из dim_date
+2026-03-08 20:05:07,399 - src.pikcha_etl.etl.process - INFO - === ИЗВЛЕЧЕНИЕ ЗАВЕРШЕНО ===
+2026-03-08 20:05:07,399 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ТРАНСФОРМАЦИИ ===
+2026-03-08 20:05:08,090 - src.pikcha_etl.etl.process - INFO - Расчёт агрегированных метрик...
+2026-03-08 20:05:08,870 - src.pikcha_etl.etl.process - INFO - Вычисление итоговых признаков...
+2026-03-08 20:05:09,503 - src.pikcha_etl.etl.process - INFO - === ТРАНСФОРМАЦИЯ ЗАВЕРШЕНА ===
+2026-03-08 20:05:09,503 - src.pikcha_etl.etl.process - INFO - === НАЧАЛО ЗАГРУЗКИ в customer_features_mart ===
+2026-03-08 20:05:09,731 - src.pikcha_etl.etl.process - INFO - Очистка таблицы customer_features_mart...
+2026-03-08 20:05:14,952 - src.pikcha_etl.etl.process - INFO - === ЗАГРУЗКА ЗАВЕРШЕНА: сохранено 45 записей ===
+2026-03-08 20:05:14,953 - src.pikcha_etl.etl.process - INFO - Сохранение результатов в output\analytic_result_2026_03_08.csv...
+2026-03-08 20:05:17,428 - src.pikcha_etl.etl.process - INFO - Результаты сохранены в output\analytic_result_2026_03_08.csv
+2026-03-08 20:05:17,429 - src.pikcha_etl.etl.process - INFO - Сохранение результатов в output\analytic_result_2026_03_08.json...
+2026-03-08 20:05:19,842 - src.pikcha_etl.etl.process - INFO - Результаты сохранены в output\analytic_result_2026_03_08.json
+2026-03-08 20:05:19,856 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 20:05:19,866 - src.pikcha_etl.etl.process - INFO - ETL ПРОЦЕСС УСПЕШНО ЗАВЕРШЁН
+2026-03-08 20:05:19,876 - src.pikcha_etl.etl.process - INFO - ============================================================
+2026-03-08 20:05:19,883 - __main__ - INFO - ETL процесс завершён успешно
+2026-03-08 20:05:19,883 - __main__ - INFO - Сохранённые файлы:
+2026-03-08 20:05:19,889 - __main__ - INFO -   csv: output\analytic_result_2026_03_08.csv
+2026-03-08 20:05:19,890 - __main__ - INFO -   json: output\analytic_result_2026_03_08.json
+2026-03-08 20:05:19,895 - __main__ - INFO - ============================================================
+2026-03-08 20:05:19,899 - __main__ - INFO - ЗАГРУЗКА В S3
+2026-03-08 20:05:19,902 - __main__ - INFO - ============================================================
+2026-03-08 20:05:20,299 - src.pikcha_etl.etl.upload_to_s3 - INFO - S3 клиент создан: endpoint=https://s3.ru-7.storage.selcloud.ru, bucket=de-internship-pikcha
+2026-03-08 20:05:20,299 - src.pikcha_etl.etl.upload_to_s3 - INFO - Загрузка output\analytic_result_2026_03_08.csv в s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.csv
+2026-03-08 20:05:21,556 - src.pikcha_etl.etl.upload_to_s3 - INFO - Файл успешно загружен: s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.csv
+2026-03-08 20:05:21,558 - src.pikcha_etl.etl.upload_to_s3 - INFO - Загрузка output\analytic_result_2026_03_08.json в s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.json
+2026-03-08 20:05:21,706 - src.pikcha_etl.etl.upload_to_s3 - INFO - Файл успешно загружен: s3://de-internship-pikcha/analytics/analytic_result_2026_03_08.json
+2026-03-08 20:05:21,707 - __main__ - INFO - Результаты загрузки S3: CSV=True, JSON=True
+2026-03-08 20:05:21,718 - py4j.clientserver - INFO - Closing down clientserver connection

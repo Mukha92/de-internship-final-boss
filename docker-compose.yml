@@ -1,0 +1,394 @@
+# ========== ОБЩИЕ ОПРЕДЕЛЕНИЯ  ==========
+x-airflow-common: &airflow-common
+  build:
+    context: .
+    dockerfile: Dockerfile.airflow
+  env_file:
+    - .env
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+    TZ: Europe/Moscow
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on: &airflow-common-depends-on
+    redis:
+      condition: service_healthy
+    postgres:
+      condition: service_healthy
+
+# ========== ОСНОВНЫЕ СЕРВИСЫ ==========
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo_db_pikcha_airflow
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: no
+    networks:
+      - app-network
+    environment:
+      - TZ=Europe/Moscow
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express_pikcha_airflow
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo_db_pikcha_airflow
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USER:-admin}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASS:-pass}
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
+    depends_on:
+      - mongo
+    restart: no
+    networks:
+      - app-network
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:25.7
+    container_name: clickhouse_airflow
+    environment:
+      CLICKHOUSE_DB: ${CLICKHOUSE_DB:-clickhouse}
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER:-clickhouse}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-clickhouse}
+      TZ: Europe/Moscow
+    ports:
+      - "8123:8123"    # HTTP
+      - "9000:9000"    # Native
+    volumes:
+      - clickhouse-data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8123/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: no
+    networks:
+      - app-network
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.3
+    container_name: zookeeper_pikcha_airflow
+    ports:
+      - "${ZOOKEEPER_PORT:-2181}:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      TZ: Europe/Moscow
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-log:/var/lib/zookeeper/log
+    healthcheck:
+      test: ["CMD-SHELL", "echo ruok | nc localhost 2181 | grep imok"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: no
+    networks:
+      - app-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka_pikcha_airflow
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,INTERNAL://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,INTERNAL://kafka:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,INTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      TZ: Europe/Moscow
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: no
+    networks:
+      - app-network
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui_pikcha_airflow
+    ports:
+      - "8082:8080"  # ИЗМЕНЕНО: был 8080, теперь 8082
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_CLUSTERS_0_NAME: ${KAFKA_CLUSTER_NAME:-my-cluster}
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_JMX_PORT: 9997
+    restart: no
+    networks:
+      - app-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana_pikcha_airflow
+    env_file:
+      - .env
+    restart: no
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=Europe/Moscow
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_INSTALL_PLUGINS=grafana-clickhouse-datasource
+      - GF_ALERTING_ENABLED=true
+      - GF_UNIFIED_ALERTING_ENABLED=true
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./grafana/alerting:/etc/grafana/provisioning/alerting:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    depends_on:
+      - clickhouse
+    networks:
+      - app-network
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=
+      - JUPYTER_PASSWORD=
+      - JUPYTER_ALLOW_ORIGIN=*
+      - JUPYTER_ALLOW_REMOTE_ACCESS=true
+      - JUPYTER_NO_PASSWORD=yes
+      - TZ=Europe/Moscow
+    command: start.sh jupyter lab --LabApp.token='' --LabApp.password=''
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./data/spark:/opt/spark/logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: no
+    depends_on:
+      - clickhouse
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: no
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7.2-bookworm
+    expose:
+      - 6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 50
+      start_period: 30s
+    restart: no
+    networks:
+      - app-network
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"  # Kafka UI теперь на 8082, так что конфликта нет
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: no
+    depends_on:
+      <<: *airflow-common-depends-on
+    networks:
+      - app-network
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+      - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+      - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+      - ${AIRFLOW_PROJ_DIR:-.}/airflow_config/webserver_config.py:/opt/airflow/webserver_config.py
+      - ${AIRFLOW_PROJ_DIR:-.}/scripts:/opt/airflow/scripts
+      - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+      - ${AIRFLOW_PROJ_DIR:-.}/src:/opt/airflow/src
+      - ${AIRFLOW_PROJ_DIR:-.}/sql:/opt/airflow/sql
+      - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
+      - ${AIRFLOW_PROJ_DIR:-.}/output:/opt/airflow/output
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8974/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: no
+    depends_on:
+      <<: *airflow-common-depends-on
+    networks:
+      - app-network
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+      - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+      - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+      - ${AIRFLOW_PROJ_DIR:-.}/airflow_config/webserver_config.py:/opt/airflow/webserver_config.py
+      - ${AIRFLOW_PROJ_DIR:-.}/scripts:/opt/airflow/scripts
+      - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+      - ${AIRFLOW_PROJ_DIR:-.}/src:/opt/airflow/src
+      - ${AIRFLOW_PROJ_DIR:-.}/sql:/opt/airflow/sql
+      - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
+      - ${AIRFLOW_PROJ_DIR:-.}/output:/opt/airflow/output
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
+  airflow-worker:
+    <<: *airflow-common
+    command: celery worker
+    healthcheck:
+      test:
+        - "CMD-SHELL"
+        - 'celery --app airflow.providers.celery.executors.celery_executor.app inspect ping -d "celery@${HOSTNAME}" || celery --app airflow.executors.celery_executor.app inspect ping -d "celery@${HOSTNAME}"'
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    environment:
+      <<: *airflow-common-env
+      DUMB_INIT_SETSID: "0"
+      HMAC_SECRET_KEY: "your-secret-key-here"
+    restart: no
+    depends_on:
+      <<: *airflow-common-depends-on
+    networks:
+      - app-network
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+      - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+      - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+      - ${AIRFLOW_PROJ_DIR:-.}/airflow_config/webserver_config.py:/opt/airflow/webserver_config.py
+      - ${AIRFLOW_PROJ_DIR:-.}/scripts:/opt/airflow/scripts
+      - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+      - ${AIRFLOW_PROJ_DIR:-.}/src:/opt/airflow/src
+      - ${AIRFLOW_PROJ_DIR:-.}/sql:/opt/airflow/sql
+      - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
+      - ${AIRFLOW_PROJ_DIR:-.}/output:/opt/airflow/output
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    user: "0:0"
+    command:
+      - -c
+      - |
+        if [[ -z "${AIRFLOW_UID}" ]]; then
+          echo
+          echo -e "\033[1;33mWARNING!!!: AIRFLOW_UID not set!\e[0m"
+          echo "If you are on Linux, you SHOULD follow the instructions below to set"
+          echo "AIRFLOW_UID environment variable, otherwise files will be owned by root."
+          echo
+        fi
+        mkdir -p /sources/logs /sources/dags /sources/plugins
+        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
+        /entrypoint airflow version
+        # Create Airflow connections
+        airflow connections add 'spark_default' --conn-type 'spark' --conn-host 'spark://spark' --conn-port '7077' || true
+        airflow connections add 'clickhouse_default' --conn-type 'clickhouse' --conn-host 'clickhouse' --conn-port '9000' --conn-schema 'clickhouse' --conn-login 'clickhouse' --conn-password 'clickhouse' || true
+        airflow connections add 'mongodb_default' --conn-type 'mongo' --conn-host 'mongo' --conn-port '27017'
+        airflow connections add 'kafka_default' --conn-type 'generic' --conn-host 'kafka' --conn-port '29092' --conn-extra '{"bootstrap.servers": "kafka:29092"}' || true
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _PIP_ADDITIONAL_REQUIREMENTS: ''
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}:/sources
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: no
+    networks:
+      - app-network
+
+# ========== СЕТИ И ВОЛЮМЫ ==========
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    labels:
+      description: "Volume for MongoDB data"
+  clickhouse-data:
+    labels:
+      description: "Volume for ClickHouse data files"
+  zookeeper-data:
+    labels:
+      description: "Volume for Zookeeper data"
+  zookeeper-log:
+    labels:
+      description: "Volume for Zookeeper transaction log"
+  kafka-data:
+    labels:
+      description: "Volume for Kafka data"
+  grafana_data:
+    labels:
+      description: "Volume for Grafana data"
+  postgres-db-volume:
+    labels:
+      description: "Volume for Airflow PostgreSQL metadata"
