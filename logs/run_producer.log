@@ -310,3 +310,23 @@
 2026-03-08 20:01:27,339 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
 2026-03-08 20:01:27,340 - MongoKafkaProducer - INFO - Работа завершена
 2026-03-08 20:01:27,340 - __main__ - INFO - Работа продюсера завершена
+2026-03-09 17:22:09,573 - MongoKafkaProducer - INFO - Подключение к MongoDB: mongodb://mongo_db_pikcha_airflow:27017
+2026-03-09 17:22:09,587 - MongoKafkaProducer - INFO - Подключение к Kafka: kafka:29092
+2026-03-09 17:22:09,589 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('192.168.160.9', 29092)]>: connecting to kafka:29092 [('192.168.160.9', 29092) IPv4]
+2026-03-09 17:22:09,596 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=kafka:29092 <checking_api_versions_recv> [IPv4 ('192.168.160.9', 29092)]>: Broker version identified as 2.6
+2026-03-09 17:22:09,596 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('192.168.160.9', 29092)]>: Connection complete.
+2026-03-09 17:22:09,607 - MongoKafkaProducer - INFO - Коллекция stores: 90 документов
+2026-03-09 17:22:09,608 - MongoKafkaProducer - INFO - Коллекция customers: 90 документов
+2026-03-09 17:22:09,611 - MongoKafkaProducer - INFO - Коллекция products: 100 документов
+2026-03-09 17:22:09,613 - MongoKafkaProducer - INFO - Коллекция purchases: 400 документов
+2026-03-09 17:22:09,702 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=kafka:29092 <connecting> [IPv4 ('192.168.160.9', 29092)]>: connecting to kafka:29092 [('192.168.160.9', 29092) IPv4]
+2026-03-09 17:22:09,704 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=kafka:29092 <connected> [IPv4 ('192.168.160.9', 29092)]>: Connection complete.
+2026-03-09 17:22:09,704 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('192.168.160.9', 29092)]>: Closing connection. 
+2026-03-09 17:22:09,787 - MongoKafkaProducer - INFO - stores: всего обработано 90 документов
+2026-03-09 17:22:09,869 - MongoKafkaProducer - INFO - customers: всего обработано 90 документов
+2026-03-09 17:22:09,956 - MongoKafkaProducer - INFO - products: всего обработано 100 документов
+2026-03-09 17:22:10,339 - MongoKafkaProducer - INFO - purchases: всего обработано 400 документов
+2026-03-09 17:22:10,340 - kafka.producer.kafka - INFO - <KafkaProducer client_id=kafka-python-producer-1 transactional_id=None>: Closing the Kafka producer with 9223372036.0 secs timeout.
+2026-03-09 17:22:10,341 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=kafka:29092 <connected> [IPv4 ('192.168.160.9', 29092)]>: Closing connection. 
+2026-03-09 17:22:10,341 - MongoKafkaProducer - INFO - Работа завершена
+2026-03-09 17:22:10,342 - __main__ - INFO - Работа продюсера завершена

@@ -126,3 +126,15 @@
 2026-03-08 19:57:00,171 - __main__ - INFO -   products: 50
 2026-03-08 19:57:00,171 - __main__ - INFO -   customers: 45
 2026-03-08 19:57:00,172 - __main__ - INFO -   purchases: 200
+2026-03-09 17:21:36,862 - __main__ - INFO - Загрузка данных из директории: /opt/airflow/data
+2026-03-09 17:21:36,879 - MongoDataLoader - INFO - Подключено к MongoDB: mongodb://mongo_db_pikcha_airflow:27017
+2026-03-09 17:21:36,994 - MongoDataLoader - INFO - В 'stores' загружено: 45 документов
+2026-03-09 17:21:37,105 - MongoDataLoader - INFO - В 'products' загружено: 50 документов
+2026-03-09 17:21:37,208 - MongoDataLoader - INFO - В 'customers' загружено: 45 документов
+2026-03-09 17:21:37,653 - MongoDataLoader - INFO - В 'purchases' загружено: 200 документов
+2026-03-09 17:21:37,655 - MongoDataLoader - INFO - Соединение с MongoDB закрыто.
+2026-03-09 17:21:37,655 - __main__ - INFO - Загрузка завершена. Всего загружено документов: 340
+2026-03-09 17:21:37,656 - __main__ - INFO -   stores: 45
+2026-03-09 17:21:37,656 - __main__ - INFO -   products: 50
+2026-03-09 17:21:37,656 - __main__ - INFO -   customers: 45
+2026-03-09 17:21:37,657 - __main__ - INFO -   purchases: 200
