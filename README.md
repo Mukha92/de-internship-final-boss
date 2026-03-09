@@ -17,15 +17,16 @@
 
 ## 📋 Оглавление
 
-- [Структура проекта](#-структура-проекта)
-- [Технологический стек](#-технологический-стек)
-- [Архитектура системы](#-архитектура-системы)
-- [Структура данных](#-структура-данных)
-- [Настройка конфигурации](#-настройка-конфигурации)
-- [Запуск пайплайна](#-запуск-пайплайна)
-- [Оркестрация с Apache Airflow](#-оркестрация-с-apache-airflow)
-- [Grafana Dashboards](#-grafana-dashboards)
-- [Мониторинг и отладка](#-мониторинг-и-отладка)
+- [📁 Структура проекта](#-структура-проекта)
+- [🛠 Технологический стек](#-технологический-стек)
+- [🏗 Архитектура системы](#-архитектура-системы)
+- [🗄 Структура данных](#-структура-данных)
+- [⚙️ Развёртывание и конфигурация](#-развёртывание-и-конфигурация)
+- [🚀 Запуск пайплайна](#-запуск-пайплайна)
+- [🔁 Оркестрация с Apache Airflow](#-оркестрация-с-apache-airflow)
+- [🔒 Безопасность](#-безопасность)
+- [📊 Grafana Dashboards](#-grafana-dashboards)
+- [🔧 Мониторинг и отладка](#-мониторинг-и-отладка)
 
 ---
 
@@ -63,7 +64,6 @@ pikcha_test_airflow/
 │   ├── etl/                       # Batch ETL процессы
 │   │   ├── process.py             # CustomerFeatureETL (Spark)
 │   │   ├── config.py              # ETL конфигурация
-│   │   ├── features.py            # 30 признаков клиентов
 │   │   └── upload_to_s3.py        # Выгрузка в S3
 │   └── utils/                     # Утилиты
 │       ├── helpers.py             # Нормализация телефона/email
@@ -85,7 +85,6 @@ pikcha_test_airflow/
 │   ├── 02_create_materialized_views.sql # MV для автоматической загрузки
 │   └── 03_create_customer_features_table.sql # Витрина признаков
 │
-├── plugins/                       # Плагины Airflow (кастомные хуки, операторы)
 ├── ui/                            # UI компоненты
 │   └── UI.html                    # HTML-файл интерфейса
 │
@@ -107,7 +106,6 @@ pikcha_test_airflow/
 ├── data/                          # Сгенерированные JSON данные
 ├── output/                        # Результаты ETL (CSV/JSON)
 ├── logs/                          # Логи выполнения
-├── notebooks/                     # Jupyter ноутбуки для аналитики
 ├── docs/                          # Документация
 │   └── architecture.md            # Подробная архитектура системы
 │
@@ -137,7 +135,6 @@ pikcha_test_airflow/
 | **Визуализация** | Grafana | Дашборды и мониторинг |
 | **Инфраструктура** | Docker | Контейнеризация сервисов |
 | **Хранилище** | S3 (Selectel/AWS) | Архивирование результатов |
-| **Notebooks** | Jupyter Lab | Интерактивная аналитика |
 
 **Основные библиотеки Python:**
 - `pymongo` — работа с MongoDB
@@ -580,87 +577,449 @@ erDiagram
 
 ---
 
-## ⚙️ Настройка конфигурации
+## ⚙️ Развёртывание и конфигурация
 
-### Переменные окружения
+### 📋 Предварительные требования
 
-Скопируйте пример и настройте под вашу инфраструктуру:
+| Требование | Версия | Примечание |
+|------------|--------|------------|
+| **Python** | 3.12+ | Основная среда выполнения |
+| **Docker** | 20.10+ | Контейнеризация сервисов |
+| **Docker Compose** | 2.0+ | Оркестрация контейнеров |
+| **Git** | 2.30+ | Система контроля версий |
+| **RAM** | 8 ГБ+ | Рекомендуется 16 ГБ для полной инфраструктуры |
+| **Disk** | 10 ГБ+ | Свободное место для данных и логов |
+
+---
+
+### 🔧 Шаг 1: Клонирование репозитория
+
+```bash
+# Клонирование репозитория
+git clone <repository-url>
+cd pikcha_test_airflow
+
+# Создание виртуального окружения (рекомендуется)
+python -m venv .venv
+
+# Активация виртуального окружения
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+# Linux/macOS
+source .venv/bin/activate
+
+# Установка зависимостей
+pip install -r requirements.txt
+```
+
+---
+
+### 📝 Шаг 2: Настройка переменных окружения
+
+**Создайте файл `.env` на основе примера:**
 
 ```bash
 cp .env.example .env
 ```
 
-| Переменная | Значение по умолчанию | Описание |
-|------------|----------------------|----------|
-| **MongoDB** | | |
-| `MONGO_URI` | `mongodb://localhost:27017` | URI подключения |
-| `MONGO_DATABASE` | `mongo_db` | Имя базы данных |
-| `MONGO_EXPRESS_USER` | `admin` | Логин Mongo Express |
-| `MONGO_EXPRESS_PASS` | `pass` | Пароль Mongo Express |
-| **ClickHouse** | | |
-| `CLICKHOUSE_HOST` | `localhost` | Хост сервера |
-| `CLICKHOUSE_HTTP_PORT` | `8123` | HTTP порт |
-| `CLICKHOUSE_NATIVE_PORT` | `9000` | Native порт |
-| `CLICKHOUSE_DATABASE` | `mart` | База витрин |
-| `CLICKHOUSE_RAW_DB` | `raw` | База сырых данных |
-| `CLICKHOUSE_USER` | `clickhouse` | Пользователь |
-| `CLICKHOUSE_PASSWORD` | `clickhouse` | Пароль |
-| **Kafka** | | |
-| `KAFKA_BROKER` | `localhost:9092` | Адрес брокера |
-| `KAFKA_GROUP` | `pikcha-consumer-group` | Consumer group |
-| `KAFKA_CLUSTER_NAME` | `my-cluster` | Имя кластера |
-| **Безопасность** | | |
-| `HMAC_SECRET_KEY` | `your-secret-key-here` | Ключ HMAC для хеширования |
-| **S3** | | |
-| `S3_ENABLED` | `true` | Включить S3 |
-| `S3_ENDPOINT` | `https://s3.ru-7.storage.selcloud.ru` | Endpoint |
-| `S3_BUCKET` | `de-internship-pikcha` | Имя бакета |
-| `S3_ACCESS_KEY` | — | Access key |
-| `S3_SECRET_KEY` | — | Secret key |
-| `S3_REGION` | `ru-7` | Регион |
-| **Grafana** | | |
-| `GRAFANA_ADMIN_USER` | `admin` | Логин администратора |
-| `GRAFANA_ADMIN_PASSWORD` | `admin` | Пароль администратора |
-| **Прочее** | | |
-| `OUTPUT_DIR` | `output` | Директория результатов |
-| `DATA_DIR` | `data` | Директория данных |
-| `CSV_FILENAME_PREFIX` | `analytic_result` | Префикс файлов |
-| `ZOOKEEPER_PORT` | `2181` | Порт Zookeeper |
+**Обязательные переменные для настройки:**
+
+| Переменная | Описание | Пример значения |
+|------------|----------|-----------------|
+| `HMAC_SECRET_KEY` | Ключ для HMAC-хеширования чувствительных данных | `my-super-secret-key-2077` |
+| `MONGO_URI` | URI подключения к MongoDB (автоматически определяется для Docker) | `mongodb://localhost:27017` |
+| `CLICKHOUSE_HOST` | Хост ClickHouse (автоматически определяется для Docker) | `localhost` |
+| `KAFKA_BROKER` | Адрес Kafka брокера (автоматически определяется для Docker) | `localhost:9092` |
+| `S3_ACCESS_KEY` | Ключ доступа к S3 (если используется) | `your-access-key` |
+| `S3_SECRET_KEY` | Секретный ключ S3 (если используется) | `your-secret-key` |
+| `TELEGRAM_BOT_TOKEN` | Токен бота для алертов (опционально) | `1234567890:AAH...` |
+| `TELEGRAM_CHAT_ID` | ID чата для уведомлений (опционально) | `123456789` |
+
+**Полная конфигурация `.env`:**
+
+```bash
+# ===========================================
+# PIKCHA ETL Configuration
+# ===========================================
+
+# MongoDB
+# Для локальной разработки: mongodb://localhost:27017
+# Для Docker: mongodb://mongo_db_pikcha_airflow:27017 (автоматически определяется в settings.py)
+MONGO_URI=
+MONGO_DATABASE=mongo_db
+
+# MongoDB Express (Web UI)
+MONGO_EXPRESS_USER=admin
+MONGO_EXPRESS_PASS=pass
+
+# ClickHouse
+# Для локальной разработки: localhost
+# Для Docker: clickhouse (автоматически определяется в settings.py)
+CLICKHOUSE_HOST=
+CLICKHOUSE_HTTP_PORT=8123
+CLICKHOUSE_NATIVE_PORT=9000
+CLICKHOUSE_DATABASE=mart
+CLICKHOUSE_RAW_DB=raw
+CLICKHOUSE_USER=clickhouse
+CLICKHOUSE_PASSWORD=clickhouse
+
+# Kafka
+# Для локальной разработки: localhost:9092
+# Для Docker: kafka:29092 (автоматически определяется в settings.py)
+KAFKA_BROKER=
+KAFKA_GROUP=pikcha-consumer-group
+KAFKA_CLUSTER_NAME=my-cluster
+
+# Kafka Admin (для очистки топиков)
+KAFKA_ADMIN_BROKER=localhost:9092
+
+# Kafka Topics (список топиков через запятую)
+KAFKA_TOPICS=stores,customers,products,purchases
+
+# Security (обязательно для продюсера)
+HMAC_SECRET_KEY=your-secret-key-here
+
+# S3 Configuration
+S3_ENABLED=true
+S3_ACCESS_KEY=
+S3_SECRET_KEY=
+S3_ENDPOINT=https://s3.ru-7.storage.selcloud.ru
+S3_BUCKET=de-internship-pikcha
+S3_REGION=ru-7
+
+# Output (для ETL)
+OUTPUT_DIR=output
+CSV_FILENAME_PREFIX=analytic_result
+
+# Data (для генерации и очистки)
+DATA_DIR=data
+
+# Data Subdirs (список подпапок для очистки)
+DATA_SUBDIRS=customers,products,purchases,stores,spark
+
+# Grafana
+GRAFANA_ADMIN_USER=admin
+GRAFANA_ADMIN_PASSWORD=admin
+
+# Telegram Alerts (для уведомлений о дубликатах)
+# Получите токен бота через @BotFather
+TELEGRAM_BOT_TOKEN=
+# Получите Chat ID через @userinfobot или @JsonDumpBot
+TELEGRAM_CHAT_ID=
+
+# Zookeeper
+ZOOKEEPER_PORT=2181
+```
+
+---
+
+### 🐳 Шаг 3: Развёртывание инфраструктуры (Docker)
+
+**Инфраструктура включает:**
+
+| Сервис | Порт | Назначение |
+|--------|------|------------|
+| `airflow-webserver` | 8080 | Веб-интерфейс Airflow |
+| `airflow-scheduler` | — | Планировщик DAG-ов |
+| `airflow-worker` | — | Выполнение задач |
+| `airflow-triggerer` | — | Асинхронные триггеры |
+| `postgres` | 5432 | Metastore для Airflow |
+| `redis` | 6379 | Брокер сообщений Celery |
+| `mongo` | 27017 | MongoDB для операционных данных |
+| `clickhouse` | 9000/8123 | ClickHouse для аналитики |
+| `zookeeper` | 2181 | Координация Kafka |
+| `kafka` | 9092/29092 | Брокер сообщений |
+| `grafana` | 3000 | Визуализация и мониторинг |
+| `mongo-express` | 8081 | Веб-UI для MongoDB |
+| `kafka-ui` | 8082 | Веб-UI для Kafka |
+| `jupyter` | 8888 | Jupyter Lab для аналитики |
+
+**Запуск инфраструктуры:**
+
+```bash
+# 1. Инициализация Airflow (первый запуск)
+# Создаёт пользователя и инициализирует базу данных
+docker-compose up airflow-init
+
+# 2. Запуск всех сервисов в фоновом режиме
+docker-compose up -d
+
+# 3. Проверка статуса контейнеров
+docker-compose ps
+
+# 4. Просмотр логов
+docker-compose logs -f
+```
+
+**Остановка инфраструктуры:**
+
+```bash
+# Остановка всех сервисов
+docker-compose down
+
+# Остановка с удалением томов (данные будут удалены!)
+docker-compose down -v
+
+# Остановка конкретных сервисов
+docker-compose down mongo clickhouse kafka
+```
+
+---
+
+### 🔌 Шаг 4: Проверка подключения к сервисам
+
+**Airflow:**
+```bash
+# Проверка доступности веб-интерфейса
+curl http://localhost:8080
+
+# Логин/пароль: airflow / airflow
+```
+
+**MongoDB:**
+```bash
+# Подключение через mongosh
+mongosh mongodb://localhost:27017/mongo_db
+
+# Или через Docker
+docker-compose exec mongo mongosh mongodb://localhost:27017/mongo_db
+```
+
+**ClickHouse:**
+```bash
+# Подключение через clickhouse-client
+clickhouse-client --host localhost --port 9000 \
+  --user clickhouse --password clickhouse
+
+# Или через Docker
+docker-compose exec clickhouse clickhouse-client \
+  --user clickhouse --password clickhouse
+```
+
+**Kafka:**
+```bash
+# Проверка брокера через kafka-ui (веб-интерфейс)
+# http://localhost:8082
+
+# Или через Docker
+docker-compose exec kafka kafka-topics --bootstrap-server localhost:9092 --list
+```
+
+**Grafana:**
+```bash
+# Проверка доступности веб-интерфейса
+curl http://localhost:3000
+
+# Логин/пароль: admin / admin
+```
+
+---
+
+### 🗂️ Шаг 5: Инициализация базы данных ClickHouse
+
+**Создание таблиц RAW и MART слоёв:**
+
+```bash
+# Полная инициализация (с подтверждением)
+python scripts/init_clickhouse.py --confirm
+
+# Сухой запуск (показать SQL без выполнения)
+python scripts/init_clickhouse.py --dry-run
+
+# Только RAW-слой
+python scripts/init_clickhouse.py --raw-only --confirm
+
+# Только MART-слой
+python scripts/init_clickhouse.py --mart-only --confirm
+```
+
+**Что создаётся:**
+- База данных `raw` (таблицы: `stores`, `products`, `customers`, `purchases`)
+- База данных `mart` (таблицы: `dim_*`, `fact_*`, `customer_features_mart`)
+- Materialized Views для автоматической загрузки данных
+
+📄 **Лог:** `logs/init_clickhouse.log`
+
+---
+
+### ✅ Шаг 6: Проверка работоспособности
+
+**Чек-лист успешного развёртывания:**
+
+- [ ] Все контейнеры запущены (`docker-compose ps` показывает `Up`)
+- [ ] Airflow доступен по http://localhost:8080
+- [ ] Grafana доступна по http://localhost:3000
+- [ ] MongoDB подключается через mongosh
+- [ ] ClickHouse подключается через clickhouse-client
+- [ ] Kafka UI доступен по http://localhost:8082
+- [ ] Таблицы в ClickHouse созданы (`SHOW TABLES FROM raw;`, `SHOW TABLES FROM mart;`)
+
+**Тестовый запуск пайплайна:**
+
+```bash
+# 1. Генерация тестовых данных
+python scripts/generate_data.py -n 50
+
+# 2. Загрузка в MongoDB
+python scripts/load_to_mongo.py
+
+# 3. Проверка данных в MongoDB
+docker-compose exec mongo mongosh mongodb://localhost:27017/mongo_db --eval "db.stores.count()"
+
+# 4. Запуск Producer
+python scripts/run_producer.py
+
+# 5. Запуск Consumer (однократный режим)
+python scripts/run_consumer.py --once --timeout 60
+
+# 6. Проверка данных в ClickHouse
+docker-compose exec clickhouse clickhouse-client \
+  --query "SELECT count() FROM raw.stores;"
+```
+
+---
+
+### 🔧 Управление конфигурацией
+
+#### Переменные окружения в Docker
+
+**Файл `.env` автоматически используется Docker Compose:**
+
+```yaml
+# docker-compose.yml (фрагмент)
+services:
+  airflow-worker:
+    env_file:
+      - .env
+    environment:
+      - MONGO_URI=${MONGO_URI:-mongodb://mongo:27017}
+      - CLICKHOUSE_HOST=${CLICKHOUSE_HOST:-clickhouse}
+```
+
+#### Автоопределение окружения
+
+**Модуль `config/settings.py` автоматически определяет окружение:**
+
+```python
+# Внутри Docker
+MONGO_URI = "mongodb://mongo_db_pikcha_airflow:27017"
+CLICKHOUSE_HOST = "clickhouse"
+KAFKA_BROKER = "kafka:29092"
+
+# Локальная разработка
+MONGO_URI = "mongodb://localhost:27017"
+CLICKHOUSE_HOST = "localhost"
+KAFKA_BROKER = "localhost:9092"
+```
+
+---
+
+### 📊 Настройка Grafana
+
+**Импорт дашбордов:**
+
+Дашборды автоматически загружаются при старте Grafana из папки `grafana/dashboards/`.
+
+**Ручной импорт (опционально):**
+1. Открыть http://localhost:3000
+2. Перейти: Dashboards → Import
+3. Загрузить JSON-файл из `grafana/dashboards/`
+4. Выбрать источник данных: `ClickHouse`
+
+**Настройка алертинга:**
+1. Перейти: Alerting → Contact points
+2. Добавить Telegram-бота (токен из `.env`)
+3. Указать Chat ID для уведомлений
+
+---
+
+### 📁 Структура директорий после развёртывания
+
+```
+pikcha_test_airflow/
+├── .env                         # Конфигурация (создаётся вручную)
+├── data/                        # Сгенерированные данные
+│   ├── stores/
+│   ├── products/
+│   ├── customers/
+│   └── purchases/
+├── output/                      # Результаты ETL
+│   ├── csv/
+│   └── json/
+├── logs/                        # Логи выполнения
+│   ├── init_clickhouse.log
+│   ├── generate_data.log
+│   ├── load_to_mongo.log
+│   ├── run_producer.log
+│   ├── run_consumer.log
+│   ├── run_etl.log
+│   └── ...
+└── airflow_config/              # Конфигурация Airflow
+    └── webserver_config.py
+```
 
 ---
 
 ## 🚀 Запуск пайплайна
 
+ETL-пайплайн состоит из 6 последовательных шагов. Каждый шаг может выполняться как через Apache Airflow, так и вручную через CLI.
+
+---
+
 ### Шаг 0: Инициализация таблиц в ClickHouse
 
+**Скрипт:** `scripts/init_clickhouse.py`
+
+Создаёт структуру базы данных ClickHouse: RAW-слой (сырые данные) и MART-слой (витрины).
+
 ```bash
-python scripts/init_clickhouse.py
+# Базовый запуск (с подтверждением)
+python scripts/init_clickhouse.py --confirm
+
+# Сухой запуск (показать SQL без выполнения)
+python scripts/init_clickhouse.py --dry-run
+
+# Только RAW-слой
+python scripts/init_clickhouse.py --raw-only --confirm
+
+# Только MART-слой (требует существующего RAW)
+python scripts/init_clickhouse.py --mart-only --confirm
+
+# Полная очистка и пересоздание
+python scripts/init_clickhouse.py --drop-existing --confirm
 ```
 
-**Параметры:**
-- `--confirm` — подтвердить создание таблиц (требуется подтверждение)
-- `--dry-run` — показать SQL-команды без выполнения
-- `--raw-only` — создать только RAW-слой (raw.stores, raw.products, raw.customers, raw.purchases)
-- `--mart-only` — создать только MART-слой (dim_*, fact_*, customer_features_mart)
-- `--drop-existing` — удалить существующие таблицы перед созданием
-- `--clickhouse-host` — хост ClickHouse (по умолчанию: localhost)
-- `--clickhouse-port` — порт ClickHouse (по умолчанию: 9000)
-- `--clickhouse-user` — пользователь ClickHouse (по умолчанию: clickhouse)
-- `--clickhouse-password` — пароль ClickHouse (по умолчанию: clickhouse)
+**Все параметры:**
+
+| Параметр | Краткая форма | Описание | Значение по умолчанию |
+|----------|---------------|----------|----------------------|
+| `--confirm` | `-c` | Запросить подтверждение перед выполнением | — |
+| `--dry-run` | `-n` | Показать SQL-команды без выполнения | — |
+| `--raw-only` | `-r` | Создать только RAW-слой | — |
+| `--mart-only` | `-m` | Создать только MART-слой | — |
+| `--drop-existing` | `-d` | Удалить существующие БД перед созданием | — |
+| `--clickhouse-host` | `-h` | Хост ClickHouse | `localhost` (или `clickhouse` в Docker) |
+| `--clickhouse-port` | `-p` | Порт ClickHouse (native) | `9000` |
+| `--clickhouse-user` | `-u` | Пользователь ClickHouse | `clickhouse` |
+| `--clickhouse-password` | `-w` | Пароль ClickHouse | `clickhouse` |
 
 **Порядок выполнения:**
 1. Создание базы данных `raw`
-2. Создание таблиц raw-слоя (stores, products, customers, purchases)
+2. Создание таблиц raw-слоя (`stores`, `products`, `customers`, `purchases`)
 3. Создание базы данных `mart`
-4. Создание таблиц mart-слоя (dim_*, fact_*, customer_features_mart)
+4. Создание таблиц mart-слоя (`dim_*`, `fact_*`, `customer_features_mart`)
 5. Создание Materialized Views для автоматической загрузки
 
-📄 Лог: `logs/init_clickhouse.log`
+📄 **Лог:** `logs/init_clickhouse.log`
 
 
 ---
 
 ### Шаг 1: Генерация синтетических данных
+
+**Скрипт:** `scripts/generate_data.py`
+
+Генерирует реалистичные тестовые данные для розничной сети: магазины, товары, покупатели, покупки.
 
 ```bash
 # Генерация по умолчанию (45 магазинов, 50 товаров, 45 покупателей, 200 покупок)
@@ -673,16 +1032,22 @@ python scripts/generate_data.py \
     --num-customers 500 \
     --num-purchases 1000
 
-# Краткая форма
-python scripts/generate_data.py -n 1000  # 1000 покупок
+# Краткая форма (только покупки)
+python scripts/generate_data.py -n 1000
+
+# Указать директорию вывода
+python scripts/generate_data.py -o /path/to/data
 ```
 
-**Параметры:**
-- `--num-stores` — количество магазинов (по умолчанию: 45 = 30 + 15 по сетям)
-- `--num-products` — количество товаров (по умолчанию: 50 = по 10 из категории)
-- `--num-customers` — количество покупателей (по умолчанию: = количеству магазинов)
-- `--num-purchases` / `-n` — количество покупок (по умолчанию: 200)
-- `--output-dir` / `-o` — директория вывода (по умолчанию: `data`)
+**Все параметры:**
+
+| Параметр | Краткая форма | Описание | Значение по умолчанию |
+|----------|---------------|----------|----------------------|
+| `--num-stores` | `-s` | Количество магазинов | `45` (30 + 15 по сетям) |
+| `--num-products` | `-p` | Количество товаров | `50` (по 10 из категории) |
+| `--num-customers` | `-c` | Количество покупателей | `= количеству магазинов` |
+| `--num-purchases` | `-n` | Количество покупок | `200` |
+| `--output-dir` | `-o` | Директория для сохранения данных | `data` |
 
 **Результат:**
 ```
@@ -692,7 +1057,6 @@ data/
 ├── customers/        # 45 файлов (cus-1000.json ... cus-1044.json)
 └── purchases/        # 200 файлов (ord-00001.json ... ord-00200.json)
 ```
-
 
 **Гибкая настройка через Python API:**
 ```python
@@ -707,81 +1071,278 @@ result = generator.run(
 )
 print(result)  # {'stores': 100, 'products': 200, 'customers': 500, 'purchases': 1000}
 ```
-📄 Лог: `logs/generate_data.log`
+
+📄 **Лог:** `logs/generate_data.log`
 
 ---
 
 ### Шаг 2: Загрузка данных в MongoDB
 
+**Скрипт:** `scripts/load_to_mongo.py`
+
+Загружает JSON-файлы из директории `data/` в коллекции MongoDB.
+
 ```bash
+# Базовая загрузка (с очисткой коллекций)
 python scripts/load_to_mongo.py --data-dir data
+
+# Загрузка без очистки (добавление к существующим данным)
+python scripts/load_to_mongo.py --data-dir data --no-clear
+
+# Указать кастомный MongoDB URI
+python scripts/load_to_mongo.py -m mongodb://192.168.1.100:27017 -d my_database
 ```
 
-**Параметры:**
-- `--data-dir` — директория с данными
-- `--mongo-uri` — URI MongoDB (из `.env`)
-- `--database` — имя базы (из `.env`)
-- `--no-clear` — не очищать коллекции перед загрузкой
+**Все параметры:**
 
-📄 Лог: `logs/load_to_mongo.log`
+| Параметр | Краткая форма | Описание | Значение по умолчанию |
+|----------|---------------|----------|----------------------|
+| `--mongo-uri` | `-m` | URI подключения к MongoDB | из `.env` (`MONGO_URI`) |
+| `--database` | `-d` | Имя базы данных MongoDB | из `.env` (`MONGO_DATABASE`) |
+| `--data-dir` | `-i` | Директория с JSON-файлами | `data` |
+| `--no-clear` | `-n` | Не очищать коллекции перед загрузкой | — |
+
+**Коллекции MongoDB:**
+- `stores` ← файлы из `data/stores/`
+- `products` ← файлы из `data/products/`
+- `customers` ← файлы из `data/customers/`
+- `purchases` ← файлы из `data/purchases/`
+
+📄 **Лог:** `logs/load_to_mongo.log`
 
 ---
 
 ### Шаг 3: Producer (MongoDB → Kafka)
 
+**Скрипт:** `scripts/run_producer.py`
+
+Читает данные из MongoDB, хеширует чувствительные поля и отправляет в топики Kafka.
+
 ```bash
+# Базовый запуск (все топики)
 python scripts/run_producer.py
+
+# Указать конкретные топики
+python scripts/run_producer.py --topics stores customers
+
+# Указать кастомный HMAC-ключ
+python scripts/run_producer.py --hmac-key my-secret-key
 ```
 
-**Параметры:**
-- `--mongo-db` — имя базы MongoDB
-- `--kafka-broker` — адрес брокера
-- `--topics` — список топиков
-- `--hmac-key` — ключ HMAC (опционально)
+**Все параметры:**
+
+| Параметр | Краткая форма | Описание | Значение по умолчанию |
+|----------|---------------|----------|----------------------|
+| `--mongo-uri` | `-m` | URI подключения к MongoDB | из `.env` |
+| `--mongo-db` | `-d` | Имя базы данных MongoDB | из `.env` |
+| `--kafka-broker` | `-k` | Адрес Kafka брокера | из `.env` |
+| `--topics` | `-t` | Список топиков для обработки | `stores customers products purchases` |
+| `--hmac-key` | `-h` | Секретный ключ для HMAC-хеширования | из `.env` (`HMAC_SECRET_KEY`) |
 
 **Топики Kafka:**
-- `products` — товары
-- `stores` — магазины
-- `customers` — клиенты
-- `purchases` — покупки
+| Топик | Описание |
+|-------|----------|
+| `stores` | Данные о магазинах |
+| `products` | Каталог товаров |
+| `customers` | Профили клиентов |
+| `purchases` | История покупок |
 
-📄 Лог: `logs/run_producer.log`
+📄 **Лог:** `logs/run_producer.log`
 
 ---
 
 ### Шаг 4: Consumer (Kafka → ClickHouse)
 
+**Скрипт:** `scripts/run_consumer.py`
+
+Подписывается на топики Kafka и записывает сообщения в таблицы RAW-слоя ClickHouse.
+
 ```bash
+# Базовый запуск (постоянная подписка)
 python scripts/run_consumer.py
+
+# Однократная обработка (обработать и выйти)
+python scripts/run_consumer.py --once
+
+# Однократная обработка с таймаутом
+python scripts/run_consumer.py --once --timeout 600
+
+# Указать конкретные топики
+python scripts/run_consumer.py --topics stores products
 ```
 
-**Параметры:**
-- `--clickhouse-host` — хост ClickHouse
-- `--clickhouse-port` — порт (по умолчанию: 9000)
-- `--clickhouse-raw-db` — база сырых данных
-- `--kafka-broker` / `--kafka-group` — параметры Kafka
+**Все параметры:**
 
-📄 Лог: `logs/run_consumer.log`
+| Параметр | Краткая форма | Описание | Значение по умолчанию |
+|----------|---------------|----------|----------------------|
+| `--clickhouse-host` | `-ch` | Хост ClickHouse | из `.env` |
+| `--clickhouse-port` | `-cp` | Порт ClickHouse (native) | `9000` |
+| `--clickhouse-user` | `-cu` | Пользователь ClickHouse | `clickhouse` |
+| `--clickhouse-password` | `-cw` | Пароль ClickHouse | `clickhouse` |
+| `--clickhouse-raw-db` | `-cd` | База данных для сырых данных | `raw` |
+| `--kafka-broker` | `-kb` | Адрес Kafka брокера | из `.env` |
+| `--kafka-group` | `-kg` | ID группы консюмеров | из `.env` |
+| `--topics` | `-t` | Список топиков для подписки | `stores customers products purchases` |
+| `--once` | `-o` | Обработать сообщения и выйти | — |
+| `--timeout` | `-T` | Таймаут для режима `--once` (сек) | `300` |
+
+**Режимы работы:**
+- **Постоянная подписка** (по умолчанию) — бесконечный цикл ожидания новых сообщений
+- **Однократная обработка** (`--once`) — обработать накопленные сообщения и завершить работу
+
+📄 **Лог:** `logs/run_consumer.log`
 
 ---
 
 ### Шаг 5: ETL витрины признаков (Spark)
 
+**Скрипт:** `scripts/run_etl.py`
+
+Запускает ETL-процесс на базе Apache Spark для расчёта 30 бинарных признаков клиентов.
+
 ```bash
+# Вывод во все форматы (ClickHouse + CSV + JSON)
 python scripts/run_etl.py --output-format all
+
+# Только загрузка в ClickHouse
+python scripts/run_etl.py -f clickhouse
+
+# Только выгрузка в CSV
+python scripts/run_etl.py -f csv
+
+# Указать дату витрины
+python scripts/run_etl.py --date 2024-03-15
+
+# Загрузка результатов в S3
+python scripts/run_etl.py --upload-s3 --s3-format csv
 ```
 
-**Параметры:**
-- `--output-format` / `-f` — формат вывода:
-  - `clickhouse` — только ClickHouse
-  - `csv` — только CSV
-  - `json` — только JSON
-  - `all` — все форматы (по умолчанию)
-- `--date` — дата витрины (YYYY-MM-DD)
-- `--upload-s3` — загрузить в S3
-- `--s3-format` — формат для S3 (`csv`, `json`, `all`)
+**Все параметры:**
 
-📄 Лог: `logs/run_etl.log`
+| Параметр | Краткая форма | Описание | Значение по умолчанию |
+|----------|---------------|----------|----------------------|
+| `--output-format` | `-f` | Формат вывода | `all` |
+| | | `clickhouse` — только ClickHouse | |
+| | | `csv` — только CSV | |
+| | | `json` — только JSON | |
+| | | `all` — все форматы | |
+| `--date` | `-d` | Дата витрины (YYYY-MM-DD) | текущая дата |
+| `--upload-s3` | `-s` | Загрузить результаты в S3 | — |
+| `--s3-format` | `-sf` | Формат файлов для S3 | `all` |
+| | | `csv`, `json`, `all` | |
+
+**Рассчитываемые признаки (30 штук):**
+
+| Категория | Признаки |
+|-----------|----------|
+| **product_preference** (8) | `bought_milk_last_30d`, `bought_fruits_last_14d`, `not_bought_veggies_14d`, `organic_preference`, `buys_bakery`, `bought_meat_last_week`, `fruit_lover`, `vegetarian_profile` |
+| **purchase_behavior** (4) | `recurrent_buyer`, `inactive_14_30`, `delivery_user`, `no_purchases` |
+| **loyalty** (2) | `new_customer`, `loyal_customer` |
+| **spending** (3) | `bulk_buyer`, `low_cost_buyer`, `recent_high_spender` |
+| **temporal** (5) | `night_shopper`, `morning_shopper`, `weekend_shopper`, `weekday_shopper`, `early_bird` |
+| **payment** (2) | `prefers_cash`, `prefers_card` |
+| **location** (3) | `multicity_buyer`, `store_loyal`, `switching_store` |
+| **basket** (3) | `single_item_buyer`, `varied_shopper`, `family_shopper` |
+
+📄 **Лог:** `logs/run_etl.log`
+
+---
+
+### Дополнительные утилиты
+
+#### Очистка всех данных
+
+**Скрипт:** `scripts/cleanup_all.py`
+
+Полностью удаляет все данные проекта: `data/`, MongoDB, Kafka, ClickHouse.
+
+```bash
+# Полная очистка (с подтверждением)
+python scripts/cleanup_all.py
+
+# Автоматическая очистка (без подтверждения)
+python scripts/cleanup_all.py --yes
+
+# Только очистка ClickHouse
+python scripts/cleanup_all.py --skip-mongo --skip-kafka --skip-data --yes
+
+# Только очистка MongoDB и Kafka
+python scripts/cleanup_all.py --skip-clickhouse --skip-data --yes
+```
+
+**Все параметры:**
+
+| Параметр | Краткая форма | Описание |
+|----------|---------------|----------|
+| `--mongo-uri` | `-m` | URI подключения к MongoDB |
+| `--mongo-database` | `-d` | Имя базы данных MongoDB |
+| `--clickhouse-host` | `-ch` | Хост ClickHouse |
+| `--clickhouse-port` | `-cp` | Порт ClickHouse |
+| `--clickhouse-user` | `-cu` | Пользователь ClickHouse |
+| `--clickhouse-password` | `-cw` | Пароль ClickHouse |
+| `--clickhouse-raw-db` | `-cr` | Имя RAW базы данных |
+| `--clickhouse-mart-db` | `-cm` | Имя MART базы данных |
+| `--kafka-broker` | `-k` | Адрес Kafka брокера |
+| `--data-dir` | `-i` | Директория data |
+| `--skip-mongo` | `-sm` | Пропустить очистку MongoDB |
+| `--skip-kafka` | `-sk` | Пропустить очистку Kafka |
+| `--skip-clickhouse` | `-sc` | Пропустить очистку ClickHouse |
+| `--skip-data` | `-sd` | Пропустить очистку директории data |
+| `--yes` | `-y` | Не запрашивать подтверждение |
+
+📄 **Лог:** `logs/cleanup_all.log`
+
+---
+
+#### Дедупликация MART-слоя
+
+**Скрипт:** `scripts/dedup_mart.py`
+
+Удаляет дубликаты в таблицах MART-слоя с помощью `OPTIMIZE TABLE ... FINAL`.
+
+```bash
+# Анализ дубликатов (без удаления)
+python scripts/dedup_mart.py --analyze-only
+
+# Дедупликация всех таблиц (с подтверждением)
+python scripts/dedup_mart.py
+
+# Автоматическая дедупликация (без подтверждения)
+python scripts/dedup_mart.py --force
+
+# Только конкретные таблицы
+python scripts/dedup_mart.py -t dim_customer,dim_store,fact_purchases
+
+# Использовать DEDUPLICATE BY (более точный метод)
+python scripts/dedup_mart.py --deduplicate-by --force
+
+# Сохранить отчёт в JSON
+python scripts/dedup_mart.py --save-report --force
+```
+
+**Все параметры:**
+
+| Параметр | Краткая форма | Описание | Значение по умолчанию |
+|----------|---------------|----------|----------------------|
+| `--clickhouse-host` | `-ch` | Хост ClickHouse | из `.env` |
+| `--clickhouse-port` | `-cp` | Порт ClickHouse | `9000` |
+| `--clickhouse-user` | `-cu` | Пользователь ClickHouse | `clickhouse` |
+| `--clickhouse-password` | `-cw` | Пароль ClickHouse | `clickhouse` |
+| `--clickhouse-database` | `-cd` | База данных MART | `mart` |
+| `--tables` | `-t` | Список таблиц через запятую | все из конфига |
+| `--analyze-only` | `-a` | Только анализ (без удаления) | — |
+| `--deduplicate-by` | `-d` | Использовать `DEDUPLICATE BY` | — |
+| `--dry-run` | `-n` | Сухой запуск (показать план) | — |
+| `--force` | `-y` | Не запрашивать подтверждение | — |
+| `--save-report` | `-s` | Сохранить отчёт в JSON | — |
+| `--report-dir` | `-r` | Директория для отчётов | `output` |
+
+**Обрабатываемые таблицы:**
+- **Dimensions:** `dim_manufacturer`, `dim_store_location`, `dim_delivery_address`, `dim_product`, `dim_customer`, `dim_store`, `dim_date`
+- **Facts:** `fact_purchases`, `fact_purchase_items`
+- **Mart:** `customer_features_mart`
+
+📄 **Лог:** `logs/dedup_mart.log`
 
 ---
 
@@ -867,6 +1428,73 @@ Airflow использует следующие подключения (наст
 
 ---
 
+## 🔒 Безопасность
+
+### HMAC-хеширование чувствительных данных
+
+**Алгоритм:** HMAC-SHA256
+
+**Хешируемые поля:**
+- `customers.phone`
+- `customers.email`
+- `purchases.customer.phone`
+- `purchases.customer.email`
+
+**Процесс хеширования:**
+
+```mermaid
+flowchart LR
+    A[Исходные данные] --> B[Нормализация]
+    B --> C[HMAC-SHA256]
+    C --> D[Хешированные данные]
+
+    subgraph B [Нормализация]
+        B1[Удаление пробелов]
+        B2[Удаление спецсимволов]
+        B3[Приведение к +7XXXXXXXXXX]
+    end
+```
+
+**Пример преобразования:**
+
+```python
+# До
+phone: "+7 (999) 123-45-67"
+email: "Anna.Petrova@EXAMPLE.ru"
+
+# После нормализации
+phone: "+79991234567"
+email: "anna.petrova@example.ru"
+
+# После HMAC-SHA256
+phone: "a3f2b8c1d4e5f6789012345678901234abcd5678..."
+email: "b4c3d2e1f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0..."
+```
+
+### Требования к ключу HMAC
+
+**Генерация безопасного ключа:**
+
+```bash
+python -c "import secrets; print(secrets.token_hex(32))"
+# Результат: 64-символьная hex-строка
+```
+
+| Параметр | Требование |
+|----------|------------|
+| **Минимальная длина** | 32 байта (256 бит) |
+| **Алгоритм** | HMAC-SHA256 |
+| **Хранение** | В секрете, не коммитить в Git |
+
+**Настройка в `.env`:**
+
+```bash
+# Генерация и установка ключа
+HMAC_SECRET_KEY=$(python -c "import secrets; print(secrets.token_hex(32))")
+```
+
+---
+
 ## 📊 Grafana Dashboards
 
 Система мониторинга на базе **Grafana** предоставляет дашборды для визуализации данных ETL-пайплайна и алертинга в Telegram.
@@ -902,7 +1530,34 @@ Airflow использует следующие подключения (наст
 
 ---
 
-#### 2. 🔄 RAW Layer Duplicates Analysis
+#### 2. 📊 MART Layer Statistics
+**Файл:** `mart_layer_stats.json` | **UID:** `mart-layer-stats`
+
+Дашборд мониторинга витрин данных в ClickHouse (mart-слой).
+
+**Панели:**
+
+| Панель | Тип | Описание |
+|--------|-----|----------|
+| **📊 Total Records** | Stat | Общее количество записей во всех таблицах mart-слоя |
+| **🏭 dim_manufacturer** | Stat | Количество записей в справочнике производителей |
+| **📍 dim_store_location** | Stat | Количество записей в справочнике локаций магазинов |
+| **🏠 dim_delivery_address** | Stat | Количество записей в справочнике адресов доставки |
+| **📦 dim_product** | Stat | Количество записей в справочнике продуктов |
+| **👥 dim_customer** | Stat | Количество записей в справочнике клиентов |
+| **🏪 dim_store** | Stat | Количество записей в справочнике магазинов |
+| **📅 dim_date** | Stat | Количество записей в справочнике дат |
+| **🛒 fact_purchases** | Stat | Количество записей в факте покупок |
+| **📋 fact_purchase_items** | Stat | Количество записей в факте позиций покупок |
+| **🧬 customer_features_mart** | Stat | Количество записей в витрине признаков клиентов |
+
+**Обновление:** каждые 30 секунд
+
+![MART Layer Statistics](pictures/MART%20Layer%20Statistics.PNG)
+
+---
+
+#### 3. 🔄 RAW Layer Duplicates Analysis
 **Файл:** `raw_duplicates_analysis.json` | **UID:** `raw-duplicates-analysis`
 
 Дашборд анализа дубликатов ключей в raw-слое для контроля качества данных.
@@ -927,7 +1582,7 @@ Airflow использует следующие подключения (наст
 
 ---
 
-#### 3. 🔄 MART Layer Duplicates Analysis
+#### 4. 🔄 MART Layer Duplicates Analysis
 **Файл:** `mart_duplicates_analysis.json` | **UID:** `mart-duplicates-analysis`
 
 Дашборд анализа дубликатов в mart-слое (витрины данных и факты).
@@ -958,7 +1613,7 @@ Airflow использует следующие подключения (наст
 
 ---
 
-#### 4. 🧬 Customer Features Matrix
+#### 5. 🧬 Customer Features Matrix
 **Файл:** `customer_features_matrix.json` | **UID:** `customer-features-matrix`
 
 Дашборд визуализации 30 бинарных признаков клиентов для ML-кластеризации.
@@ -995,7 +1650,7 @@ Airflow использует следующие подключения (наст
 
 ---
 
-#### 5. 🗺️ Stores Geography Map
+#### 6. 🗺️ Stores Geography Map
 **Файл:** `stores_geo_map.json` | **UID:** `stores-geo-map`
 
 Географическая карта расположения магазинов сети.
@@ -1040,7 +1695,7 @@ Airflow использует следующие подключения (наст
 
 ---
 
-## 📊 Мониторинг и отладка
+## 🔧 Мониторинг и отладка
 
 ### UI-интерфейс
 

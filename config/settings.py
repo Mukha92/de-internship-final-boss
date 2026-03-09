@@ -107,6 +107,25 @@ class OutputSettings:
 
 
 @dataclass
+class CleanupSettings:
+    """Настройки для скрипта очистки (cleanup_all.py)."""
+    data_subdirs: list[str] = field(
+        default_factory=lambda: os.getenv(
+            "DATA_SUBDIRS", "customers,products,purchases,stores,spark"
+        ).split(",")
+    )
+    kafka_topics: list[str] = field(
+        default_factory=lambda: os.getenv(
+            "KAFKA_TOPICS", "stores,customers,products,purchases"
+        ).split(",")
+    )
+    # Брокер для админских операций (удаление топиков)
+    kafka_admin_broker: str = field(
+        default_factory=lambda: os.getenv("KAFKA_ADMIN_BROKER", "localhost:9092")
+    )
+
+
+@dataclass
 class Settings:
     """Главная конфигурация проекта."""
     mongodb: MongoDBSettings = field(default_factory=MongoDBSettings)
@@ -115,7 +134,8 @@ class Settings:
     s3: S3Settings = field(default_factory=S3Settings)
     security: SecuritySettings = field(default_factory=SecuritySettings)
     output: OutputSettings = field(default_factory=OutputSettings)
-    
+    cleanup: CleanupSettings = field(default_factory=CleanupSettings)
+
     # Дополнительные настройки
     data_dir: str = field(default_factory=lambda: os.getenv("DATA_DIR", "data"))
 

@@ -163,7 +163,7 @@ from typing import Any
 # Добавляем корень проекта в PYTHONPATH
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from config import setup_logging
+from config import setup_logging, get_settings
 from clickhouse_driver import Client
 
 
@@ -171,11 +171,7 @@ from clickhouse_driver import Client
 # КОНСТАНТЫ
 # ============================================================================
 
-DEFAULT_CLICKHOUSE_HOST = "localhost"
-DEFAULT_CLICKHOUSE_PORT = "9000"
-DEFAULT_CLICKHOUSE_USER = "clickhouse"
-DEFAULT_CLICKHOUSE_PASSWORD = "clickhouse"
-DEFAULT_CLICKHOUSE_DATABASE = "mart"
+# Константы удалены — используем get_settings()
 
 # Таблицы для обработки (только ReplacingMergeTree)
 TABLES_CONFIG = {
@@ -902,6 +898,9 @@ def main() -> None:
     """Точка входа для утилиты дедупликации."""
     setup_logging(log_file_name="dedup_mart.log")
     logger = logging.getLogger(__name__)
+    
+    # Получаем настройки из централизованной конфигурации
+    settings = get_settings()
 
     parser = argparse.ArgumentParser(
         description="Удаление дубликатов в mart-слое ClickHouse (OPTIMIZE FINAL)"
@@ -910,29 +909,29 @@ def main() -> None:
     # ClickHouse
     parser.add_argument(
         "--clickhouse-host",
-        default=DEFAULT_CLICKHOUSE_HOST,
-        help=f"Хост ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_HOST})",
+        default=None,
+        help=f"Хост ClickHouse (по умолчанию: из .env или {settings.clickhouse.host})",
     )
     parser.add_argument(
         "--clickhouse-port",
         type=int,
-        default=int(DEFAULT_CLICKHOUSE_PORT),
-        help=f"Порт ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_PORT})",
+        default=None,
+        help=f"Порт ClickHouse (по умолчанию: из .env или {settings.clickhouse.native_port})",
     )
     parser.add_argument(
         "--clickhouse-user",
-        default=DEFAULT_CLICKHOUSE_USER,
-        help=f"Пользователь ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_USER})",
+        default=None,
+        help=f"Пользователь ClickHouse (по умолчанию: из .env или {settings.clickhouse.user})",
     )
     parser.add_argument(
         "--clickhouse-password",
-        default=DEFAULT_CLICKHOUSE_PASSWORD,
-        help=f"Пароль ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_PASSWORD})",
+        default=None,
+        help=f"Пароль ClickHouse (по умолчанию: из .env или {settings.clickhouse.password})",
     )
     parser.add_argument(
         "--clickhouse-database",
-        default=DEFAULT_CLICKHOUSE_DATABASE,
-        help=f"База данных (по умолчанию: {DEFAULT_CLICKHOUSE_DATABASE})",
+        default=None,
+        help=f"База данных (по умолчанию: из .env или {settings.clickhouse.database})",
     )
 
     # Режимы работы
@@ -979,17 +978,24 @@ def main() -> None:
 
     args = parser.parse_args()
 
+    # Применяем настройки по умолчанию из конфигурации
+    clickhouse_host = args.clickhouse_host or settings.clickhouse.host
+    clickhouse_port = args.clickhouse_port or settings.clickhouse.native_port
+    clickhouse_user = args.clickhouse_user or settings.clickhouse.user
+    clickhouse_password = args.clickhouse_password or settings.clickhouse.password
+    clickhouse_database = args.clickhouse_database or settings.clickhouse.database
+
     # Подключение к ClickHouse
     logger.info("=" * 70)
-    logger.info("🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: %s:%s", args.clickhouse_host, args.clickhouse_port)
+    logger.info("🏛 ПОДКЛЮЧЕНИЕ К CLICKHOUSE: %s:%s", clickhouse_host, clickhouse_port)
     logger.info("=" * 70)
 
     try:
         client = Client(
-            host=args.clickhouse_host,
-            port=args.clickhouse_port,
-            user=args.clickhouse_user,
-            password=args.clickhouse_password,
+            host=clickhouse_host,
+            port=clickhouse_port,
+            user=clickhouse_user,
+            password=clickhouse_password,
         )
         client.execute("SELECT 1")
         logger.info("✓ Подключение успешно")
@@ -998,7 +1004,7 @@ def main() -> None:
         sys.exit(1)
 
     # Получение списка таблиц
-    available_tables = get_available_tables(client, args.clickhouse_database, logger)
+    available_tables = get_available_tables(client, clickhouse_database, logger)
 
     # Определение таблиц для обработки
     if args.tables:
@@ -1025,7 +1031,7 @@ def main() -> None:
 
     # Анализ дубликатов
     if args.analyze_only:
-        print_analysis_report(client, args.clickhouse_database, logger)
+        print_analysis_report(client, clickhouse_database, logger)
         sys.exit(0)
 
     # Сухой запуск
@@ -1034,7 +1040,7 @@ def main() -> None:
         logger.info("=" * 70)
         for table in tables_to_process:
             config = TABLES_CONFIG.get(table, {})
-            stats = analyze_table(client, args.clickhouse_database, table, config, logger)
+            stats = analyze_table(client, clickhouse_database, table, config, logger)
             logger.info("\n📊 Таблица: %s", table)
             logger.info("  Строк: %s", stats["rows"])
             logger.info("  Частей: %s", stats["parts"])
@@ -1042,14 +1048,14 @@ def main() -> None:
             if args.deduplicate_by:
                 logger.info(
                     "  Будет выполнено: OPTIMIZE TABLE %s.%s FINAL DEDUPLICATE BY %s",
-                    args.clickhouse_database,
+                    clickhouse_database,
                     table,
                     config.get("dedup_key", "key"),
                 )
             else:
                 logger.info(
                     "  Будет выполнено: OPTIMIZE TABLE %s.%s FINAL",
-                    args.clickhouse_database,
+                    clickhouse_database,
                     table,
                 )
         logger.info("\n" + "=" * 70)
@@ -1070,7 +1076,7 @@ def main() -> None:
 
     results = run_deduplication(
         client=client,
-        database=args.clickhouse_database,
+        database=clickhouse_database,
         tables_to_process=tables_to_process,
         use_deduplicate_by=args.deduplicate_by,
         logger=logger,
@@ -1089,8 +1095,8 @@ def main() -> None:
         report = DedupReport(
             timestamp=datetime.now().isoformat(),
             strategy="deduplicate_by" if args.deduplicate_by else "optimize_final",
-            clickhouse_host=args.clickhouse_host,
-            clickhouse_database=args.clickhouse_database,
+            clickhouse_host=clickhouse_host,
+            clickhouse_database=clickhouse_database,
             tables=results,
             total={
                 "rows_before": total_rows_before,

@@ -4,32 +4,29 @@
 
 ---
 
-## 📋 Оглавление
+## Оглавление
 
-- [Общая архитектура](#-общая-архитектура)
+- [Общая архитектура](#общая-архитектура)
   - [Диаграмма потока данных](#диаграмма-потока-данных)
   - [Компоненты системы](#компоненты-системы)
-  - [Архитектура Docker](#-архитектура-docker)
+  - [Архитектура Docker](#архитектура-docker)
   - [Последовательность выполнения](#последовательность-выполнения-sequence-diagram)
-- [Архитектура оркестрации Airflow](#-архитектура-оркестрации-airflow)
-- [Структура проекта](#-структура-проекта)
-- [Конфигурация](#-конфигурация)
-- [Генерация данных](#-генерация-данных)
-- [Загрузка в MongoDB](#-загрузка-в-mongodb)
-- [Стриминговый пайплайн](#-стриминговый-пайплайн)
-- [Хранилище данных ClickHouse](#-хранилище-данных-clickhouse)
-- [ETL процесс PySpark](#-etl-процесс-pyspark)
-- [Выгрузка в S3](#-выгрузка-в-s3)
-- [Grafana Dashboards](#-grafana-dashboards)
-- [Логирование](#-логирование)
-- [Безопасность](#-безопасность)
-- [CLI-скрипты](#-cli-скрипты)
-- [DAG-файлы Airflow](#-dag-файлы-airflow)
-- [Развёртывание](#-развёртывание)
+- [Архитектура оркестрации Airflow](#архитектура-оркестрации-airflow)
+- [Структура проекта](#структура-проекта)
+- [Конфигурация](#конфигурация)
+- [Генерация данных](#генерация-данных)
+- [Загрузка в MongoDB](#загрузка-в-mongodb)
+- [Стриминговый пайплайн](#стриминговый-пайплайн)
+- [Хранилище данных ClickHouse](#хранилище-данных-clickhouse)
+- [ETL процесс PySpark](#etl-процесс-pyspark)
+- [Выгрузка в S3](#выгрузка-в-s3)
+- [Grafana Dashboards: Архитектура системы мониторинга](#grafana-dashboards-архитектура-системы-мониторинга)
+- [Логирование](#логирование)
+- [DAG-файлы Airflow](#dag-файлы-airflow)
 
 ---
 
-## 🏗 Общая архитектура
+## Общая архитектура
 
 ### Диаграмма потока данных 
 
@@ -287,7 +284,7 @@ sequenceDiagram
 
 ---
 
-## 🔄 Архитектура оркестрации Airflow
+## Архитектура оркестрации Airflow
 
 ### Компоненты Airflow
 
@@ -434,7 +431,7 @@ sequenceDiagram
 
 ---
 
-## 📁 Структура проекта
+## Структура проекта
 
 ```
 pikcha_test_airflow/
@@ -468,7 +465,6 @@ pikcha_test_airflow/
 │   ├── etl/                       # Batch ETL процессы
 │   │   ├── process.py             # CustomerFeatureETL (Spark)
 │   │   ├── config.py              # ETL конфигурация
-│   │   ├── features.py            # 30 признаков клиентов
 │   │   └── upload_to_s3.py        # Выгрузка в S3
 │   └── utils/                     # Утилиты
 │       ├── helpers.py             # Нормализация телефона/email
@@ -490,7 +486,6 @@ pikcha_test_airflow/
 │   ├── 02_create_materialized_views.sql # MV для автоматической загрузки
 │   └── 03_create_customer_features_table.sql # Витрина признаков
 │
-├── plugins/                       # Плагины Airflow (кастомные хуки, операторы)
 ├── ui/                            # UI компоненты
 │   └── UI.html                    # HTML-файл интерфейса
 │
@@ -512,7 +507,6 @@ pikcha_test_airflow/
 ├── data/                          # Сгенерированные JSON данные
 ├── output/                        # Результаты ETL (CSV/JSON)
 ├── logs/                          # Логи выполнения
-├── notebooks/                     # Jupyter ноутбуки для аналитики
 ├── docs/                          # Документация
 │   └── architecture.md            # Подробная архитектура системы
 │
@@ -605,14 +599,14 @@ graph LR
 | `loader/mongo_loader.py` | `config`, `types`, `PyMongo` | Загрузка JSON в MongoDB |
 | `pipeline/mongo_kafka_producer.py` | `config`, `types`, `hashing`, `PyMongo`, `Kafka` | Producer: MongoDB → Kafka |
 | `pipeline/kafka_clickhouse_consumer.py` | `config`, `Kafka`, `ClickHouse` | Consumer: Kafka → ClickHouse |
-| `etl/process.py` | `etl/config`, `etl/features`, `PySpark`, `ClickHouse` | ETL витрины признаков |
+| `etl/process.py` | `etl/config`, `PySpark`, `ClickHouse` | ETL витрины признаков |
 | `etl/upload_to_s3.py` | `etl/config`, `Boto3` | Выгрузка результатов в S3 |
 | `utils/hashing.py` | — | HMAC-SHA256 хеширование |
 | `types.py` | — | Type aliases (JSONDict, JSONList) |
 
 ---
 
-## ⚙️ Конфигурация
+## Конфигурация
 
 ### Переменные окружения
 
@@ -679,7 +673,7 @@ class FeatureConfig:
 
 ---
 
-## 🎲 Генерация данных
+## Генерация данных
 
 ### Модуль: `src/pikcha_etl/generation/synthetic.py`
 
@@ -834,7 +828,7 @@ data/
 
 ---
 
-## 📥 Загрузка в MongoDB
+## Загрузка в MongoDB
 
 ### Модуль: `src/pikcha_etl/loader/mongo_loader.py`
 
@@ -868,7 +862,7 @@ flowchart TD
 
 ---
 
-## 📡 Стриминговый пайплайн
+## Стриминговый пайплайн
 
 ### Producer: MongoDB → Kafka
 
@@ -1040,7 +1034,7 @@ sequenceDiagram
 
 ---
 
-## 🗄 Хранилище данных ClickHouse
+## Хранилище данных ClickHouse
 
 ### Архитектура слоёв
 
@@ -1274,7 +1268,7 @@ erDiagram
 
 ---
 
-## ⚡ ETL процесс PySpark
+## ETL процесс PySpark
 
 ### Модуль: `src/pikcha_etl/etl/process.py`
 
@@ -1380,7 +1374,7 @@ flowchart TD
 
 ---
 
-## 📤 Выгрузка в S3
+## Выгрузка в S3
 
 ### Модуль: `src/pikcha_etl/etl/upload_to_s3.py`
 
@@ -1424,37 +1418,468 @@ flowchart TD
 
 ---
 
-## 📊 Grafana Dashboards
+## Grafana Dashboards: Архитектура системы мониторинга
 
-Система мониторинга на базе **Grafana** предоставляет дашборды для визуализации данных ETL-пайплайна и алертинга в Telegram.
+### Архитектурный обзор
 
-### 📈 Дашборды
+Система мониторинга на базе **Grafana** обеспечивает визуализацию данных ETL-пайплайна, контроль качества данных и алертинг в реальном времени.
 
-| Дашборд | Файл | Описание |
-|---------|------|----------|
-| **Raw Layer Statistics** | `raw_layer_stats.json` | Статистика raw-слоя ClickHouse |
-| **Raw Duplicates Analysis** | `raw_duplicates_analysis.json` | Мониторинг дубликатов в raw-слое|
-| **Mart Duplicates Analysis** | `mart_duplicates_analysis.json` | Мониторинг дубликатов в mart-слое|
-| **Customer Features Matrix** | `customer_features_matrix.json` | Визуализация матрицы признаков клиентов: распределение 30 бинарных признаков для ML-кластеризации |
-| **Stores Geo Map** | `stores_geo_map.json` | Географическая карта магазинов: расположение на карте по координатам (latitude, longitude)|
+```mermaid
+flowchart TB
+    subgraph DataSources["Источники данных"]
+        CH[(ClickHouse<br/>Raw + Mart)]
+        MG[(MongoDB)]
+        KF[Kafka]
+    end
 
-### 🔔 Алертинг в Telegram
+    subgraph Grafana["Grafana Platform"]
+        DS[Datasources<br/>Провайдеры данных]
+        PR[Provisioning<br/>Автоматическая загрузка]
+        DB[Dashboards<br/>Визуализация]
+        AL[Alerting<br/>Уведомления]
+    end
 
-Система алертинга уведомляет о критических событиях в Telegram-канал через бота.
+    subgraph Users["Пользователи"]
+        DA[Data Analyst]
+        EN[Engineer]
+        TG[Telegram Bot]
+    end
 
+    CH --> DS
+    MG -.-> DS
+    KF -.-> DS
 
-**Правила алертов (alert-rules.yml):**
+    DS --> DB
+    PR --> DB
+    DB --> AL
+    AL --> TG
 
-| Алерт | Условие срабатывания | Приоритет |
-|-------|---------------------|-----------|
-| **🏪 Stores Duplicates > 50%** | Процент дубликатов в `raw.stores` > 50% | 🔴 Critical |
-| **📦 Products Duplicates > 50%** | Процент дубликатов в `raw.products` > 50% | 🔴 Critical |
-| **👥 Customers Duplicates > 50%** | Процент дубликатов в `raw.customers` > 50% | 🔴 Critical |
-| **🛒 Purchases Duplicates > 50%** | Процент дубликатов в `raw.purchases` > 50% | 🔴 Critical |
+    DB --> DA
+    DB --> EN
+
+    %% Цветовая схема подграфов - пастельные тона
+    style DataSources fill:#e3f2fd,stroke:#64b5f6,stroke-width:2px
+    style Grafana fill:#fff3e0,stroke:#ffb74d,stroke-width:2px
+    style Users fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px
+
+    %% Цветовая схема компонентов - приглушённые пастельные тона
+    style CH fill:#64b5f6,color:#000,stroke:#5a9fd6,stroke-width:2px
+    style MG fill:#81c784,color:#000,stroke:#74b577,stroke-width:2px
+    style KF fill:#ffb74d,color:#000,stroke:#e6a545,stroke-width:2px
+    style DS fill:#ffcc80,color:#000,stroke:#e6b873,stroke-width:2px
+    style PR fill:#ffcc80,color:#000,stroke:#e6b873,stroke-width:2px
+    style DB fill:#ffcc80,color:#000,stroke:#e6b873,stroke-width:2px
+    style AL fill:#ffcc80,color:#000,stroke:#e6b873,stroke-width:2px
+    style DA fill:#e1bee7,color:#000,stroke:#c9a8d6,stroke-width:2px
+    style EN fill:#e1bee7,color:#000,stroke:#c9a8d6,stroke-width:2px
+    style TG fill:#e1bee7,color:#000,stroke:#c9a8d6,stroke-width:2px
+```
 
 ---
 
-## 📝 Логирование
+### 📁 Структура компонентов Grafana
+
+```
+grafana/
+├── provisioning/              # Автоматическая конфигурация
+│   └── dashboards.yml         # Провайдер дашбордов
+│
+├── datasources/               # Источники данных
+│   └── clickhouse.yml         # Подключение к ClickHouse
+│
+├── dashboards/                # JSON-файлы дашбордов
+│   ├── raw_layer_stats.json           # Статистика RAW-слоя
+│   ├── raw_duplicates_analysis.json   # Дубликаты RAW
+│   ├── mart_layer_stats.json          # Статистика MART-слоя
+│   ├── mart_duplicates_analysis.json  # Дубликаты MART
+│   ├── customer_features_matrix.json  # Признаки клиентов
+│   └── stores_geo_map.json            # Гео-карта магазинов
+│
+└── alerting/                  # Система алертинга
+    ├── alert-rules.yml        # Правила срабатывания
+    └── contact-points.yml     # Контактные точки (Telegram)
+```
+
+---
+
+### 🔌 Источники данных (Datasources)
+
+**Основной источник:** ClickHouse
+
+| Параметр | Значение |
+|----------|----------|
+| **Тип** | `grafana-clickhouse-datasource` |
+| **Хост** | `clickhouse:8123` (Docker) |
+| **Протокол** | HTTP |
+| **База по умолчанию** | `raw` |
+| **Аутентификация** | `clickhouse` / `clickhouse` |
+
+**Конфигурация:** `grafana/datasources/clickhouse.yml`
+
+```yaml
+apiVersion: 1
+datasources:
+  - name: ClickHouse
+    type: grafana-clickhouse-datasource
+    access: proxy
+    url: http://clickhouse:8123
+    isDefault: true
+    editable: true
+    jsonData:
+      defaultDatabase: raw
+      port: 8123
+      server: clickhouse
+      username: clickhouse
+      tlsSkipVerify: false
+      protocol: http
+    secureJsonData:
+      password: clickhouse
+```
+
+**Дополнительные источники (опционально):**
+- MongoDB — для мониторинга операционных данных
+- Kafka — для мониторинга топиков и лагов консюмеров
+
+---
+
+### 📂 Провижининг (Provisioning)
+
+Автоматическая загрузка дашбордов при старте Grafana.
+
+**Конфигурация:** `grafana/provisioning/dashboards.yml`
+
+```yaml
+apiVersion: 1
+providers:
+  - name: 'Raw Layer Dashboards'
+    orgId: 1
+    folder: 'ETL Monitoring'
+    folderUid: 'etl-monitoring'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards
+      foldersFromFilesStructure: true
+```
+
+**Параметры:**
+- `folder: 'ETL Monitoring'` — все дашборды группируются в папке
+- `updateIntervalSeconds: 30` — проверка изменений каждые 30 секунд
+- `allowUiUpdates: true` — разрешено редактирование через UI
+- `disableDeletion: false` — можно удалять через UI
+
+---
+
+### 📈 Дашборды: Архитектура и назначение
+
+#### 1. 📊 RAW Layer Statistics
+**Файл:** `raw_layer_stats.json` | **UID:** `raw-layer-stats`
+
+**Назначение:** Мониторинг сырых данных в ClickHouse (raw-слой).
+
+**Панели:**
+| Панель | Тип | SQL-запрос | Назначение |
+|--------|-----|------------|------------|
+| **📊 Total Records** | Stat | `SELECT sum(rows) FROM system.parts WHERE database = 'raw'` | Общее количество записей |
+| **🏪/📦/👥/🛒** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = '...'` | Записи по таблицам |
+| **📊 Records per Table** | Pie Chart | `SELECT table, sum(rows) FROM system.parts GROUP BY table` | Распределение по таблицам |
+| **📈 Records Over Time** | Time Series | `SELECT toStartOfHour(event_time), count() FROM raw.* GROUP BY time` | Динамика поступления |
+| **📋 Table Details** | Table | `SELECT table, sum(rows), sum(data_compressed_bytes) FROM system.parts` | Детали: записи + размер |
+| **⏰ Data Freshness** | Stat | `SELECT now() - max(event_time) FROM raw.stores` | Время с последней записи |
+| **🕐 Last Update** | Stat | `SELECT max(event_time) FROM raw.stores` | Дата последнего обновления |
+
+**Обновление:** каждые 30 секунд
+
+---
+
+#### 2. 📊 MART Layer Statistics
+**Файл:** `mart_layer_stats.json` | **UID:** `mart-layer-stats`
+
+**Назначение:** Мониторинг количества записей в таблицах MART-слоя.
+
+**Панели:**
+
+| Панель | Тип | SQL-запрос | Назначение |
+|--------|-----|------------|------------|
+| **📊 Total Records** | Stat | `SELECT sum(rows) FROM system.parts WHERE database = 'mart'` | Общее количество записей |
+| **🏭 dim_manufacturer** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'dim_manufacturer'` | Записи в справочнике производителей |
+| **📍 dim_store_location** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'dim_store_location'` | Записи в справочнике локаций |
+| **🏠 dim_delivery_address** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'dim_delivery_address'` | Записи в справочнике адресов |
+| **📦 dim_product** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'dim_product'` | Записи в справочнике продуктов |
+| **👥 dim_customer** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'dim_customer'` | Записи в справочнике клиентов |
+| **🏪 dim_store** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'dim_store'` | Записи в справочнике магазинов |
+| **📅 dim_date** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'dim_date'` | Записи в справочнике дат |
+| **🛒 fact_purchases** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'fact_purchases'` | Записи в факте покупок |
+| **📋 fact_purchase_items** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'fact_purchase_items'` | Записи в факте позиций |
+| **🧬 customer_features_mart** | Stat | `SELECT sum(rows) FROM system.parts WHERE table = 'customer_features_mart'` | Записи в витрине признаков |
+
+**Обновление:** каждые 30 секунд
+
+---
+
+#### 3. 🔄 RAW Layer Duplicates Analysis
+**Файл:** `raw_duplicates_analysis.json` | **UID:** `raw-duplicates-analysis`
+
+**Назначение:** Контроль качества данных RAW-слоя (поиск дубликатов).
+
+**Панели:**
+| Панель | Тип | SQL-запрос | Пороги |
+|--------|-----|------------|--------|
+| **🔄 Total Duplicate Records** | Stat | `SELECT (count() - count(DISTINCT key)) FROM raw.*` | — |
+| **📊 Duplicates per Table** | Bar Chart | `SELECT 'table', count() FROM (SELECT key GROUP BY key HAVING count() > 1)` | — |
+| **🏪/📦/👥/🛒 duplicates %** | Gauge | `SELECT round((count() - count(DISTINCT key)) * 100.0 / count(), 2)` | 🟢 0% / 🔴 ≥49% |
+
+**Связанные алерты:** 4 правила (по одному на таблицу)
+
+---
+
+#### 4. 🔄 MART Layer Duplicates Analysis
+**Файл:** `mart_duplicates_analysis.json` | **UID:** `mart-duplicates-analysis`
+
+**Назначение:** Контроль качества данных MART-слоя (поиск дубликатов).
+
+**Панели:**
+| Панель | Тип | Таблицы | Пороги |
+|--------|-----|---------|--------|
+| **🔄 Total Duplicate Records** | Stat | Все таблицы mart | — |
+| **🏭/📍/🏠/📦/👥/🏪/📅 %** | Gauge | `dim_*` | 🟢 0% / 🟡 ≥10% / 🔴 ≥49% |
+| **🛒/📋 %** | Gauge | `fact_*` | 🟢 0% / 🟡 ≥10% / 🔴 ≥49% |
+| **📈 Duplicate Statistics** | Table | Все | Детали по таблицам |
+
+---
+
+#### 5. 🧬 Customer Features Matrix
+**Файл:** `customer_features_matrix.json` | **UID:** `customer-features-matrix`
+
+**Назначение:** Визуализация 30 бинарных признаков клиентов для ML-кластеризации.
+
+**Панели:**
+| Панель | Тип | Описание |
+|--------|-----|----------|
+| **👥 Total Customers** | Stat | Количество клиентов в витрине |
+| **🛒 Avg Purchases** | Stat | Среднее количество покупок |
+| **💰 Avg Total Spent** | Stat | Средняя сумма затрат (₽) |
+| **🛍️ Avg Cart Amount** | Stat | Средний размер корзины (₽) |
+| **💎 Loyal Customers** | Stat | Доля лояльных клиентов |
+| **📊 Customer Features Matrix** | Heatmap Table | Матрица 30 признаков (топ-100 по тратам) |
+
+**Признаки в матрице:**
+- **product_preference** (8): `bought_milk_last_30d`, `bought_fruits_last_14d`, ...
+- **purchase_behavior** (4): `recurrent_buyer`, `inactive_14_30`, ...
+- **loyalty** (2): `new_customer`, `loyal_customer`
+- **spending** (3): `bulk_buyer`, `low_cost_buyer`, ...
+- **temporal** (5): `night_shopper`, `morning_shopper`, ...
+- **payment** (2): `prefers_cash`, `prefers_card`
+- **location** (3): `multicity_buyer`, `store_loyal`, ...
+- **basket** (3): `single_item_buyer`, `varied_shopper`, ...
+
+---
+
+#### 6. 🗺️ Stores Geography Map
+**Файл:** `stores_geo_map.json` | **UID:** `stores-geo-map`
+
+**Назначение:** Географическая визуализация расположения магазинов.
+
+**Панели:**
+| Панель | Тип | Данные |
+|--------|-----|--------|
+| **🗺️ Stores Map** | Geomap | `SELECT store_id, store_name, latitude, longitude, store_network FROM raw.stores` |
+| **🏪 Total Stores** | Stat | `SELECT count(DISTINCT store_id)` |
+| **🏙️ Cities** | Stat | `SELECT count(DISTINCT location_city)` |
+| **🔗 Networks** | Stat | `SELECT count(DISTINCT store_network)` |
+| **🌐 Online Orders** | Stat | `SELECT count() WHERE accepts_online_orders = 'True'` |
+| **🚚 Delivery** | Stat | `SELECT count() WHERE delivery_available = 'True'` |
+| **🔗 Stores by Network** | Pie Chart | `SELECT store_network, count() GROUP BY store_network` |
+| **🏙️ Stores by City** | Table | `SELECT city, count() GROUP BY city ORDER BY count DESC` |
+
+---
+
+### 🔔 Система алертинга
+
+#### Архитектура алертинга
+
+```mermaid
+flowchart LR
+    subgraph Grafana["Grafana Alerting"]
+        AR[Alert Rules<br/>Правила]
+        EX[Expression Engine<br/>Оценка]
+        CP[Contact Points<br/>Контакты]
+    end
+
+    subgraph Data["Данные"]
+        CH[ClickHouse<br/>raw.*]
+    end
+
+    subgraph Notify["Уведомления"]
+        TG[Telegram Bot]
+        US[Пользователи]
+    end
+
+    CH --> AR
+    AR --> EX
+    EX --> CP
+    CP --> TG
+    TG --> US
+
+    %% Цветовая схема подграфов - пастельные тона
+    style Grafana fill:#fff3e0,stroke:#ffb74d,stroke-width:2px
+    style Data fill:#e3f2fd,stroke:#64b5f6,stroke-width:2px
+    style Notify fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px
+
+    %% Цветовая схема компонентов - приглушённые пастельные тона
+    style AR fill:#ffcc80,color:#000,stroke:#e6b873,stroke-width:2px
+    style EX fill:#ffcc80,color:#000,stroke:#e6b873,stroke-width:2px
+    style CP fill:#ffcc80,color:#000,stroke:#e6b873,stroke-width:2px
+    style CH fill:#64b5f6,color:#000,stroke:#5a9fd6,stroke-width:2px
+    style TG fill:#e1bee7,color:#000,stroke:#c9a8d6,stroke-width:2px
+    style US fill:#e1bee7,color:#000,stroke:#c9a8d6,stroke-width:2px
+```
+
+#### Правила алертов (alert-rules.yml)
+
+**Группа:** `Duplicates Alert Rules`
+
+| Алерт | UID | Условие | Порог | Приоритет |
+|-------|-----|---------|-------|-----------|
+| **🏪 Stores Duplicates** | `stores-duplicates-alert` | `(count() - count(DISTINCT store_id)) * 100 / count()` | > 49% | 🔴 Critical |
+| **📦 Products Duplicates** | `products-duplicates-alert` | `(count() - count(DISTINCT id)) * 100 / count()` | > 49% | 🔴 Critical |
+| **👥 Customers Duplicates** | `customers-duplicates-alert` | `(count() - count(DISTINCT customer_id)) * 100 / count()` | > 49% | 🔴 Critical |
+| **🛒 Purchases Duplicates** | `purchases-duplicates-alert` | `(count() - count(DISTINCT purchase_id)) * 100 / count()` | > 49% | 🔴 Critical |
+
+**Структура правила (на примере Stores):**
+
+```yaml
+- uid: stores-duplicates-alert
+  title: 🏪 Stores Duplicates > 50%
+  condition: C  # C > 49% → алерт
+  data:
+    - refId: A  # SQL-запрос к ClickHouse
+      queryType: table
+      rawSql: SELECT round((count() - count(DISTINCT store_id)) * 100.0 / count(), 2) FROM raw.stores;
+    - refId: B  # Reduce: последнее значение
+      type: reduce
+      expression: A
+      reducer: last
+    - refId: C  # Threshold: порог 49%
+      type: threshold
+      expression: B
+  for: 0s  # Срабатывание немедленно
+  noDataState: NoData
+  execErrState: Error
+  annotations:
+    summary: "🚨 [CRITICAL] Дубликаты в таблице 🏪 stores превысили 50%!"
+  labels:
+    severity: critical
+    table: stores
+```
+
+---
+
+#### Контактные точки (contact-points.yml)
+
+**Получатель:** `Telegram Duplicates Alert`
+
+```yaml
+contactPoints:
+  - orgId: 1
+    name: Telegram Duplicates Alert
+    receivers:
+      - uid: telegram-duplicates-receiver
+        type: telegram
+        settings:
+          botToken: <BOT_TOKEN>
+          chatId: "<CHAT_ID>"
+          message: |
+            🤖 >_ SYSTEM ALERT v.2077
+            🚨 [!] DUPLICATE DETECTION
+            🎯 TARGET: [{{ .Labels.table }}]
+            🔴 DUPLICATE RATE: {{ .Annotations.description }}
+            🔗 ACCESS: http://localhost:3000/d/...
+```
+
+**Политики уведомлений:**
+
+| Параметр | Значение |
+|----------|----------|
+| **group_by** | `['alertname']` |
+| **group_wait** | `5s` (ожидание группы) |
+| **group_interval** | `10s` (интервал между группами) |
+| **repeat_interval** | `10m` (повтор каждые 10 минут) |
+
+---
+
+### 📊 Поток данных мониторинга
+
+```mermaid
+sequenceDiagram
+    participant CH as ClickHouse
+    participant GF as Grafana
+    participant AL as Alert Engine
+    participant TG as Telegram Bot
+    participant US as Пользователь
+
+    Note over CH,GF: Фоновый опрос (30s)
+    GF->>CH: SQL-запрос (панель)
+    CH-->>GF: Данные
+    GF->>GF: Визуализация
+
+    Note over GF,AL: Проверка алертов (30s)
+    GF->>CH: SQL-запрос (алерт)
+    CH-->>GF: Значение
+    GF->>AL: Оценка порога
+    AL->>AL: Порог > 49%?
+    
+    alt Превышение порога
+        AL->>TG: Отправка уведомления
+        TG->>US: Сообщение в Telegram
+        US->>GF: Переход к дашборду
+    else Норма
+        AL->>AL: Нет действия
+    end
+```
+
+---
+
+### 🔧 Интеграция с ETL-пайплайном
+
+Grafana взаимодействует со всеми слоями ETL:
+
+| Слой ETL | Данные для мониторинга | Дашборд |
+|----------|----------------------|---------|
+| **Raw** | Количество записей, дубликаты, свежесть | RAW Layer Statistics, RAW Duplicates |
+| **Mart** | Количество записей, дубликаты, метрики | MART Layer Statistics, MART Duplicates |
+| **Features** | Признаки клиентов, метрики | Customer Features Matrix |
+| **Stores** | Гео-локации, сети, города | Stores Geo Map |
+
+---
+
+### 📁 Конфигурационные файлы
+
+| Файл | Назначение | Путь |
+|------|------------|------|
+| `dashboards.yml` | Провижининг дашбордов | `grafana/provisioning/` |
+| `clickhouse.yml` | Источник данных | `grafana/datasources/` |
+| `alert-rules.yml` | Правила алертов | `grafana/alerting/` |
+| `contact-points.yml` | Контактные точки | `grafana/alerting/` |
+| `*.json` (6 файлов) | Дашборды | `grafana/dashboards/` |
+
+---
+
+### 🚀 Доступ к Grafana
+
+| Параметр | Значение |
+|----------|----------|
+| **URL** | `http://localhost:3000` |
+| **Логин** | `admin` |
+| **Пароль** | `admin` (из `.env`) |
+| **Папка дашбордов** | `ETL Monitoring` |
+| **Папка алертов** | `Alerts` |
+
+---
+
+## Логирование
 
 ### Конфигурация
 
@@ -1516,216 +1941,5 @@ docker-compose logs -f airflow-worker
 # Все логи Airflow
 docker-compose logs -f airflow
 ```
-
----
-
-## 🔒 Безопасность
-
-### HMAC-хеширование чувствительных данных
-
-**Алгоритм:** HMAC-SHA256
-
-**Хешируемые поля:**
-- `customers.phone`
-- `customers.email`
-- `purchases.customer.phone`
-- `purchases.customer.email`
-
-**Процесс:**
-```mermaid
-flowchart LR
-    A[Исходные данные] --> B[Нормализация]
-    B --> C[HMAC-SHA256]
-    C --> D[Хешированные данные]
-    
-    subgraph B [Нормализация]
-        B1[Удаление пробелов]
-        B2[Удаление спецсимволов]
-        B3[Приведение к +7XXXXXXXXXX]
-    end
-```
-
-**Пример:**
-```python
-# До
-phone: "+7 (999) 123-45-67"
-email: "Anna.Petrova@EXAMPLE.ru"
-
-# После нормализации
-phone: "+79991234567"
-email: "anna.petrova@example.ru"
-
-# После HMAC-SHA256
-phone: "a3f2b8c1d4e5f6789012345678901234abcd5678..."
-email: "b4c3d2e1f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0..."
-```
-
-### Требования к ключу HMAC
-
-```bash
-# Генерация безопасного ключа
-python -c "import secrets; print(secrets.token_hex(32))"
-# Результат: 64-символьная hex-строка
-```
-
-**Минимальная длина:** 32 байта (256 бит)  
-**Рекомендация:** Хранить в секрете, не коммитить в Git
-
----
-
-## 🖥 CLI-скрипты
-
-### Сводная таблица аргументов
-
-| Скрипт | Аргумент | Тип | По умолчанию | Описание |
-|--------|----------|-----|--------------|----------|
-| **`init_clickhouse.py`** | | | | |
-| | `--clickhouse-host` | str | `localhost` | Хост ClickHouse |
-| | `--clickhouse-port` | int | 9000 | Порт ClickHouse |
-| | `--clickhouse-user` | str | `clickhouse` | Пользователь ClickHouse |
-| | `--clickhouse-password` | str | `clickhouse` | Пароль ClickHouse |
-| | `--raw-only` | flag | False | Создать только RAW-слой |
-| | `--mart-only` | flag | False | Создать только MART-слой |
-| | `--drop-existing` | flag | False | Удалить существующие БД |
-| | `--confirm` | flag | False | Запросить подтверждение |
-| | `--dry-run` | flag | False | Сухой запуск (без выполнения) |
-| **Логирование:** `logs/init_clickhouse.log` | | | | |
-| **`generate_data.py`** | | | | |
-| | `--num-stores` | int | 45 | Количество магазинов |
-| | `--num-products` | int | 50 | Количество товаров |
-| | `--num-customers` | int | = магазинам | Количество покупателей |
-| | `--num-purchases`, `-n` | int | 200 | Количество покупок |
-| | `--output-dir`, `-o` | str | `data` | Директория вывода |
-| **Логирование:** `logs/generate_data.log` | | | | |
-| **`load_to_mongo.py`** | | | | |
-| | `--mongo-uri`, `-m` | str | из `.env` | URI подключения к MongoDB |
-| | `--database`, `-d` | str | из `.env` | Имя базы данных MongoDB |
-| | `--data-dir` | str | `data` | Путь к папке с JSON-данными |
-| | `--no-clear` | flag | False | Не очищать коллекции перед загрузкой |
-| **Логирование:** `logs/load_to_mongo.log` | | | | |
-| **`run_producer.py`** | | | | |
-| | `--mongo-uri` | str | из `.env` | URI подключения к MongoDB |
-| | `--mongo-db` | str | из `.env` | Имя базы данных MongoDB |
-| | `--kafka-broker` | str | из `.env` | Адрес Kafka брокера |
-| | `--topics` | list | все | Список топиков для обработки |
-| | `--hmac-key` | str | из `.env` | Секретный ключ для HMAC-хеширования |
-| **Логирование:** `logs/run_producer.log` | | | | |
-| **`run_consumer.py`** | | | | |
-| | `--clickhouse-host` | str | `localhost` | Хост ClickHouse |
-| | `--clickhouse-port` | int | 9000 | Порт ClickHouse (native) |
-| | `--clickhouse-user` | str | `clickhouse` | Пользователь ClickHouse |
-| | `--clickhouse-password` | str | `clickhouse` | Пароль ClickHouse |
-| | `--clickhouse-raw-db` | str | `raw` | База данных для сырых данных |
-| | `--kafka-broker` | str | из `.env` | Адрес Kafka брокера |
-| | `--kafka-group` | str | из `.env` | ID группы консюмеров |
-| | `--topics` | list | все | Список топиков для подписки |
-| | `--once` | flag | False | Обработать сообщения и выйти |
-| | `--timeout` | int | 300 | Таймаут для `--once` (сек) |
-| **Логирование:** `logs/run_consumer.log` | | | | |
-| **`run_etl.py`** | | | | |
-| | `--output-format`, `-f` | str | `all` | Формат вывода: `clickhouse`/`csv`/`json`/`all` |
-| | `--date` | str | сегодня | Дата витрины (YYYY-MM-DD) |
-| | `--upload-s3` | flag | False | Загрузить результаты в S3 |
-| | `--s3-format` | str | `all` | Формат для S3: `csv`/`json`/`all` |
-| **Логирование:** `logs/run_etl.log` | | | | |
-
-### Примеры использования
-
-```bash
-# Инициализация ClickHouse (полная)
-python scripts/init_clickhouse.py
-
-# Инициализация ClickHouse (только RAW-слой)
-python scripts/init_clickhouse.py --raw-only
-
-# Инициализация ClickHouse с удалением существующих таблиц
-python scripts/init_clickhouse.py --drop-existing --confirm
-
-# Генерация данных с кастомным количеством объектов
-python scripts/generate_data.py --num-stores 100 --num-products 200 --num-purchases 1000
-
-# Загрузка в MongoDB без очистки коллекций
-python scripts/load_to_mongo.py --no-clear
-
-# Producer с явным ключом HMAC
-python scripts/run_producer.py --hmac-key "my-secret-key"
-
-# Consumer в режиме одноразового запуска с таймаутом
-python scripts/run_consumer.py --once --timeout 600
-
-# ETL с загрузкой результатов в S3
-python scripts/run_etl.py --output-format all --upload-s3 --s3-format csv
-
-# ETL для конкретной даты
-python scripts/run_etl.py --date 2026-03-07 --output-format json
-```
-
----
-
-## 🚀 Развёртывание
-
-### Docker Compose
-
-**Запуск всех сервисов:**
-```bash
-docker-compose up -d
-```
-
-**Сервисы:**
-
-| Сервис | Порт | Назначение |
-|--------|------|------------|
-| `mongo_db_pikcha_airflow` | 27017 | MongoDB |
-| `mongo-express_pikcha_airflow` | 8081 | Web UI для MongoDB |
-| `clickhouse_airflow` | 8123, 9000 | ClickHouse |
-| `zookeeper_pikcha_airflow` | 2181 | Zookeeper для Kafka |
-| `kafka_pikcha_airflow` | 9092, 29092 | Kafka broker |
-| `kafka-ui_pikcha_airflow` | 8082 | Web UI для Kafka |
-| `grafana_pikcha_airflow` | 3000 | Визуализация данных |
-| `jupyter` | 8888 | Jupyter Lab |
-| `airflow-webserver` | 8080 | Airflow Web UI |
-| `airflow-scheduler` | 8974 (health) | Airflow Scheduler |
-| `airflow-worker` | — | Airflow Worker (Celery) |
-| `postgres` | 5432 | PostgreSQL для Airflow Metastore |
-| `redis` | 6379 | Redis для Celery Broker |
-
-### Инициализация Airflow
-
-**Первый запуск:**
-```bash
-# Инициализация базы данных и создание пользователя
-docker-compose up airflow-init
-
-# Запуск всех сервисов
-docker-compose up -d
-
-# Проверка статуса
-docker-compose ps
-```
-
-### Требования к ресурсам
-
-| Компонент | CPU | RAM | Disk |
-|-----------|-----|-----|------|
-| **MongoDB** | 1 core | 512 MB | 1 GB |
-| **Kafka + Zookeeper** | 2 cores | 1 GB | 2 GB |
-| **ClickHouse** | 2 cores | 2 GB | 5 GB |
-| **Spark ETL** | 2 cores | 4 GB | 1 GB |
-| **Airflow Scheduler** | 1 core | 512 MB | 500 MB |
-| **Airflow Worker** | 2 cores | 2 GB | 500 MB |
-| **Airflow Webserver** | 1 core | 512 MB | 500 MB |
-| **PostgreSQL** | 1 core | 512 MB | 1 GB |
-| **Redis** | 0.5 core | 256 MB | 100 MB |
-| **Итого** | **~12 cores** | **~15 GB** | **~12 GB** |
-
-**Минимальные требования для разработки:**
-- CPU: 4 cores
-- RAM: 8 GB
-- Disk: 20 GB
-
-**Рекомендуемые требования для продакшена:**
-- CPU: 8+ cores
-- RAM: 16+ GB
-- Disk: 50+ GB SSD
 
 ---

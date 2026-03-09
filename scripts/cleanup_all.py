@@ -211,7 +211,7 @@ from pathlib import Path
 # Добавляем корень проекта в PYTHONPATH
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from config import setup_logging
+from config import setup_logging, get_settings
 from pymongo import MongoClient
 from clickhouse_driver import Client
 
@@ -220,19 +220,7 @@ from clickhouse_driver import Client
 # КОНСТАНТЫ
 # ============================================================================
 
-DEFAULT_MONGO_URI = "mongodb://localhost:27017"
-DEFAULT_MONGO_DATABASE = "mongo_db"
-
-DEFAULT_CLICKHOUSE_HOST = "localhost"
-DEFAULT_CLICKHOUSE_PORT = "9000"
-DEFAULT_CLICKHOUSE_USER = "clickhouse"
-DEFAULT_CLICKHOUSE_PASSWORD = "clickhouse"
-DEFAULT_CLICKHOUSE_RAW_DB = "raw"
-DEFAULT_CLICKHOUSE_MART_DB = "mart"
-
-KAFKA_TOPICS = ["stores", "customers", "products", "purchases"]
-
-DATA_SUBDIRS = ["customers", "products", "purchases", "stores", "spark"]
+# Константы удалены — используем get_settings()
 
 
 # ============================================================================
@@ -240,12 +228,17 @@ DATA_SUBDIRS = ["customers", "products", "purchases", "stores", "spark"]
 # ============================================================================
 
 
-def cleanup_data_dir(data_dir: Path, logger: logging.Logger) -> bool:
+def cleanup_data_dir(
+    data_dir: Path,
+    data_subdirs: list[str],
+    logger: logging.Logger,
+) -> bool:
     """
     Удаляет все подпапки в директории data/.
 
     Args:
         data_dir: Путь к директории data
+        data_subdirs: Список подпапок для удаления
         logger: Логгер
 
     Returns:
@@ -258,7 +251,7 @@ def cleanup_data_dir(data_dir: Path, logger: logging.Logger) -> bool:
         return True
 
     success = True
-    for subdir in DATA_SUBDIRS:
+    for subdir in data_subdirs:
         subdir_path = data_dir / subdir
         if subdir_path.exists():
             try:
@@ -311,6 +304,7 @@ def cleanup_mongo(
 
 def cleanup_kafka_topics(
     kafka_broker: str,
+    kafka_topics: list[str],
     logger: logging.Logger,
 ) -> bool:
     """
@@ -318,12 +312,13 @@ def cleanup_kafka_topics(
 
     Args:
         kafka_broker: Адрес Kafka брокера (host:port)
+        kafka_topics: Список топиков для удаления
         logger: Логгер
 
     Returns:
         True если успешно, False если ошибка
     """
-    logger.info("📡 Очистка Kafka топиков: %s", KAFKA_TOPICS)
+    logger.info("📡 Очистка Kafka топиков: %s", kafka_topics)
 
     try:
         from kafka.admin import KafkaAdminClient, NewTopic
@@ -342,7 +337,7 @@ def cleanup_kafka_topics(
         # Получаем список существующих топиков
         existing_topics = admin_client.list_topics()
         topics_to_delete = [
-            topic for topic in KAFKA_TOPICS if topic in existing_topics
+            topic for topic in kafka_topics if topic in existing_topics
         ]
 
         if not topics_to_delete:
@@ -506,6 +501,9 @@ def main() -> None:
     """Точка входа для скрипта очистки."""
     setup_logging(log_file_name="cleanup_all.log")
     logger = logging.getLogger(__name__)
+    
+    # Получаем настройки из централизованной конфигурации
+    settings = get_settings()
 
     parser = argparse.ArgumentParser(
         description="Полная очистка данных проекта PIKCHA ETL"
@@ -515,61 +513,61 @@ def main() -> None:
     parser.add_argument(
         "--mongo-uri",
         "-m",
-        default=DEFAULT_MONGO_URI,
-        help=f"URI подключения к MongoDB (по умолчанию: {DEFAULT_MONGO_URI})",
+        default=None,
+        help=f"URI подключения к MongoDB (по умолчанию: из .env или {settings.mongodb.uri})",
     )
     parser.add_argument(
         "--mongo-database",
         "-d",
-        default=DEFAULT_MONGO_DATABASE,
-        help=f"Имя MongoDB базы данных (по умолчанию: {DEFAULT_MONGO_DATABASE})",
+        default=None,
+        help=f"Имя MongoDB базы данных (по умолчанию: из .env или {settings.mongodb.database})",
     )
 
     # ClickHouse
     parser.add_argument(
         "--clickhouse-host",
-        default=DEFAULT_CLICKHOUSE_HOST,
-        help=f"Хост ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_HOST})",
+        default=None,
+        help=f"Хост ClickHouse (по умолчанию: из .env или {settings.clickhouse.host})",
     )
     parser.add_argument(
         "--clickhouse-port",
         type=int,
-        default=int(DEFAULT_CLICKHOUSE_PORT),
-        help=f"Порт ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_PORT})",
+        default=None,
+        help=f"Порт ClickHouse (по умолчанию: из .env или {settings.clickhouse.native_port})",
     )
     parser.add_argument(
         "--clickhouse-user",
-        default=DEFAULT_CLICKHOUSE_USER,
-        help=f"Пользователь ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_USER})",
+        default=None,
+        help=f"Пользователь ClickHouse (по умолчанию: из .env или {settings.clickhouse.user})",
     )
     parser.add_argument(
         "--clickhouse-password",
-        default=DEFAULT_CLICKHOUSE_PASSWORD,
-        help=f"Пароль ClickHouse (по умолчанию: {DEFAULT_CLICKHOUSE_PASSWORD})",
+        default=None,
+        help=f"Пароль ClickHouse (по умолчанию: из .env или {settings.clickhouse.password})",
     )
     parser.add_argument(
         "--clickhouse-raw-db",
-        default=DEFAULT_CLICKHOUSE_RAW_DB,
-        help=f"Имя raw базы данных (по умолчанию: {DEFAULT_CLICKHOUSE_RAW_DB})",
+        default=None,
+        help=f"Имя raw базы данных (по умолчанию: из .env или {settings.clickhouse.raw_database})",
     )
     parser.add_argument(
         "--clickhouse-mart-db",
-        default=DEFAULT_CLICKHOUSE_MART_DB,
-        help=f"Имя mart базы данных (по умолчанию: {DEFAULT_CLICKHOUSE_MART_DB})",
+        default=None,
+        help=f"Имя mart базы данных (по умолчанию: из .env или {settings.clickhouse.database})",
     )
 
     # Kafka
     parser.add_argument(
         "--kafka-broker",
-        default="localhost:9092",
-        help="Адрес Kafka брокера (по умолчанию: localhost:9092)",
+        default=None,
+        help=f"Адрес Kafka брокера (по умолчанию: из .env или {settings.cleanup.kafka_admin_broker})",
     )
 
     # Data directory
     parser.add_argument(
         "--data-dir",
-        default="data",
-        help="Путь к директории data (по умолчанию: data)",
+        default=settings.data_dir,
+        help=f"Путь к директории data (по умолчанию: {settings.data_dir})",
     )
 
     # Flags
@@ -602,19 +600,34 @@ def main() -> None:
 
     args = parser.parse_args()
 
+    # Применяем настройки по умолчанию из конфигурации
+    mongo_uri = args.mongo_uri or settings.mongodb.uri
+    mongo_database = args.mongo_database or settings.mongodb.database
+    
+    clickhouse_host = args.clickhouse_host or settings.clickhouse.host
+    clickhouse_port = args.clickhouse_port or settings.clickhouse.native_port
+    clickhouse_user = args.clickhouse_user or settings.clickhouse.user
+    clickhouse_password = args.clickhouse_password or settings.clickhouse.password
+    clickhouse_raw_db = args.clickhouse_raw_db or settings.clickhouse.raw_database
+    clickhouse_mart_db = args.clickhouse_mart_db or settings.clickhouse.database
+    
+    kafka_broker = args.kafka_broker or settings.cleanup.kafka_admin_broker
+    kafka_topics = settings.cleanup.kafka_topics
+    data_subdirs = settings.cleanup.data_subdirs
+
     # Предупреждение
     logger.info("=" * 60)
     logger.info("⚠️  ВНИМАНИЕ: Полная очистка данных PIKCHA ETL")
     logger.info("=" * 60)
     logger.info("Будут удалены:")
     if not args.skip_data:
-        logger.info("  • Все папки в data/: %s", ", ".join(DATA_SUBDIRS))
+        logger.info("  • Все папки в data/: %s", ", ".join(data_subdirs))
     if not args.skip_mongo:
-        logger.info("  • MongoDB база данных: %s", args.mongo_database)
+        logger.info("  • MongoDB база данных: %s", mongo_database)
     if not args.skip_kafka:
-        logger.info("  • Kafka топики: %s", ", ".join(KAFKA_TOPICS))
+        logger.info("  • Kafka топики: %s", ", ".join(kafka_topics))
     if not args.skip_clickhouse:
-        logger.info("  • ClickHouse базы: %s, %s", args.clickhouse_raw_db, args.clickhouse_mart_db)
+        logger.info("  • ClickHouse базы: %s, %s", clickhouse_raw_db, clickhouse_mart_db)
     logger.info("=" * 60)
 
     # Запрос подтверждения
@@ -633,31 +646,31 @@ def main() -> None:
         logger.info("⊘ Пропущено: очистка data/")
     else:
         data_dir = Path(args.data_dir)
-        results["data"] = cleanup_data_dir(data_dir, logger)
+        results["data"] = cleanup_data_dir(data_dir, data_subdirs, logger)
 
     # Очистка MongoDB
     if args.skip_mongo:
         logger.info("⊘ Пропущено: очистка MongoDB")
     else:
-        results["mongo"] = cleanup_mongo(args.mongo_uri, args.mongo_database, logger)
+        results["mongo"] = cleanup_mongo(mongo_uri, mongo_database, logger)
 
     # Очистка Kafka
     if args.skip_kafka:
         logger.info("⊘ Пропущено: очистка Kafka")
     else:
-        results["kafka"] = cleanup_kafka_topics(args.kafka_broker, logger)
+        results["kafka"] = cleanup_kafka_topics(kafka_broker, kafka_topics, logger)
 
     # Очистка ClickHouse
     if args.skip_clickhouse:
         logger.info("⊘ Пропущено: очистка ClickHouse")
     else:
         results["clickhouse"] = cleanup_clickhouse(
-            host=args.clickhouse_host,
-            port=args.clickhouse_port,
-            user=args.clickhouse_user,
-            password=args.clickhouse_password,
-            raw_db=args.clickhouse_raw_db,
-            mart_db=args.clickhouse_mart_db,
+            host=clickhouse_host,
+            port=clickhouse_port,
+            user=clickhouse_user,
+            password=clickhouse_password,
+            raw_db=clickhouse_raw_db,
+            mart_db=clickhouse_mart_db,
             logger=logger,
         )
 

@@ -22,7 +22,6 @@ from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
 
 from src.pikcha_etl.etl.config import clickhouse_config, feature_config, output_config
-from src.pikcha_etl.etl.features import FEATURE_DEFINITIONS, get_feature_names
 
 # Настройка логирования
 logging.basicConfig(
