@@ -12,6 +12,7 @@
 > Проект представляет собой комплексное ETL-решение для аналитической обработки данных розничной сети "CYBERPIKCHA 2077". Реализована сквозная архитектура от генерации синтетических данных до построения витрин для аналитики и ML-кластеризации.
 
 Демонстрация итогового проекта: [CYBERPIKCHA_2077: CLI](https://disk.yandex.ru/d/xZAK0uiQO7u1ag).
+
 Демонстрация итогового проекта с Airflow: [CYBERPIKCHA_2077: AIRFLOW](https://disk.yandex.ru/i/2FGoykoCLoDkow). 
 
 ![Архитектура CYBERPIKCHA_2077](pictures/CYBERPIKCHA_2077.jpg)
