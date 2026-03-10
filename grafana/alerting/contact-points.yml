@@ -7,8 +7,8 @@ contactPoints:
       - uid: telegram-duplicates-receiver
         type: telegram
         settings:
-          botToken: 8148427563:AAFobNVtCh8sxE1GSH8qXa3ssCTVryLZ_Cw
-          chatId: "5251389025"
+          botToken: 
+          chatId: 
           message: |
             🤖 >_ SYSTEM ALERT v.2077
 
