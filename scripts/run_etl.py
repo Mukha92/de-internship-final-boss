@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Скрипт запуска ETL-процесса для витрины клиентских признаков."""
 
-from __future__ import annotations
 
 import argparse
 import logging
