@@ -5,8 +5,6 @@
 клиентских признаков, используемой в Spark-пайплайне.
 """
 
-from __future__ import annotations
-
 import sys
 from dataclasses import dataclass
 from datetime import datetime
